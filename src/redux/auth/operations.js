@@ -10,7 +10,12 @@ const register = createAsyncThunk(
   'auth/register',
   async (credentials, { rejectWithValue }) => {
     try {
-      return await api.register(credentials);
+      // console.log(credentials);
+      const res = await api.register(credentials);
+      console.log(res);
+      const { data } = await api.login(credentials);
+      console.log(data);
+      return data;
     } catch (error) {
       return rejectWithValue(Error.UNKNOWN);
     }

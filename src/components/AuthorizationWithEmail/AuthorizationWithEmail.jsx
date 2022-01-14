@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { register, login } from '../../redux/auth/index';
 import PropTypes from 'prop-types';
 
+import s from './AuthorizationWithEmail.module.css';
+
 const AuthorizationWithEmail = props => {
+  const dispatch = useDispatch();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showEequiredEmailError, setShowEequiredEmailError] = useState(false);
@@ -26,6 +32,7 @@ const AuthorizationWithEmail = props => {
       if (email.length < 1) {
         setShowEequiredEmailError(true);
       } else {
+        dispatch(login({ email, password }));
         setEmail('');
         setPassword('');
         console.log(`Логин`);
@@ -36,6 +43,7 @@ const AuthorizationWithEmail = props => {
       if (password.length < 1) {
         setShowEequiredPasswordError(true);
       } else {
+        dispatch(register({ email, password }));
         setEmail('');
         setPassword('');
         console.log(`Регистрация`);
@@ -52,11 +60,15 @@ const AuthorizationWithEmail = props => {
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        <p>{showEequiredEmailError && <span>*</span>}Электронная почта:</p>
+        <p className={s.TitleLableName}>
+          {showEequiredEmailError && <span>*</span>}Электронная почта:
+        </p>
         <input
+          className={s.InputEmail}
           type="email"
           name="email"
           value={email}
+          placeholder="your@email.com"
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
           title="Неверный формат"
           onChange={handleChangeEmail}
@@ -67,11 +79,15 @@ const AuthorizationWithEmail = props => {
         {showEequiredEmailError && <p>это обязательное поле</p>}
       </label>
       <label>
-        <p>{showEequiredPasswordError && <span>*</span>}Пароль:</p>
+        <p className={s.TitleLableName}>
+          {showEequiredPasswordError && <span>*</span>}Пароль:
+        </p>
         <input
+          className={s.InputPassword}
           type="password"
           name="password"
           value={password}
+          placeholder="Пароль"
           minLength="7"
           maxLength="12"
           onChange={handleChangePassword}
@@ -82,10 +98,10 @@ const AuthorizationWithEmail = props => {
         {showEequiredPasswordError && <p>это обязательное поле</p>}
       </label>
       <div>
-        <button type="submit" name="login">
+        <button type="submit" name="login" className={s.ButtonAuth}>
           Войти
         </button>
-        <button type="submit" name="registration">
+        <button type="submit" name="registration" className={s.ButtonAuth}>
           Регистрация
         </button>
       </div>

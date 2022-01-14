@@ -1,0 +1,22 @@
+.authWrapper {
+  width: 300px;
+  height: 525px;
+  border: 1px solid blue;
+  border-radius: 30px;
+  padding-top: 50px;
+  padding-left: 86px;
+  padding-right: 85px;
+  padding-bottom: 53px;
+  background-color: #fff;
+}
+
+.AuthTitle {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  color: #52555f;
+  margin-bottom: 20px;
+}
