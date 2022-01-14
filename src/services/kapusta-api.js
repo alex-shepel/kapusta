@@ -2,6 +2,9 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://kapusta-backend.goit.global/';
 
+const setToken = token =>
+  (axios.defaults.headers.common.Authorization = `Bearer ${token}`);
+
 /* auth */
 const register = async credentials => (await axios.post('auth/register')).data;
 const login = async credentials => (await axios.post('auth/login')).data;
@@ -33,6 +36,7 @@ const updateBalance = async credentials =>
 const getUserInfo = async credentials => (await axios.post('user')).data;
 
 export {
+  setToken,
   /* auth */
   register,
   login,

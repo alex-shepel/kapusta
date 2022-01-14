@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import * as api from 'services/contacts-api';
+import * as api from 'services/kapusta-api';
 
 const Error = {
   AUTH_FAILED: 'Invalid email or password.',
