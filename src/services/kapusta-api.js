@@ -6,34 +6,31 @@ const setToken = token =>
   (axios.defaults.headers.common.Authorization = `Bearer ${token}`);
 
 /* auth */
-const register = async credentials => (await axios.post('auth/register')).data;
-const login = async credentials => (await axios.post('auth/login')).data;
-const logout = async credentials => (await axios.post('auth/logout')).data;
-const refresh = async credentials => (await axios.post('auth/refresh')).data;
-const googleAuth = async credentials => (await axios.get('auth/google')).data;
+const register = async credentials =>
+  await axios.post('auth/register', credentials);
+
+const login = async credentials => await axios.post('auth/login');
+const logout = async credentials => await axios.post('auth/logout');
+const refresh = async credentials => await axios.post('auth/refresh');
+const googleAuth = async credentials => await axios.get('auth/google');
 
 /* transaction */
-const addIncome = async credentials =>
-  (await axios.post('transaction/income')).data;
-const getIncome = async credentials =>
-  (await axios.post('transaction/income')).data;
-const addExpense = async credentials =>
-  (await axios.post('transaction/expense')).data;
-const getExpense = async credentials =>
-  (await axios.post('transaction/expense')).data;
+const addIncome = async credentials => await axios.post('transaction/income');
+const getIncome = async credentials => await axios.post('transaction/income');
+const addExpense = async credentials => await axios.post('transaction/expense');
+const getExpense = async credentials => await axios.post('transaction/expense');
 const removeTransaction = async credentials =>
-  (await axios.post('transaction/{transactionId}')).data;
+  await axios.post('transaction/{transactionId}');
 const getIncomeCategories = async credentials =>
-  (await axios.post('transaction/income-categories')).data;
+  await axios.post('transaction/income-categories');
 const getExpenseCategories = async credentials =>
-  (await axios.post('transaction/expense-categories')).data;
+  await axios.post('transaction/expense-categories');
 const getPeriodTransactions = async credentials =>
-  (await axios.post('transaction/period-data')).data;
+  await axios.post('transaction/period-data');
 
 /* user */
-const updateBalance = async credentials =>
-  (await axios.post('user/balance')).data;
-const getUserInfo = async credentials => (await axios.post('user')).data;
+const updateBalance = async credentials => await axios.post('user/balance');
+const getUserInfo = async credentials => await axios.post('user');
 
 export {
   setToken,
