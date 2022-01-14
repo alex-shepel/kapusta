@@ -4,7 +4,7 @@ import Container from 'components/Container';
 import Header from 'components/Header';
 
 const App = () => {
-  const isLoggedIn = true;
+  const isLoggedIn = false;
 
   return (
     <>
