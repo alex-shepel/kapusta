@@ -6,13 +6,15 @@ const setToken = token =>
   (axios.defaults.headers.common.Authorization = `Bearer ${token}`);
 
 /* auth */
+const googleAuth = async credentials => await axios.get('auth/google');
 const register = async credentials =>
   await axios.post('auth/register', credentials);
 
-const login = async credentials => await axios.post('auth/login');
+const login = async credentials => await axios.post('auth/login', credentials);
+const refresh = async credentials =>
+  await axios.post('auth/refresh', credentials);
+
 const logout = async credentials => await axios.post('auth/logout');
-const refresh = async credentials => await axios.post('auth/refresh');
-const googleAuth = async credentials => await axios.get('auth/google');
 
 /* transaction */
 const addIncome = async credentials => await axios.post('transaction/income');

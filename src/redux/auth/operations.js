@@ -10,7 +10,8 @@ const register = createAsyncThunk(
   'auth/register',
   async (credentials, { rejectWithValue }) => {
     try {
-      return await api.register(credentials);
+      await api.register(credentials);
+      return await api.login(credentials);
     } catch (error) {
       return rejectWithValue(Error.UNKNOWN);
     }
@@ -21,11 +22,25 @@ const login = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
     try {
-      return await api.login(credentials);
+      const { data } = await api.login(credentials);
+      return data;
+    } catch (error) {
+      return rejectWithValue(Error.UNKNOWN);
+    }
+  },
+);
+const refresh = createAsyncThunk(
+  'auth/refresh',
+  async (_, { getState, rejectWithValue }) => {
+    try {
+      api.setToken(getState().auth.refreshToken);
+      const { data } = await api.refresh({ sid: getState().auth.sid });
+      api.setToken(data.newAccessToken);
+      return data;
     } catch (error) {
       return rejectWithValue(Error.UNKNOWN);
     }
   },
 );
 
-export { register, login };
+export { register, login, refresh };
