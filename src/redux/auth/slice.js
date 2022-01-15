@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 import { register, login, refresh } from './operations';
 
 const initialState = {
-  // user: { email: null, password: null },
   accessToken: null,
   refreshToken: null,
   sid: null,
@@ -15,7 +14,6 @@ const resetState = state => {
   Object.keys(initialState).forEach(key => (state[key] = initialState[key]));
 };
 const loginStateUpd = (state, { accessToken, refreshToken, sid }) => {
-  // console.log(payload.data);
   state.accessToken = accessToken;
   state.refreshToken = refreshToken;
   state.sid = sid;
@@ -52,9 +50,7 @@ const slice = createSlice({
     [login.rejected]: (state, { payload }) => {
       state.isLogining = false;
     },
-    [refresh.pending]: (state, { payload }) => {
-      // console.log(payload);
-    },
+    [refresh.pending]: (state, { payload }) => {},
     [refresh.fulfilled]: (state, { payload }) => {
       const {
         newAccessToken: accessToken,
@@ -63,9 +59,7 @@ const slice = createSlice({
       } = payload;
       loginStateUpd(state, { accessToken, refreshToken, sid });
     },
-    [refresh.rejected]: (state, { payload }) => {
-      // state.isLogining = false;
-    },
+    [refresh.rejected]: (state, { payload }) => {},
   },
 });
 
