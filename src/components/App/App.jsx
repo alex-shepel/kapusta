@@ -9,8 +9,6 @@ import Header from 'components/Header';
 
 const App = () => {
   const dispatch = useDispatch();
-
-  // const isLoggedIn = false;
   const isLoggedIn = useSelector(getIsLoggedIn);
 
   useEffect(() => {

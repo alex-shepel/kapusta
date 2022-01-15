@@ -11,12 +11,8 @@
 }
 
 .AuthTitle {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
   font-size: 12px;
   line-height: 14px;
-  letter-spacing: 0.04em;
   color: #52555f;
   margin-bottom: 20px;
 }
