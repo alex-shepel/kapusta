@@ -10,7 +10,7 @@
 }
 
 .InputEmail {
-  width: 265px;
+  width: 253px;
   height: 52px;
   margin-bottom: 30px;
   background-color: #f6f7fb;
@@ -18,9 +18,17 @@
   border: none;
   outline: none;
   padding: 17px 20px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.04em;
+
+  color: #a6abb9;
 }
 .InputPassword {
-  width: 265px;
+  width: 253px;
   height: 52px;
   background-color: #f6f7fb;
   border-radius: 30px;
@@ -28,6 +36,14 @@
   outline: none;
   border: none;
   padding: 17px 20px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.04em;
+
+  color: #a6abb9;
 }
 .ButtonAuth {
   width: 125px;

@@ -1,11 +1,23 @@
+import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+
+import { refresh, getIsLoggedIn } from 'redux/auth';
 import './App.module.css';
 import Routes from 'routes';
 import Container from 'components/Container';
 import Header from 'components/Header';
 
 const App = () => {
-  const isLoggedIn = false;
+  const dispatch = useDispatch();
 
+  // const isLoggedIn = false;
+  const isLoggedIn = useSelector(getIsLoggedIn);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      dispatch(refresh());
+    }
+  }, [isLoggedIn, dispatch]);
   return (
     <>
       <header>

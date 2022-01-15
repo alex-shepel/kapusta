@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { register, login } from '../../redux/auth/index';
 import PropTypes from 'prop-types';
@@ -14,6 +14,7 @@ const AuthorizationWithEmail = props => {
   const [showEequiredPasswordError, setShowEequiredPasswordError] =
     useState(false);
 
+  useEffect(() => {}, []);
   const handleChangeEmail = e => {
     setEmail(e.target.value);
   };
@@ -25,7 +26,6 @@ const AuthorizationWithEmail = props => {
     e.preventDefault();
 
     let submitter = e.nativeEvent.submitter;
-    // console.log(submitter.name);
 
     if (submitter.name === 'login') {
       console.log(email);
@@ -35,7 +35,7 @@ const AuthorizationWithEmail = props => {
         dispatch(login({ email, password }));
         setEmail('');
         setPassword('');
-        console.log(`Логин`);
+        // console.log(`Логин`);
       }
     }
 
@@ -46,7 +46,7 @@ const AuthorizationWithEmail = props => {
         dispatch(register({ email, password }));
         setEmail('');
         setPassword('');
-        console.log(`Регистрация`);
+        // console.log(`Регистрация`);
       }
     }
   };
