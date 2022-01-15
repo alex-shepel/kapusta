@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
-import AuthorizationWithGoogle from '../../components/AuthorizationWithGoogle';
-import AuthorizationWithEmail from '../../components/AuthorizationWithEmail';
+import AuthorizationWithGoogle from 'components/AuthorizationWithGoogle';
+import AuthorizationWithEmail from 'components/AuthorizationWithEmail';
 import s from './AuthView.module.css';
 const AuthView = props => {
   return (
