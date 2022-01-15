@@ -1,7 +1,10 @@
 import PropTypes from 'prop-types';
 
 const Header = props => {
-  return <div>Header</div>;
+  return (
+    <div className="container">
+    <div></div>
+  </div>)
 };
 
 Header.propTypes = {};
