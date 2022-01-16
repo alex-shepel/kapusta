@@ -78,14 +78,14 @@
   height: 18px;
   fill: #f2f5fc;
 }
-@media screen and (max-width: 250px) {
+@media screen and (max-width: 320px) {
   .category {
     display: none;
     visibility: none;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .changeFlow,
   .amount {
     margin-right: 20px;

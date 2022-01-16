@@ -1,7 +1,6 @@
 import s from './IncomesExpenseList.module.css';
-import IncomesExpenseListItem from '../IncomesExpenseListItem/IncomesExpenseListItem';
-// import { useState } from 'react';
-// import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
+import IncomesExpenseListItem from 'components/IncomesExpenseListItem';
 
 const IncomesExpenseList = ({
   transactions,
@@ -11,12 +10,12 @@ const IncomesExpenseList = ({
   return (
     <>
       <div className={s.list}>
-        <div className={s.header}>
-          <span className={s.date}>Дата</span>
-          <span className={s.description}>Описание</span>
-          <span className={s.category}>Категория</span>
-          <span className={s.amount}>Сумма</span>
-        </div>
+        <ul className={s.header}>
+          <li className={s.date}>Дата</li>
+          <li className={s.description}>Описание</li>
+          <li className={s.category}>Категория</li>
+          <li className={s.amount}>Сумма</li>
+        </ul>
         {transactions.length > 0 ? (
           <ul className={s.transactionsList}>
             {transactions &&
@@ -35,6 +34,12 @@ const IncomesExpenseList = ({
       </div>
     </>
   );
+};
+
+IncomesExpenseList.propTypes = {
+  transactions: PropTypes.array,
+  transactionsType: PropTypes.string,
+  operationSign: PropTypes.string,
 };
 
 export default IncomesExpenseList;

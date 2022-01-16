@@ -1,6 +1,6 @@
 import s from './MonthReportView.module.css';
 import { useState } from 'react';
-import IncomesExpenseList from 'components/IncomesExpenseList/IncomesExpenseList';
+import IncomesExpenseList from 'components/IncomesExpenseList';
 import Container from 'components/Container';
 
 const MonthReportView = () => {

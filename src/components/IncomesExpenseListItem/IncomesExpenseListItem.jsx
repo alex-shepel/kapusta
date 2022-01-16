@@ -1,5 +1,6 @@
 import s from './IncomesExpenseListItem.module.css';
-import imageDelete from '../../images/delete.svg';
+import PropTypes from 'prop-types';
+import imageDelete from 'images/delete.svg';
 
 const IncomesExpenseListItem = ({
   itemProps: { date, description, category, amount, id },
@@ -30,6 +31,12 @@ const IncomesExpenseListItem = ({
       </li>
     </>
   );
+};
+
+IncomesExpenseListItem.propTypes = {
+  itemProps: PropTypes.object,
+  transactionsType: PropTypes.string,
+  operationSign: PropTypes.string,
 };
 
 export default IncomesExpenseListItem;
