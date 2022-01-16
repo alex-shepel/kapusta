@@ -1,0 +1,20 @@
+.btn {
+  width: 125px;
+  height: 44px;
+  border-color: #f5f6fb;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: #52555f;
+  text-transform: uppercase;
+}
+.btnActive {
+  background-color: #ff751d;
+  color: #fff;
+}

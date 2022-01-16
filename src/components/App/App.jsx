@@ -16,6 +16,7 @@ const App = () => {
       dispatch(refresh());
     }
   }, [isLoggedIn, dispatch]);
+
   return (
     <>
       <header>

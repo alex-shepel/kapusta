@@ -1,0 +1,27 @@
+.container {
+  width: 380px;
+  height: 194px;
+  background: #ffffff;
+  box-shadow: 10px 10px 30px rgba(82, 85, 95, 0.4);
+  border-radius: 30px;
+  padding-top: 50px;
+  padding-bottom: 60px;
+  /* @media screen {
+      
+  } */
+}
+.title {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+  margin-bottom: 20px;
+}
+.buttonWrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
