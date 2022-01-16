@@ -74,7 +74,6 @@ const MonthReportView = () => {
                 handleToggle();
               }}
             >
-              {' '}
               Доход
             </button>
           </div>
