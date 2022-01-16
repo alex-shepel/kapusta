@@ -1,0 +1,21 @@
+.container {
+  height: 56px;
+}
+.header__wrap {
+  display: flex;
+  justify-content: space-between;
+}
+.header__nav {
+  display: flex;
+  align-items: center;
+}
+.userLogo__circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: var(--bg-modal-two-colour);
+  border: 1px solid #ccc;
+  width: 32px;
+  height: 32px;
+}
