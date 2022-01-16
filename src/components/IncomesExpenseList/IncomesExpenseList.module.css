@@ -1,0 +1,87 @@
+.header {
+  display: none;
+  visibility: hidden;
+}
+
+.list {
+  width: 100%;
+}
+
+.date {
+  display: block;
+  width: 84px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.description {
+  display: block;
+  width: 124px;
+  text-align: center;
+  margin-right: 80px;
+}
+
+.category {
+  display: block;
+  width: 136px;
+  text-align: start;
+  margin-right: 20px;
+}
+
+.amount {
+  display: block;
+  width: 104px;
+  text-align: start;
+  margin-right: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    display: flex;
+    visibility: visible;
+
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    background-color: #f2f5fc;
+    color: black;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+    letter-spacing: 0.02;
+    font-size: 12px;
+    line-height: 1.17;
+  }
+
+  .list {
+    width: 100%;
+    margin-bottom: 40px;
+    box-shadow: 2px 2px 60px rgba(219, 221, 226, 0.2);
+    border-bottom: 2px solid #f2f5fc;
+  }
+  .transactionsList {
+    background-color: white;
+    height: 346px;
+
+    border-left: 2px solid #f5f6fb;
+    border-right: 2px solid #f5f6fb;
+  }
+  .ulPlaceholder {
+    height: 346px;
+    border-left: 2px solid #f5f6fb;
+    border-right: 2px solid #f5f6fb;
+    border-bottom: 2px solid #f5f6fb;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .list {
+    width: 760px;
+  }
+}
