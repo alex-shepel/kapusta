@@ -9,7 +9,7 @@ import Header from 'components/Header';
 
 const App = () => {
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector(getIsLoggedIn);
+  const isLoggedIn = useSelector(getIsLoggedIn) || true;
 
   useEffect(() => {
     if (isLoggedIn) {
