@@ -1,15 +1,16 @@
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react'
-import {useSelector} from "react-redux"
+import {useSelector, useDispatch} from "react-redux"
 import logo from "images/logo.svg"
-import logout from "images/logout-mobile.svg"
-import {getIsLoggedIn} from "redux/auth"
+import logoutPic from "images/logout-mobile.svg"
+import {getIsLoggedIn, logOut} from "redux/auth"
 import s from "./Header.module.css"
 
 
 
 const Header = () => {
   const [width, setWidth] = useState(window.innerWidth)
+  const dispatch = useDispatch();
 
 const handleResizeWindow = () => setWidth(window.innerWidth);
 const isLoggedIn = useSelector(getIsLoggedIn)
@@ -30,7 +31,12 @@ const breakPointTablet = 768;
             <div className={s.userLogo__circle}>
               <div className={s.userLogo}>U</div>
             </div>
-            {width < breakPointTablet ? (<img src={logout} alt= {"logout" }/>) : (<><div>User name</div><div>Выйти</ div></>)}
+            {width < breakPointTablet ?
+              (<img className={s.logout__picture} onClick={() => dispatch(logOut())}  src={logoutPic} alt={"logout"} />) :
+              (<>
+                <div className={s.user__name}>User name</div>
+                <div className={s.line}></div>
+                <div className={s.logout} onClick={() => dispatch(logOut())} >Выйти</ div></>)}
         </div>)}
       </div>
     </div>)

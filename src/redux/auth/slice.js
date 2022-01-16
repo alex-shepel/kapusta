@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, login, refresh } from './operations';
+import { register, login, refresh, logOut } from './operations';
 
 const initialState = {
   accessToken: null,
@@ -49,6 +49,9 @@ const slice = createSlice({
     },
     [login.rejected]: (state, { payload }) => {
       state.isLogining = false;
+    },
+    [logOut.fulfilled]: state => {
+      resetState(state);
     },
     [refresh.pending]: (state, { payload }) => {},
     [refresh.fulfilled]: (state, { payload }) => {

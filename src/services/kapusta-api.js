@@ -14,7 +14,7 @@ const login = async credentials => await axios.post('auth/login', credentials);
 const refresh = async credentials =>
   await axios.post('auth/refresh', credentials);
 
-const logout = async credentials => await axios.post('auth/logout');
+const logout = async () => await axios.post('auth/logout');
 
 /* transaction */
 const addIncome = async credentials => await axios.post('transaction/income');

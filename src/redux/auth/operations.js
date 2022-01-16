@@ -42,5 +42,14 @@ const refresh = createAsyncThunk(
     }
   },
 );
-
-export { register, login, refresh };
+const logOut = createAsyncThunk(
+  'auth/logOut',
+  async (_, { rejectWithValue }) => {
+    try {
+      api.setToken('');
+    } catch (error) {
+      return rejectWithValue(Error.UNKNOWN);
+    }
+  },
+);
+export { register, login, refresh, logOut };
