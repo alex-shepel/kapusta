@@ -1,7 +1,10 @@
 @import-normalize;
 
 body {
+  margin: 0;
   font-family: Roboto, sans-serif;
+  letter-spacing: 0.04em;
+  font-weight: 400;
 }
 
 ul,
