@@ -9,41 +9,51 @@ import s from "./Header.module.css"
 
 
 const Header = () => {
-  const [width, setWidth] = useState(window.innerWidth)
+  const [width, setWidth] = useState(window.innerWidth);
   const dispatch = useDispatch();
 
-const handleResizeWindow = () => setWidth(window.innerWidth);
-const isLoggedIn = useSelector(getIsLoggedIn)
+  const handleResizeWindow = () => setWidth(window.innerWidth);
+  const isLoggedIn = useSelector(getIsLoggedIn);
   useEffect(() => {
-    window.addEventListener("resize", handleResizeWindow);
+    window.addEventListener('resize', handleResizeWindow);
     return () => {
-      window.removeEventListener("resize", handleResizeWindow);
+      window.removeEventListener('resize', handleResizeWindow);
     };
   }, []);
 
-const breakPointTablet = 768;
+  const breakPointTablet = 768;
   return (
     <div className={s.container}>
       <div className={s.header__wrap}>
-        <img className={s.header__logo} src={logo} alt={"logo"} />
+        <img className={s.header__logo} src={logo} alt={'logo'} />
         {isLoggedIn && (
           <div className={s.header__nav}>
             <div className={s.userLogo__circle}>
               <div className={s.userLogo}>U</div>
             </div>
-            {width < breakPointTablet ?
-              (<img className={s.logout__picture} onClick={() => dispatch(logOut())}  src={logoutPic} alt={"logout"} />) :
-              (<>
+            {width < breakPointTablet ? (
+              <img
+                className={s.logout__picture}
+                onClick={() => dispatch(logOut())}
+                src={logoutPic}
+                alt={'logout'}
+              />
+            ) : (
+              <>
                 <div className={s.user__name}>User name</div>
                 <div className={s.line}></div>
-                <div className={s.logout} onClick={() => dispatch(logOut())} >Выйти</ div></>)}
-        </div>)}
+                <div className={s.logout} onClick={() => dispatch(logOut())}>
+                  Выйти
+                </div>
+              </>
+            )}
+          </div>
+        )}
       </div>
-    </div>)
+    </div>
+  );
 };
 
-Header.propTypes = {
-  
-};
+Header.propTypes = {};
 
 export default Header;
