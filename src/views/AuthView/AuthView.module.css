@@ -1,18 +1,30 @@
 .authWrapper {
-  width: 300px;
-  height: 525px;
+  /* Геометрия */
+  padding-top: 40px;
+  padding-right: 30px;
+  padding-left: 30px;
+  padding-bottom: 53px;
+  /* Оформление */
   border: 1px solid blue;
   border-radius: 30px;
-  padding-top: 50px;
-  padding-left: 86px;
-  padding-right: 85px;
-  padding-bottom: 53px;
-  background-color: #fff;
+  background-color: #ffffff;
+  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
 }
 
-.AuthTitle {
-  font-size: 12px;
-  line-height: 14px;
+.authWithGoogleTitle {
+  /* Геометрия */
+  margin-bottom: 25px;
+  /* Текст */
+  font-size: 10px;
+  line-height: 12px;
+  text-align: center;
+  color: var(--text-color-four);
+  /* Оформление */
+}
+
+.authWithEmailTitle {
+  font-size: 10px;
+  line-height: 12px;
   color: #52555f;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }

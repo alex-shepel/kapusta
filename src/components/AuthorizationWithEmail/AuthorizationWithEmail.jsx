@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { register, login } from 'redux/auth/index';
 
+import Button from 'components/Button';
 import s from './AuthorizationWithEmail.module.css';
 
 const AuthorizationWithEmail = () => {
@@ -95,13 +96,13 @@ const AuthorizationWithEmail = () => {
         />
         {showRequiredPasswordError && <p>это обязательное поле</p>}
       </label>
-      <div>
-        <button type="submit" name="login" className={s.ButtonAuth}>
-          Войти
-        </button>
-        <button type="submit" name="registration" className={s.ButtonAuth}>
-          Регистрация
-        </button>
+      <div className={s.battonWrap}>
+        <Button type={'submit'} buttonName={'login'} title={'Войти'} />
+        <Button
+          type={'submit'}
+          buttonName={'registration'}
+          title={'Регистрация'}
+        />
       </div>
     </form>
   );
