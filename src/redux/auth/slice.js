@@ -50,8 +50,15 @@ const slice = createSlice({
     [login.rejected]: (state, { payload }) => {
       state.isLogining = false;
     },
+    [logOut.pending]: state => {
+      state.isLogouting = true;
+    },
     [logOut.fulfilled]: state => {
       resetState(state);
+      state.isLogouting = false;
+    },
+    [logOut.rejected]: (state, { payload }) => {
+      state.isLogouting = false;
     },
     [refresh.pending]: (state, { payload }) => {},
     [refresh.fulfilled]: (state, { payload }) => {

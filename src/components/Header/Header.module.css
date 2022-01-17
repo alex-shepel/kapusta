@@ -13,7 +13,6 @@
   display: flex;
   align-items: center;
   font-size: 12px;
-  font-weight: 400;
   line-height: 14.06px;
   color: var(--text-color-four);
 }
@@ -34,7 +33,6 @@
 }
 .user__name {
   font-size: 12px;
-  font-weight: 400;
   line-height: 14.06px;
   margin-right: 20px;
 }

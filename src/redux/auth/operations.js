@@ -46,6 +46,7 @@ const logOut = createAsyncThunk(
   'auth/logOut',
   async (_, { rejectWithValue }) => {
     try {
+      await api.logout();
       api.setToken('');
     } catch (error) {
       return rejectWithValue(Error.UNKNOWN);
