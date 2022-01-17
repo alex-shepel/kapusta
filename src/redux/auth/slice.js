@@ -35,6 +35,7 @@ const slice = createSlice({
   extraReducers: {
     [register.pending]: state => {
       state.isRegistration = true;
+      state.error = null;
     },
     [register.fulfilled]: (state, { payload }) => {
       const { accessToken, refreshToken, sid, userData } = payload.data;
@@ -51,6 +52,7 @@ const slice = createSlice({
 
     [login.pending]: state => {
       state.isLogining = true;
+      state.error = null;
     },
     [login.fulfilled]: (state, { payload }) => {
       const { accessToken, refreshToken, sid } = payload;
@@ -64,6 +66,7 @@ const slice = createSlice({
     },
     [logOut.pending]: state => {
       state.isLogouting = true;
+      state.error = null;
     },
     [logOut.fulfilled]: state => {
       resetState(state);
@@ -74,6 +77,7 @@ const slice = createSlice({
     },
     [refresh.pending]: (state, _) => {
       state.isLogouting = true;
+      state.error = null;
     },
     [refresh.fulfilled]: (state, { payload }) => {
       const {
