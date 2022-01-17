@@ -6,32 +6,41 @@
 }
 
 .InputEmail {
+  width: 100%;
   /* Геометрия */
   margin-bottom: 30px;
   padding: 17px 20px;
   /* Текст */
   font-size: 14px;
   line-height: 16px;
-  color: #a6abb9;
+  color: #000000;
   /* Оформление */
-  background-color: tomato;
+  background-color: #f6f7fb;
   border-radius: 30px;
   border: none;
   outline: none;
 }
+.InputEmail::placeholder {
+  color: #a6abb9;
+}
 .InputPassword {
-  background-color: tomato;
-  border-radius: 30px;
-  margin-bottom: 40px;
-  outline: none;
-  border: none;
+  width: 100%;
+  /* Геометрия */
+  margin-bottom: 30px;
   padding: 17px 20px;
+  /* Текст */
   font-size: 14px;
   line-height: 16px;
-
+  color: #000000;
+  /* Оформление */
+  background-color: #f6f7fb;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+}
+.InputPassword::placeholder {
   color: #a6abb9;
 }
 .battonWrap {
   display: flex;
-  margin-bottom: 53px;
 }

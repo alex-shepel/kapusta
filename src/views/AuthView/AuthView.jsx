@@ -1,10 +1,14 @@
 import AuthorizationWithGoogle from 'components/AuthorizationWithGoogle';
 import AuthorizationWithEmail from 'components/AuthorizationWithEmail';
 import s from './AuthView.module.css';
+import { ReactComponent as HeroLogo } from 'images/union.svg';
+
 const AuthView = () => {
   return (
     <>
-      <div>AuthView</div>
+      {/* <div className={s.WrapMainPage}> */}
+      <HeroLogo className={s.HeroLogo} />
+      <h1 className={s.HeroTitle}>Smart Finance</h1>
       <div className={s.authWrapper}>
         <p className={s.authWithGoogleTitle}>
           Вы можете авторизоваться с помощью Google Account:
@@ -16,6 +20,7 @@ const AuthView = () => {
         </p>
         <AuthorizationWithEmail />
       </div>
+      {/* </div> */}
     </>
   );
 };

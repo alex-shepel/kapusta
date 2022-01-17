@@ -1,3 +1,20 @@
+.WrapMainPage {
+  background-color: #f5f6fb;
+}
+
+.HeroLogo {
+  margin-top: 85px;
+  margin-left: 50px;
+  margin-bottom: 5px;
+}
+.HeroTitle {
+  margin-left: 60px;
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #52555f;
+}
 .authWrapper {
   /* Геометрия */
   padding-top: 40px;
@@ -5,7 +22,6 @@
   padding-left: 30px;
   padding-bottom: 53px;
   /* Оформление */
-  border: 1px solid blue;
   border-radius: 30px;
   background-color: #ffffff;
   box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
@@ -27,4 +43,35 @@
   line-height: 12px;
   color: #52555f;
   margin-bottom: 25px;
+}
+
+@media screen and (min-width: 768px) {
+  .HeroLogo {
+    margin-top: 90px;
+    margin-left: 125px;
+  }
+  .HeroTitle {
+    margin-left: 155px;
+  }
+  .authWrapper {
+    /* Геометрия */
+    padding: 50px 85px;
+    margin: 0 125px;
+    margin-bottom: 190px;
+  }
+  .authWithGoogleTitle {
+    /* Геометрия */
+    margin-bottom: 20px;
+    /* Текст */
+    text-align: start;
+    /* Оформление */
+  }
+  .authWithEmailTitle {
+    font-size: 12px;
+    line-height: 14px;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
 }
