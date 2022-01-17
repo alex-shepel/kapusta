@@ -6,7 +6,7 @@ const MonthReportView = lazy(() =>
   import('views/MonthReportView/MonthReportView'),
 );
 
-const defaultPath = '/auth';
+const defaultPath = '/';
 
 const requireAuthPages = [
   {
@@ -14,21 +14,21 @@ const requireAuthPages = [
     path: '/day-report',
     Component: DayReportView,
     exact: true,
-    redirectTo: '/home',
+    redirectTo: defaultPath,
   },
   {
     key: 'report-view',
     path: '/month-report',
     Component: MonthReportView,
     exact: true,
-    redirectTo: '/home',
+    redirectTo: defaultPath,
   },
 ];
 
 const requireNotAuthPages = [
   {
     key: 'auth-view',
-    path: '/auth',
+    path: defaultPath,
     Component: AuthView,
     exact: true,
     redirectTo: '/day-report',

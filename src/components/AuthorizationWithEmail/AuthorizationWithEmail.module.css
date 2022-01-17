@@ -1,13 +1,22 @@
 .TitleLableName {
+  /* Геометрия */
+  margin-bottom: 10px;
+  /* Текст */
+  font-size: 10px;
+  line-height: 12px;
+  color: #000000;
+}
+.TitleLableNameError {
+  /* Геометрия */
+  margin-bottom: 10px;
+  /* Текст */
   font-size: 12px;
   line-height: 14px;
-  color: #000000;
-  margin-bottom: 10px;
+  color: var(--text-color-two);
 }
-
 .InputEmail {
-  width: 100%;
   /* Геометрия */
+  width: 100%;
   margin-bottom: 30px;
   padding: 17px 20px;
   /* Текст */
@@ -15,13 +24,13 @@
   line-height: 16px;
   color: #000000;
   /* Оформление */
-  background-color: #f6f7fb;
+  background-color: var(--form-bg-text-color);
   border-radius: 30px;
   border: none;
   outline: none;
 }
 .InputEmail::placeholder {
-  color: #a6abb9;
+  color: var(--text-color-three);
 }
 .InputPassword {
   width: 100%;
@@ -33,14 +42,25 @@
   line-height: 16px;
   color: #000000;
   /* Оформление */
-  background-color: #f6f7fb;
+  background-color: var(--form-bg-text-color);
   border-radius: 30px;
   border: none;
   outline: none;
 }
 .InputPassword::placeholder {
-  color: #a6abb9;
+  color: var(--text-color-three);
 }
 .battonWrap {
   display: flex;
+}
+
+@media screen and (min-width: 768px) {
+  .TitleLableName {
+    font-size: 12px;
+    line-height: 14px;
+  }
+  .TitleLableNameError {
+    font-size: 12px;
+    line-height: 14px;
+  }
 }

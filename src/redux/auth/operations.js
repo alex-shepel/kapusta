@@ -13,6 +13,9 @@ const register = createAsyncThunk(
       await api.register(credentials);
       return await api.login(credentials);
     } catch (error) {
+      if (error.message === 'Request failed with status code 409') {
+        return rejectWithValue('Provided email already exists');
+      }
       return rejectWithValue(Error.UNKNOWN);
     }
   },
@@ -25,6 +28,20 @@ const login = createAsyncThunk(
       const { data } = await api.login(credentials);
       return data;
     } catch (error) {
+      console.log(error);
+      return rejectWithValue(Error.UNKNOWN);
+    }
+  },
+);
+const getUser = createAsyncThunk(
+  'auth/user',
+  async (googleToken, { getState, rejectWithValue }) => {
+    try {
+      const token = googleToken ?? getState().auth.accessToken;
+      api.setToken(token);
+      const { data } = await api.getUserInfo();
+      return data;
+    } catch (error) {
       return rejectWithValue(Error.UNKNOWN);
     }
   },
@@ -33,6 +50,7 @@ const refresh = createAsyncThunk(
   'auth/refresh',
   async (_, { getState, rejectWithValue }) => {
     try {
+      console.log(getState().auth);
       api.setToken(getState().auth.refreshToken);
       const { data } = await api.refresh({ sid: getState().auth.sid });
       api.setToken(data.newAccessToken);
@@ -53,4 +71,4 @@ const logOut = createAsyncThunk(
     }
   },
 );
-export { register, login, refresh, logOut };
+export { register, login, refresh, logOut, getUser };
