@@ -45,7 +45,7 @@ const slice = createSlice({
       loginStateUpd(state, { accessToken, refreshToken, sid });
     },
     [register.rejected]: (state, { payload }) => {
-      console.log(payload);
+      // console.log(payload);
       state.isRegistration = false;
       state.error = payload;
     },
@@ -86,17 +86,26 @@ const slice = createSlice({
         newSid: sid,
       } = payload;
       state.isLoggedIn = true;
+      state.error = null;
       loginStateUpd(state, { accessToken, refreshToken, sid });
     },
-    [refresh.rejected]: (state, { payload }) => {},
+    [refresh.rejected]: (state, { payload }) => {
+      state.isLogining = false;
+      state.error = payload;
+    },
     [getUser.pending]: (state, { payload }) => {
       state.isLogouting = true;
+      state.error = null;
     },
     [getUser.fulfilled]: (state, { payload }) => {
+      // console.log(payload.email);
+      state.email = payload.email;
       state.isLoggedIn = true;
+      state.error = null;
     },
     [getUser.rejected]: (state, { payload }) => {
       state.isLogining = false;
+      state.error = payload;
     },
   },
 });

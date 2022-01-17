@@ -53,7 +53,7 @@ const refresh = createAsyncThunk(
   'auth/refresh',
   async (_, { getState, rejectWithValue }) => {
     try {
-      console.log(getState().auth);
+      // console.log(getState().auth);
       api.setToken(getState().auth.refreshToken);
       const { data } = await api.refresh({ sid: getState().auth.sid });
       api.setToken(data.newAccessToken);
