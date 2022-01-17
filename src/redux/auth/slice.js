@@ -60,6 +60,7 @@ const slice = createSlice({
     },
     [login.rejected]: (state, { payload }) => {
       state.isLogining = false;
+      state.error = payload;
     },
     [logOut.pending]: state => {
       state.isLogouting = true;

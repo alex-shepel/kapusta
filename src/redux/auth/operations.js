@@ -28,7 +28,10 @@ const login = createAsyncThunk(
       const { data } = await api.login(credentials);
       return data;
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
+      if (error.message === 'Request failed with status code 403') {
+        return rejectWithValue("Email doesn't exist / Password is wrong");
+      }
       return rejectWithValue(Error.UNKNOWN);
     }
   },
