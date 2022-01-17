@@ -1,7 +1,5 @@
 .authWrapper {
   /* Геометрия */
-  /* width: 300px;
-  height: 525px; */
   padding-top: 40px;
   padding-right: 30px;
   padding-left: 30px;
@@ -17,8 +15,6 @@
   /* Геометрия */
   margin-bottom: 25px;
   /* Текст */
-  font-style: normal;
-  font-weight: normal;
   font-size: 10px;
   line-height: 12px;
   text-align: center;
@@ -27,8 +23,6 @@
 }
 
 .authWithEmailTitle {
-  font-style: normal;
-  font-weight: normal;
   font-size: 10px;
   line-height: 12px;
   color: #52555f;

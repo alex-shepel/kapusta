@@ -12,8 +12,7 @@
   letter-spacing: 0.02em;
   text-transform: uppercase;
   /* Оформление */
-  /* background-color: var(--bg-modal-two-colour); */
-  background-color: var(--accent-color);
+  background-color: var(--bg-modal-two-colour);
   border-radius: 16px;
   box-shadow: 1px 3px 5px rgba(82, 85, 95, 0.15);
   border: none;

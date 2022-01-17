@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { register, login } from 'redux/auth/index';
 
-import Button from '../Button';
+import Button from 'components/Button';
 import s from './AuthorizationWithEmail.module.css';
 
 const AuthorizationWithEmail = () => {
