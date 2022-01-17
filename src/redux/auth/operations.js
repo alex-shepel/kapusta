@@ -11,7 +11,8 @@ const register = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       await api.register(credentials);
-      return await api.login(credentials);
+      const { data } = await api.login(credentials);
+      return data;
     } catch (error) {
       if (error.message === 'Request failed with status code 409') {
         return rejectWithValue('Provided email already exists');
@@ -28,7 +29,7 @@ const login = createAsyncThunk(
       const { data } = await api.login(credentials);
       return data;
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
       if (error.message === 'Request failed with status code 403') {
         return rejectWithValue("Email doesn't exist / Password is wrong");
       }

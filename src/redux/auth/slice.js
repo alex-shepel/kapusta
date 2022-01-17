@@ -38,7 +38,7 @@ const slice = createSlice({
       state.error = null;
     },
     [register.fulfilled]: (state, { payload }) => {
-      const { accessToken, refreshToken, sid, userData } = payload.data;
+      const { accessToken, refreshToken, sid, userData } = payload;
       state.isLoggedIn = true;
       state.isRegistration = false;
       state.email = userData.email;
@@ -54,16 +54,19 @@ const slice = createSlice({
       state.isLogining = true;
       state.error = null;
     },
+    // login
     [login.fulfilled]: (state, { payload }) => {
-      const { accessToken, refreshToken, sid } = payload;
+      const { accessToken, refreshToken, sid, userData } = payload;
       state.isLogining = false;
       state.isLoggedIn = true;
+      state.email = userData.email;
       loginStateUpd(state, { accessToken, refreshToken, sid });
     },
     [login.rejected]: (state, { payload }) => {
       state.isLogining = false;
       state.error = payload;
     },
+    // logOut
     [logOut.pending]: state => {
       state.isLogouting = true;
       state.error = null;
@@ -75,6 +78,7 @@ const slice = createSlice({
     [logOut.rejected]: (state, { payload }) => {
       state.isLogouting = false;
     },
+    // refresh
     [refresh.pending]: (state, _) => {
       state.isLogouting = true;
       state.error = null;
@@ -93,6 +97,7 @@ const slice = createSlice({
       state.isLogining = false;
       state.error = payload;
     },
+    // User
     [getUser.pending]: (state, { payload }) => {
       state.isLogouting = true;
       state.error = null;
