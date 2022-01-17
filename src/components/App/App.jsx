@@ -11,10 +11,10 @@ const App = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(getIsLoggedIn);
-  const isEmail = useSelector(state => state?.auth?.email);
+  // const isEmail = useSelector(state => state?.auth?.email);
   const currentToken = useSelector(state => state?.auth?.accessToken);
-  console.log(isEmail);
-  console.log(currentToken);
+  // console.log(isEmail);
+  // console.log(currentToken);
 
   const accessToken = new URLSearchParams(location.search).get('accessToken');
   const refreshToken = new URLSearchParams(location.search).get('refreshToken');

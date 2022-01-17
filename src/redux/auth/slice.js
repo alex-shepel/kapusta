@@ -77,6 +77,7 @@ const slice = createSlice({
     },
     [logOut.rejected]: (state, { payload }) => {
       state.isLogouting = false;
+      state.error = payload;
     },
     // refresh
     [refresh.pending]: (state, _) => {

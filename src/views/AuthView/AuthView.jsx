@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import s from './AuthView.module.css';
 import { ReactComponent as HeroLogo } from 'images/union.svg';
+import Notiflix from 'notiflix';
 
 const AuthView = () => {
   const errorAlert = useSelector(state => state?.auth?.error);
@@ -11,7 +12,7 @@ const AuthView = () => {
     if (!errorAlert) {
       return;
     }
-    alert(errorAlert);
+    Notiflix.Notify.failure(errorAlert);
   }, [errorAlert]);
   return (
     <>
