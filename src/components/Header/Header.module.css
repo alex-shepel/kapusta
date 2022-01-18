@@ -1,7 +1,6 @@
 .container {
   height: 56px;
   background-color: #ffffff;
-  /* border: 1px solid #eee; */
 }
 .header__wrap {
   display: flex;
