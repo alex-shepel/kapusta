@@ -1,36 +1,32 @@
-.btn {
+.Button {
+  /* Геометрия */
   width: 125px;
   height: 44px;
-  font-weight: 700;
+  margin-right: 15px;
+  /* Текст */
   font-size: 12px;
   line-height: 14px;
-  display: flex;
+  font-weight: 700;
   align-items: center;
-  justify-content: center;
   text-align: center;
   letter-spacing: 0.02em;
-  color: #52555f;
   text-transform: uppercase;
-  background-color: transparent;
-  border-style: solid;
-  border: 2px solid #f5f6fb;
+  /* Оформление */
+  background-color: var(--bg-modal-two-colour);
   border-radius: 16px;
+  box-shadow: 1px 3px 5px rgba(82, 85, 95, 0.15);
+  border: none;
+  color: var(--text-color-four);
   cursor: pointer;
-  border-color: #f5f6fb;
-  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.btn:hover {
-  border-color: #c5c6ca;
+
+.Button:last-child {
+  margin-right: 0;
 }
-.btnActive {
+
+.Button:hover,
+.Button:focus {
   background-color: var(--accent-color);
-  color: #fff;
-  border-color: var(--accent-color);
-  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-.btnActive:hover {
-  background-color: #fff;
-  color: var(--accent-color);
-  border-color: var(--accent-color);
-  box-shadow: 10px 10px 30px rgba(235, 167, 103, 0.4);
+  box-shadow: 1px 3px 5px rgba(255, 107, 8, 0.35);
+  color: #ffffff;
 }

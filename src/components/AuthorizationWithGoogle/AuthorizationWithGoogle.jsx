@@ -1,17 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { ReactComponent as GoogleSvg } from 'images/google-logo.svg';
+
 import s from './AuthorizationWithGoogle.module.css';
 
-const AuthorizationWithGoogle = props => {
+const AuthorizationWithGoogle = () => {
   return (
-    <div>
-      <button type="button" className={s.ButtonGoogleAuth}>
-        <span>ICON</span> Google
-      </button>
+    <div className={s.ButtonWrap}>
+      <a
+        href="https://kapusta-backend.goit.global/auth/google"
+        className={s.ButtonGoogleAuth}
+      >
+        <GoogleSvg />
+      </a>
     </div>
   );
 };
-
-AuthorizationWithGoogle.propTypes = {};
 
 export default AuthorizationWithGoogle;

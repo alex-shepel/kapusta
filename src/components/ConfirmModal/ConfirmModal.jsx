@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import s from './ConfirmModal.module.css';
 import Button from 'components/Button/Button';
 import { ReactComponent as CloseIcon } from 'images/close.svg';
@@ -16,6 +16,8 @@ function ConfirmModal({ question = 'Вы уверенны?' }) {
   );
 }
 
-// ConfirmModal.propTypes = {};
+ConfirmModal.propTypes = {
+  question: PropTypes.string,
+};
 
 export default ConfirmModal;

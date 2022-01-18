@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { register, login } from 'redux/auth/index';
 
+import Button from 'components/Button';
 import s from './AuthorizationWithEmail.module.css';
 
 const AuthorizationWithEmail = () => {
@@ -33,7 +34,6 @@ const AuthorizationWithEmail = () => {
         dispatch(login({ email, password }));
         setEmail('');
         setPassword('');
-        // console.log(`Логин`);
       }
     }
 
@@ -44,7 +44,6 @@ const AuthorizationWithEmail = () => {
         dispatch(register({ email, password }));
         setEmail('');
         setPassword('');
-        // console.log(`Регистрация`);
       }
     }
   };
@@ -59,7 +58,10 @@ const AuthorizationWithEmail = () => {
     <form onSubmit={handleSubmit}>
       <label>
         <p className={s.TitleLableName}>
-          {showRequiredEmailError && <span>*</span>}Электронная почта:
+          {showRequiredEmailError && (
+            <span className={s.TitleLableNameError}>*</span>
+          )}
+          Электронная почта:
         </p>
         <input
           className={s.InputEmail}
@@ -74,11 +76,16 @@ const AuthorizationWithEmail = () => {
           autoComplete="on"
           required
         />
-        {showRequiredEmailError && <p>это обязательное поле</p>}
+        {showRequiredEmailError && (
+          <p className={s.TitleLableNameError}>это обязательное поле</p>
+        )}
       </label>
       <label>
         <p className={s.TitleLableName}>
-          {showRequiredPasswordError && <span>*</span>}Пароль:
+          {showRequiredPasswordError && (
+            <span className={s.TitleLableNameError}>*</span>
+          )}
+          Пароль:
         </p>
         <input
           className={s.InputPassword}
@@ -93,15 +100,17 @@ const AuthorizationWithEmail = () => {
           autoComplete="off"
           required
         />
-        {showRequiredPasswordError && <p>это обязательное поле</p>}
+        {showRequiredPasswordError && (
+          <p className={s.TitleLableNameError}>это обязательное поле</p>
+        )}
       </label>
-      <div>
-        <button type="submit" name="login" className={s.ButtonAuth}>
-          Войти
-        </button>
-        <button type="submit" name="registration" className={s.ButtonAuth}>
-          Регистрация
-        </button>
+      <div className={s.battonWrap}>
+        <Button type={'submit'} buttonName={'login'} title={'Войти'} />
+        <Button
+          type={'submit'}
+          buttonName={'registration'}
+          title={'Регистрация'}
+        />
       </div>
     </form>
   );
