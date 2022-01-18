@@ -4,9 +4,8 @@ import IncomesExpenseList from 'components/IncomesExpenseList';
 import Container from 'components/Container';
 import Summary from 'components/Summary';
 import TransactionForm from 'components/TransactionForm';
-import Button from 'components/Button/Button';
 
-const startBalace = () => {};
+const startBalance = () => {};
 
 const DayReportView = () => {
   const [isExpenses, setIsExpenses] = useState(true);
