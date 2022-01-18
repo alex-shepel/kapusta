@@ -8,6 +8,7 @@ const initialState = {
   isLoggedIn: false,
   isRegistration: false,
   isLogining: false,
+  isRefreshing: false,
 };
 
 const resetState = state => {
@@ -60,7 +61,9 @@ const slice = createSlice({
     [logOut.rejected]: (state, { payload }) => {
       state.isLogouting = false;
     },
-    [refresh.pending]: (state, { payload }) => {},
+    [refresh.pending]: (state, { payload }) => {
+      state.isRefreshing = true;
+    },
     [refresh.fulfilled]: (state, { payload }) => {
       const {
         newAccessToken: accessToken,
@@ -68,8 +71,11 @@ const slice = createSlice({
         newSid: sid,
       } = payload;
       loginStateUpd(state, { accessToken, refreshToken, sid });
+      state.isRefreshing = false;
     },
-    [refresh.rejected]: (state, { payload }) => {},
+    [refresh.rejected]: (state, { payload }) => {
+      state.isRefreshing = false;
+    },
   },
 });
 
