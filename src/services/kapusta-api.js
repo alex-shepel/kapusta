@@ -33,7 +33,7 @@ const getPeriodTransactions = async credentials =>
 
 /* user */
 const updateBalance = async credentials => await axios.post('user/balance');
-const getUserInfo = async credentials => await axios.post('user');
+const getUserInfo = async () => await axios.get('user');
 
 export {
   setToken,

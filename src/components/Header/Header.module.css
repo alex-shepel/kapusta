@@ -1,7 +1,6 @@
 .container {
   height: 56px;
   background-color: #ffffff;
-  border: 1px solid #eee;
 }
 .header__wrap {
   display: flex;
@@ -46,6 +45,11 @@
 .logout {
   text-decoration-line: underline;
   cursor: pointer;
+  width: 66px;
+}
+.logout:hover,
+.logout:focus {
+  color: var(--accent-color);
 }
 .logout__picture {
   margin-right: 19px;

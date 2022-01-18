@@ -16,6 +16,7 @@ const IncomesExpenseList = ({
           <li className={s.category}>Категория</li>
           <li className={s.amount}>Сумма</li>
         </ul>
+
         {transactions.length > 0 ? (
           <ul className={s.transactionsList}>
             {transactions &&

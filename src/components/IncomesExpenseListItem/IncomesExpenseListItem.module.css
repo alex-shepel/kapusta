@@ -1,7 +1,7 @@
 .listItem {
   display: flex;
 
-  color: #52555f;
+  color: var(--text-color-four);
   font-size: 12px;
   line-height: 1.17;
 
@@ -10,7 +10,7 @@
   padding-left: 20px;
   padding-right: 20px;
 
-  border-bottom: 1px solid #f5f6fb;
+  border-bottom: 1px solid var(--bg-modal-two-colour);
 }
 
 .changeFlow {
@@ -43,12 +43,12 @@
 
 .expenses {
   font-weight: bold;
-  color: #e7192e;
+  color: var(--negative-sum-color);
 }
 
 .incomes {
   font-weight: bold;
-  color: #407946;
+  color: var(--positive-sum-color);
 }
 
 .delete {
@@ -66,7 +66,7 @@
 
 .delete:hover,
 .delete:focus {
-  background-color: #f5f6fb;
+  background-color: var(--bg-modal-two-colour);
 }
 
 .delete:hover {
@@ -76,7 +76,7 @@
 .deleteIcon {
   width: 18px;
   height: 18px;
-  fill: #f2f5fc;
+  fill: var(--bg-modal-one-colour);
 }
 @media screen and (max-width: 320px) {
   .category {

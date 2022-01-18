@@ -1,0 +1,435 @@
+.inputWrapper {
+  position: relative;
+  width: 180px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.inputWrapper::after {
+  position: absolute;
+  content: '';
+  top: 12px;
+  right: 12px;
+  width: 20px;
+  height: 20px;
+  background-image: url('../../images/calculator.svg');
+}
+
+.inputWrapper::before {
+  position: absolute;
+  content: '';
+  top: 0px;
+  right: 40px;
+  width: 2px;
+  height: 42px;
+  background-color: white;
+}
+
+.inputDescription input {
+  height: 42px;
+  width: 282px;
+
+  padding-right: 0;
+  padding-left: 20px;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: 16px;
+  background-color: transparent;
+  border: 2px solid #ffffff;
+  border-bottom: none;
+
+  border-radius: 16px 16px 0px 0px;
+}
+
+@media screen and (min-width: 320px) {
+  .dataInput {
+    padding-left: 8px;
+  }
+
+  .inputDescription {
+    font-size: 12px;
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    border-bottom: none;
+  }
+}
+.inputDescription:focus-visible {
+  border: 2px solid var(--accent-color);
+}
+
+.inputDescription::placeholder {
+  font-size: 12px;
+  color: #c7ccdc;
+}
+
+.inputAmount input {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 103px;
+  padding: 10px 46px 10px 30px;
+
+  width: 183px;
+  height: 44px;
+
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  color: black;
+  background-color: transparent;
+  border: 2px solid var(--white-color);
+
+  border-radius: 22px;
+}
+@media screen and (min-width: 320px) {
+  .inputAmount {
+    padding: 0;
+    padding-top: -5px;
+  }
+}
+.inputAmount:focus-visible {
+  outline: none;
+  border: 2px solid #52555f;
+}
+
+.btn {
+  padding: 12px 25px;
+  width: 125px;
+  height: 44px;
+  font-weight: bold;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #52555f;
+  background: #f5f6fb;
+  box-shadow: 1px 2px 5px rgba(170, 178, 197, 0.4);
+  border-radius: 16px;
+  border: none;
+  filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
+  transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:hover,
+.btn:focus {
+  color: var(--white-color);
+  background-color: var(--accent-color);
+}
+
+.btnWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+@media screen and (min-width: 320px) {
+  .inputCategory ~ div {
+    width: 282px;
+    height: 44px;
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    border-radius: 0px 0px 16px 0px;
+    padding-right: 0;
+    padding-left: 20px;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-right: 20px;
+  }
+}
+.form {
+  width: 100%;
+  padding-right: 10px;
+}
+
+@media screen and (min-width: 320px) {
+}
+.form fieldset {
+  border: white;
+}
+
+.form div div {
+  position: relative;
+}
+
+.form label {
+  position: absolute;
+  top: -5px;
+  left: 15px;
+
+  color: #c7ccdc;
+}
+@media screen and (min-width: 320px) {
+  .form label {
+    top: -7px;
+  }
+}
+.box {
+  margin-bottom: 45px;
+}
+
+@media screen and (min-width: 768px) {
+  .dataInput {
+    display: flex;
+    height: 44px;
+    margin-bottom: 30px;
+  }
+
+  .form {
+    margin-bottom: 48px;
+    padding: 0;
+    margin-top: 35px;
+  }
+
+  .inputWrapper {
+    position: relative;
+    width: 104px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .inputWrapper::after {
+    position: absolute;
+    content: '';
+    top: 12px;
+    right: 12px;
+    width: 20px;
+    height: 20px;
+    background-image: url('../../images/calculator.svg');
+  }
+
+  .inputWrapper::before {
+    position: absolute;
+    content: '';
+    top: 0px;
+    right: 40px;
+    width: 2px;
+    height: 42px;
+    background-color: white;
+  }
+
+  .inputDescription input {
+    height: 40px;
+    width: 192px;
+    outline: none;
+    padding: 0;
+    padding-left: 20px;
+    border: 2px solid #f5f6fb;
+    border-right: none;
+    border-radius: 16px 0 0 0;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: 0.02em;
+  }
+
+  .inputDescription::placeholder {
+    color: #c7ccdc;
+  }
+
+  .inputAmount input {
+    position: relative;
+    display: block;
+    margin: 0;
+    margin-left: auto;
+    padding: 0;
+    padding-left: 20px;
+    width: 104px;
+    height: 40px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+    background-color: transparent;
+    border: 2px solid #f5f6fb;
+    border-radius: 0 16px 16px 0;
+  }
+  .inputAmount::placeholder {
+    color: #c7ccdc;
+  }
+
+  .btn {
+    padding: 16px 25px;
+    width: 125px;
+    height: 44px;
+    font-weight: bold;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #52555f;
+    background: #f5f6fb;
+    background-color: transparent;
+    box-shadow: 1px 2px 5px rgba(170, 178, 197, 0.4);
+    border-radius: 16px;
+    border: 1px solid #f6f7fc;
+  }
+
+  .btn:hover,
+  .btn:focus {
+    color: var(--white-color);
+    background-color: var(--accent-color);
+    border: none;
+  }
+
+  .btnWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 265px;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .inputCategory ~ div {
+    height: 40px;
+    width: 171px;
+
+    background-color: transparent;
+    border: 2px solid #f5f6fb;
+    border-radius: 0;
+    border-right: none;
+  }
+
+  .form fieldset {
+    border: white;
+  }
+
+  .form div div {
+    position: relative;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+  }
+
+  .form label {
+    position: absolute;
+    top: 0px;
+    left: 15px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+
+    color: #c7ccdc;
+  }
+
+  .box {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .dataInput {
+    height: 44px;
+    margin-right: 27px;
+    margin-bottom: 0;
+  }
+
+  .form {
+    margin-top: 35px;
+    display: flex;
+    margin-bottom: 59px;
+    height: 44px;
+    background-color: transparent;
+  }
+
+  .inputDescription input {
+    width: 268px;
+    height: 44px;
+  }
+
+  .inputCategory ~ div {
+    width: 188px;
+    height: 48px;
+  }
+
+  .inputWrapper,
+  .inputAmount input {
+    width: 126px;
+    height: 44px;
+  }
+}
+
+.calendarWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 60px;
+}
+
+@media screen and (min-width: 320px) {
+  .calendarWrapper {
+    display: none;
+    margin-top: 50px;
+  }
+}
+.calendarWrapper > div {
+  width: auto;
+}
+
+.calendarWrapper input {
+  width: 86px;
+  background-color: transparent;
+}
+
+.calendarIcon {
+  width: 20px;
+  height: 20px;
+  color: inherit;
+}
+
+.datePicker {
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+  line-height: 1.67;
+  letter-spacing: 0.04em;
+  margin-left: 10px;
+  color: inherit;
+  border: none;
+}
+
+@media screen and (min-width: 768px) {
+  .calendarWrapper {
+    width: 104px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 36px;
+  }
+
+  .calendarWrapper input {
+    width: 74px;
+    background-color: transparent;
+  }
+
+  .datePicker {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .calendarWrapper {
+    margin-right: 23px;
+  }
+}
