@@ -10,6 +10,11 @@ import 'react-datepicker/dist/react-datepicker.css';
 import imageCalendar from 'images/calendarNew.svg';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  getIncomeCategories,
+  getExpenseCategories,
+} from 'redux/transaction/selectors';
 
 function TransactionForm({ transactionsType }) {
   const [date, setDate] = useState(new Date());
@@ -23,20 +28,8 @@ function TransactionForm({ transactionsType }) {
     categoriesList: [],
   };
 
-  const incomeCategories = ['З/П', 'Доп. доход'];
-  const expenseCategories = [
-    'Продукты',
-    'Алкоголь',
-    'Развлечения',
-    'Здоровье',
-    'Транспорт',
-    'Всё для дома',
-    'Техника',
-    'Коммуналка и связь',
-    'Спорт и хобби',
-    'Образование',
-    'Прочее',
-  ];
+  const incomeCategories = useSelector(getIncomeCategories) || [];
+  const expenseCategories = useSelector(getExpenseCategories) || [];
 
   if (transactionsType === 'incomes') {
     formTitleData.descriptionTitle = 'Описание дохода';
