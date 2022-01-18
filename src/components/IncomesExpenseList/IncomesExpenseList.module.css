@@ -45,7 +45,7 @@
     padding-left: 20px;
     padding-right: 20px;
 
-    background-color: #f2f5fc;
+    background-color: var(--bg-modal-one-colour);
     color: black;
     font-size: 12px;
     font-weight: 700;
@@ -63,20 +63,30 @@
     width: 100%;
     margin-bottom: 40px;
     box-shadow: 2px 2px 60px rgba(219, 221, 226, 0.2);
-    border-bottom: 2px solid #f2f5fc;
+    border-bottom: 2px solid var(--bg-modal-one-colour);
   }
   .transactionsList {
-    background-color: white;
+    background-color: var(--white-color);
     height: 346px;
 
-    border-left: 2px solid #f5f6fb;
-    border-right: 2px solid #f5f6fb;
+    border-left: 2px solid var(--bg-modal-two-colour);
+    border-right: 2px solid var(--bg-modal-two-colour);
+    overflow-y: scroll;
   }
+  .transactionsList::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .transactionsList::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color);
+    border-radius: 4px;
+  }
+
   .ulPlaceholder {
     height: 346px;
-    border-left: 2px solid #f5f6fb;
-    border-right: 2px solid #f5f6fb;
-    border-bottom: 2px solid #f5f6fb;
+    border-left: 2px solid var(--bg-modal-two-colour);
+    border-right: 2px solid var(--bg-modal-two-colour);
+    border-bottom: 2px solid var(--bg-modal-two-colour);
   }
 }
 

@@ -33,10 +33,6 @@
   min-height: 172px;
 }
 
-.summary {
-  width: fit-content;
-}
-
 @media screen and (min-width: 768px) {
   .buttonsHolder {
     position: static;
@@ -68,14 +64,14 @@
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
 
-    background-color: white;
+    background-color: var(--white-color);
     box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
   }
   .summaryHolder {
     padding-left: 30px;
   }
   .form {
-    background-color: white;
+    background-color: var(--white-color);
     border-top-right-radius: 20px;
   }
 }
@@ -96,7 +92,7 @@
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
 
-    background-color: white;
+    background-color: var(--white-color);
     box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
   }
   .shadowSmallScreen {
@@ -166,7 +162,7 @@
   width: 50%;
   height: 53px;
 
-  border: #f2f5fc 1px solid;
+  border: var(--bg-modal-one-colour) 1px solid;
   border-width: 1px;
 
   color: black;
@@ -176,16 +172,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+  width: 50%;
+  height: 53px;
   letter-spacing: 0.02em;
   text-transform: uppercase;
 
-  background-color: #ff751d;
+  background-color: var(--accent-color);
   font-weight: 700;
   font-size: 12px;
   line-height: 1.16;
   border-color: transparent;
-  color: white;
+  color: var(--white-color);
 }
 
 @media screen and (min-width: 768px) {
@@ -197,12 +194,17 @@
     border-radius: 20px 20px 0 0;
     border-color: transparent;
     cursor: pointer;
-    background-color: #fafbfd;
+    background-color: var(--active-tab-bg-color);
   }
 
   .navBtnActive {
+    width: 138px;
+    height: 40px;
+    padding: 20px;
+    border-color: transparent;
+    border-radius: 20px 20px 0 0;
     background-color: #fefefe;
-    color: #ff751d;
+    color: var(--accent-color);
     cursor: pointer;
   }
 }
