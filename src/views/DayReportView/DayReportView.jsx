@@ -6,6 +6,8 @@ import { fetchCategories, fetchExpense, fetchIncome } from 'redux/transaction';
 import Summary from 'components/Summary';
 import TransactionForm from 'components/TransactionForm';
 
+const startBalance = () => {};
+
 const DayReportView = () => {
   const [isExpenses, setIsExpenses] = useState(true);
 
@@ -104,7 +106,21 @@ const DayReportView = () => {
   return (
     <>
       <div className={s.section}>
-        <div className={s.goToReport}></div>
+        <div className={s.balance}>
+          <p className={s.balanceTitle}>Баланс:</p>
+          <div className={s.balanceBox}>
+            <div className={s.balanceMeaning}>BALANCE</div>
+            <button
+              type="button"
+              name="ПОДТВЕРДИТЬ"
+              onClick={startBalace}
+              className={s.buttonBalance}
+            >
+              ПОДТВЕРДИТЬ
+            </button>
+          </div>
+        </div>
+        <div className={s.goToReport}>Перейти к отчетам</div>
       </div>
       <div className={s.mainWrapper}>
         <div className={s.buttonsHolder}>
