@@ -17,10 +17,11 @@ const refresh = async credentials =>
 const logout = async () => await axios.post('auth/logout');
 
 /* transaction */
-const addIncome = async credentials => await axios.post('transaction/income');
-const getIncome = async credentials => await axios.post('transaction/income');
+const addIncome = async credentials =>
+  await axios.post('transaction/income', credentials);
+const getIncome = async () => await axios.get('transaction/income');
 const addExpense = async credentials => await axios.post('transaction/expense');
-const getExpense = async credentials => await axios.post('transaction/expense');
+const getExpense = async credentials => await axios.get('transaction/expense');
 const removeTransaction = async credentials =>
   await axios.post('transaction/{transactionId}');
 const getIncomeCategories = async credentials =>

@@ -2,6 +2,9 @@ import s from './DayReportView.module.css';
 import { useState } from 'react';
 import IncomesExpenseList from 'components/IncomesExpenseList';
 import Container from 'components/Container';
+import Button from 'components/Button';
+import { addIncome, fetchIncome } from 'redux/transaction';
+import { useDispatch } from 'react-redux';
 
 const DayReportView = () => {
   const [isExpenses, setIsExpenses] = useState(true);
@@ -9,9 +12,26 @@ const DayReportView = () => {
   const [isExpensesTabActive, setExpensesTabActive] = useState(true);
   const [isIncomesTabActive, setIsIncomesTabActive] = useState(false);
 
+  const dispatch = useDispatch();
+
   const handleToggle = () => {
     setIsIncomesTabActive(!isIncomesTabActive);
     setExpensesTabActive(!isExpensesTabActive);
+  };
+
+  const add = () => {
+    const credentials = {
+      description: 'electricity',
+      category: 'Доп. доход',
+      amount: 100,
+      date: new Date(),
+    };
+    dispatch(addIncome(credentials));
+  };
+
+  const get = () => {
+    const incomes = dispatch(fetchIncome());
+    console.log('incomes:', incomes);
   };
 
   const expenses = [
@@ -51,6 +71,8 @@ const DayReportView = () => {
   return (
     <>
       <Container>
+        <Button type={'button'} title={'Add'} onClick={add} />
+        <Button type={'button'} title={'Get'} onClick={get} />
         <div className={s.section}>
           <div className={s.goToReport}></div>
         </div>
