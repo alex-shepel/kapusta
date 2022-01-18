@@ -1,5 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addIncome, fetchIncome } from './operations';
+import {
+  addIncome,
+  fetchIncome,
+  addExpense,
+  fetchExpense,
+  fetchCategories,
+} from './operations';
 
 const initialState = {
   incomes: [],
@@ -44,6 +50,41 @@ const slice = createSlice({
     },
     [fetchIncome.rejected]: state => {
       state.isIncomeLoading = false;
+    },
+
+    [addExpense.pending]: state => {
+      state.isExpenseAdding = true;
+    },
+    [addExpense.fulfilled]: (state, { payload }) => {
+      state.isExpenseAdding = false;
+      state.expenses.push(payload);
+    },
+    [addExpense.rejected]: state => {
+      state.isExpenseAdding = false;
+    },
+
+    [fetchExpense.pending]: state => {
+      state.isExpenseLoading = false;
+    },
+    [fetchExpense.fulfilled]: (state, { payload }) => {
+      state.isExpenseLoading = true;
+      state.expenses = payload.expenses;
+      state.monthStatsExpenses = payload.monthStats;
+    },
+    [fetchExpense.rejected]: state => {
+      state.isExpenseLoading = false;
+    },
+
+    [fetchCategories.pending]: state => {
+      state.areCategoriesLoading = false;
+    },
+    [fetchCategories.fulfilled]: (state, { payload }) => {
+      state.areCategoriesLoading = true;
+      state.categoriesIncome = payload.categoriesIncome;
+      state.categoriesExpense = payload.categoriesExpense;
+    },
+    [fetchCategories.rejected]: state => {
+      state.areCategoriesLoading = false;
     },
   },
 });
