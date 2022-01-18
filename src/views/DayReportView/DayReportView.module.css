@@ -124,7 +124,6 @@
 /* section balance and goToReport */
 
 .section {
-  /* width: 282px; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -151,7 +150,6 @@
 
 .balanceMeaning {
   border: 2px;
-  /* border-right: 0; */
   border-bottom-left-radius: 22px;
   border-top-left-radius: 22px;
   width: 127px;
@@ -184,7 +182,6 @@
 }
 @media screen and (min-width: 768px) {
   .section {
-    /* width: 666px; */
     flex-direction: row;
     padding-top: 40px;
     padding-bottom: 58px;
@@ -208,12 +205,10 @@
     border-radius: 16px;
   }
   .goToReport {
-    /* margin-left: 111px; */
   }
 }
 @media screen and (min-width: 1280px) {
   .section {
-    /* width: 1060px; */
     padding-bottom: 9px;
     padding-right: 115px;
     justify-content: flex-end;
@@ -223,7 +218,6 @@
   }
 }
 
-/*  */
 .navBtn {
   display: flex;
   justify-content: center;
