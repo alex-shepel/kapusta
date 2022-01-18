@@ -4,6 +4,9 @@ import IncomesExpenseList from 'components/IncomesExpenseList';
 import Container from 'components/Container';
 import Summary from 'components/Summary';
 import TransactionForm from 'components/TransactionForm';
+import Button from 'components/Button/Button';
+
+const startBalace = () => {};
 
 const DayReportView = () => {
   const [isExpenses, setIsExpenses] = useState(true);
@@ -95,7 +98,21 @@ const DayReportView = () => {
   return (
     <>
       <div className={s.section}>
-        <div className={s.goToReport}></div>
+        <div className={s.balance}>
+          <p className={s.balanceTitle}>Баланс:</p>
+          <div className={s.balanceBox}>
+            <div className={s.balanceMeaning}>BALANCE</div>
+            <button
+              type="button"
+              name="ПОДТВЕРДИТЬ"
+              onClick={startBalace}
+              className={s.buttonBalance}
+            >
+              ПОДТВЕРДИТЬ
+            </button>
+          </div>
+        </div>
+        <div className={s.goToReport}>Перейти к отчетам</div>
       </div>
       <div className={s.mainWrapper}>
         <div className={s.buttonsHolder}>

@@ -1,3 +1,6 @@
+.section {
+  display: flex;
+}
 .buttonsHolder {
   display: flex;
   position: fixed;
@@ -118,36 +121,109 @@
   width: 100%;
 }
 
+/* section balance and goToReport */
+
 .section {
-  width: 282px;
+  /* width: 282px; */
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: column-reverse;
+  margin-bottom: 40px;
 }
 
+.balanceBox {
+  display: flex;
+  font-size: 12px;
+  line-height: 14px;
+}
+.balanceTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: var(--text-color-one);
+  margin-bottom: 6px;
+  margin-top: 43px;
+}
+
+.balanceMeaning {
+  border: 2px solid steelblue;
+  /* border-right: 0; */
+  border-bottom-left-radius: 22px;
+  border-top-left-radius: 22px;
+  width: 127px;
+  height: 44px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-modal-two-colour);
+}
+.buttonBalance {
+  border: 2px solid steelblue;
+  border-bottom-right-radius: 22px;
+  border-top-right-radius: 22px;
+  border-left: 0;
+  width: 123px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-color-one);
+  background-color: var(--bg-modal-two-colour);
+}
+.buttonBalance:hover,
+.buttonBalance:focus {
+  background-color: var(--accent-color);
+  border: solid var(--accent-color);
+  border-left: 0;
+  color: var(--white-color);
+}
 @media screen and (min-width: 768px) {
   .section {
-    width: 666px;
-    flex-direction: row-reverse;
+    /* width: 666px; */
+    flex-direction: row;
     padding-top: 40px;
     padding-bottom: 58px;
-    justify-content: flex-start;
+    justify-content: space-around;
+  }
+  .balance {
+    display: flex;
+    align-items: center;
+  }
+  .balanceTitle {
+    margin: 0;
+    margin-right: 21px;
+  }
+  .balanceMeaning {
+    margin-right: 15px;
+    border: 2px;
+    border-radius: 16px;
+  }
+  .buttonBalance {
+    border: 2px;
+    border-radius: 16px;
   }
   .goToReport {
-    margin-left: 111px;
+    /* margin-left: 111px; */
   }
 }
 @media screen and (min-width: 1280px) {
   .section {
-    width: 1060px;
+    /* width: 1060px; */
     padding-bottom: 9px;
+    padding-right: 115px;
+    justify-content: flex-end;
   }
   .goToReport {
     margin-left: 205px;
   }
 }
 
+/*  */
 .navBtn {
   display: flex;
   justify-content: center;
