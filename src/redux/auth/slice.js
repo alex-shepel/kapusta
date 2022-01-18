@@ -9,6 +9,7 @@ const initialState = {
   isLoggedIn: false,
   isRegistration: false,
   isLogining: false,
+  isRefreshing: false,
   error: null,
 };
 
@@ -80,7 +81,7 @@ const slice = createSlice({
     },
     // refresh
     [refresh.pending]: (state, _) => {
-      state.isLogouting = true;
+      state.isRefreshing = true;
       state.error = null;
     },
     [refresh.fulfilled]: (state, { payload }) => {
@@ -89,12 +90,13 @@ const slice = createSlice({
         newRefreshToken: refreshToken,
         newSid: sid,
       } = payload;
+      state.isRefreshing = false;
       state.isLoggedIn = true;
       state.error = null;
       loginStateUpd(state, { accessToken, refreshToken, sid });
     },
     [refresh.rejected]: (state, { payload }) => {
-      state.isLogining = false;
+      state.isRefreshing = false;
       state.error = payload;
     },
     // user

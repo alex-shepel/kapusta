@@ -1,7 +1,8 @@
 import s from './DayReportView.module.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import IncomesExpenseList from 'components/IncomesExpenseList';
-import Container from 'components/Container';
+import { useDispatch } from 'react-redux';
+import { fetchCategories, fetchExpense, fetchIncome } from 'redux/transaction';
 import Summary from 'components/Summary';
 import TransactionForm from 'components/TransactionForm';
 
@@ -10,6 +11,14 @@ const DayReportView = () => {
 
   const [isExpensesTabActive, setExpensesTabActive] = useState(true);
   const [isIncomesTabActive, setIsIncomesTabActive] = useState(false);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchIncome());
+    dispatch(fetchExpense());
+    dispatch(fetchCategories());
+  }, [dispatch]);
 
   const handleToggle = () => {
     setIsIncomesTabActive(!isIncomesTabActive);
