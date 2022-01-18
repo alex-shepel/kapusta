@@ -113,7 +113,7 @@ const DayReportView = () => {
             <button
               type="button"
               name="ПОДТВЕРДИТЬ"
-              onClick={startBalace}
+              onClick={startBalance}
               className={s.buttonBalance}
             >
               ПОДТВЕРДИТЬ
