@@ -1,6 +1,6 @@
 import { createLogger } from 'redux-logger';
 import { authReducer } from './auth';
-// import { transactionReducer } from './transaction';
+import { transactionReducer } from './transaction';
 // import { userReducer } from './user';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import {
@@ -22,7 +22,7 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  // transaction: transactionReducer,
+  transaction: transactionReducer,
   // user: userReducer,
   auth: persistReducer(persistConfig, authReducer),
 });
