@@ -12,7 +12,7 @@ import './App.module.css';
 import Routes from 'routes';
 import Container from 'components/Container';
 import Header from 'components/Header';
-import Spinner from '../Spinner';
+import Spinner from 'components/Spinner';
 
 const App = () => {
   const location = useLocation();
