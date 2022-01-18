@@ -62,4 +62,23 @@ const fetchCategories = createAsyncThunk(
   },
 );
 
-export { addIncome, fetchIncome, addExpense, fetchExpense, fetchCategories };
+const removeTransaction = createAsyncThunk(
+  'transaction/get-categories',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const { data } = await api.removeTransaction(credentials);
+      return { data };
+    } catch (error) {
+      console.log(error.response.data.message);
+    }
+  },
+);
+
+export {
+  addIncome,
+  fetchIncome,
+  addExpense,
+  fetchExpense,
+  fetchCategories,
+  removeTransaction,
+};

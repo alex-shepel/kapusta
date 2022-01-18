@@ -5,6 +5,7 @@ import {
   addExpense,
   fetchExpense,
   fetchCategories,
+  removeTransaction,
 } from './operations';
 
 const initialState = {
@@ -16,6 +17,10 @@ const initialState = {
   categoriesExpense: [],
   isIncomeAdding: false,
   isIncomeLoading: false,
+  isExpenseAdding: false,
+  isExpenseLoading: false,
+  areCategoriesLoading: false,
+  isRemoving: false,
 };
 
 const resetState = state => {
@@ -41,10 +46,10 @@ const slice = createSlice({
     },
 
     [fetchIncome.pending]: state => {
-      state.isIncomeLoading = false;
+      state.isIncomeLoading = true;
     },
     [fetchIncome.fulfilled]: (state, { payload }) => {
-      state.isIncomeLoading = true;
+      state.isIncomeLoading = false;
       state.incomes = payload.incomes;
       state.monthStatsIncomes = payload.monthStats;
     },
@@ -64,10 +69,10 @@ const slice = createSlice({
     },
 
     [fetchExpense.pending]: state => {
-      state.isExpenseLoading = false;
+      state.isExpenseLoading = true;
     },
     [fetchExpense.fulfilled]: (state, { payload }) => {
-      state.isExpenseLoading = true;
+      state.isExpenseLoading = false;
       state.expenses = payload.expenses;
       state.monthStatsExpenses = payload.monthStats;
     },
@@ -76,15 +81,27 @@ const slice = createSlice({
     },
 
     [fetchCategories.pending]: state => {
-      state.areCategoriesLoading = false;
+      state.areCategoriesLoading = true;
     },
     [fetchCategories.fulfilled]: (state, { payload }) => {
-      state.areCategoriesLoading = true;
+      state.areCategoriesLoading = false;
       state.categoriesIncome = payload.categoriesIncome;
       state.categoriesExpense = payload.categoriesExpense;
     },
     [fetchCategories.rejected]: state => {
       state.areCategoriesLoading = false;
+    },
+
+    [removeTransaction.pending]: state => {
+      state.isRemoving = true;
+    },
+    [removeTransaction.fulfilled]: (state, { payload }) => {
+      state.isRemoving = false;
+      state.incomes = state.incomes.filter(item => item !== payload._id);
+      state.expenses = state.expenses.filter(item => item !== payload._id);
+    },
+    [removeTransaction.rejected]: state => {
+      state.isRemoving = false;
     },
   },
 });
