@@ -7,24 +7,8 @@ import {
 import { useSelector } from 'react-redux';
 
 const Summary = () => {
-  // const monthStats = {
-  //   Январь: 5,
-  //   Февраль: 100,
-  //   Март: 'N/A',
-  //   Апрель: 500,
-  //   Май: 1000,
-  //   Июнь: 'N/A',
-  //   Июль: 'N/A',
-  //   Август: 50,
-  //   Сентябрь: 'N/A',
-  //   Октябрь: 77,
-  //   Ноябрь: 'N/A',
-  //   Декабрь: 123,
-  // };
-
   const monthStatsIncomes = useSelector(getMonthStatsIncomes);
   const monthStatsExpenses = useSelector(getMonthStatsExpenses);
-  // console.log(monthStatsIncomes);
 
   return (
     <div className={s.section}>
