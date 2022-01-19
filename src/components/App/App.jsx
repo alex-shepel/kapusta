@@ -12,7 +12,7 @@ import './App.module.css';
 import Routes from 'routes';
 import Container from 'components/Container';
 import Header from 'components/Header';
-import { ChartComp } from '../Chart/Chart';
+import { ChartComp } from 'components/Chart';
 import Spinner from 'components/Spinner';
 
 const App = () => {
