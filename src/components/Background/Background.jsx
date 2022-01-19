@@ -1,12 +1,11 @@
 import s from './Background.module.css';
 import BackgroundImageAuthPageTopPosition from 'components/BackgroundImageAuthPage/BackgroundImageAuthPageTopPosition';
 import BackgroundImageAuthPageBotPosition from 'components/BackgroundImageAuthPage/BackgroundImageAuthPageBotPosition';
-import { useRouteMatch, useLocation } from 'react-router-dom';
+import BackgroundImageDayReportBotPosition from 'components/BackgroundImageDayReport/BackgroundImageDayReportBotPosition';
+import { useLocation } from 'react-router-dom';
 
 const Background = () => {
-  // const match = useRouteMatch();
   const loc = useLocation();
-  // console.log(match.url);
   console.log(loc.pathname);
   return (
     <>
@@ -14,6 +13,9 @@ const Background = () => {
         {loc.pathname === '/' && <BackgroundImageAuthPageTopPosition />}
       </div>
       {loc.pathname === '/' && <BackgroundImageAuthPageBotPosition />}
+      {loc.pathname === '/day-report' && (
+        <BackgroundImageDayReportBotPosition />
+      )}
     </>
   );
 };
