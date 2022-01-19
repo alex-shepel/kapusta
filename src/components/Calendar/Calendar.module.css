@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 30px;
+
   /* display: none; */
 }
 
@@ -42,7 +43,8 @@
     justify-content: center;
     margin-top: 0;
     margin-bottom: 0;
-    margin-right: 36px;
+    margin-left: 30px;
+    margin-right: 30px;
   }
 
   .calendarWrapper input {
@@ -64,5 +66,6 @@
 @media screen and (min-width: 1280px) {
   .calendarWrapper {
     margin-right: 23px;
+    margin-left: 0;
   }
 }

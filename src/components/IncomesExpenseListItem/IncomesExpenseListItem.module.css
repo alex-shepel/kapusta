@@ -34,6 +34,7 @@
 
 .description {
   font-weight: 700;
+  width: 168px;
 }
 
 .date,
@@ -42,8 +43,10 @@
 }
 
 .expenses {
+  width: 84px;
   font-weight: bold;
   color: var(--negative-sum-color);
+  margin-right: 10px;
 }
 
 .incomes {
@@ -79,19 +82,27 @@
   fill: var(--bg-modal-one-colour);
 }
 @media screen and (max-width: 320px) {
-  .category {
-    display: none;
-    visibility: none;
+  .description {
+    width: 74px;
+  }
+
+  .listItem {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .date {
+    margin-right: 0px;
+  }
+
+  .flex {
+    margin-left: 46px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  .changeFlow,
   .amount {
     margin-right: 20px;
-  }
-  .flex {
-    margin-left: auto;
   }
 }
 
@@ -102,32 +113,87 @@
   .listItem {
     align-items: center;
   }
-  .description {
-    font-weight: 400;
+
+  .date {
+    font-size: 12px;
+    width: 84px;
+    margin-right: 20px;
   }
-  .date,
+
   .category {
+    width: 124px;
+    align-self: center;
+    margin-right: 0;
     font-size: 12px;
   }
-  .category {
-    align-self: center;
-  }
+
   .description {
-    width: 50%;
-    text-align: center;
-    padding-left: 20px;
+    font-weight: 400;
+    width: 168px;
+    text-align: start;
+    padding-left: 0;
   }
   .changeFlow {
     flex-direction: row;
     justify-content: space-between;
   }
-  .listItem > div,
+
+  .expenses {
+    width: 104px;
+    text-align: end;
+  }
+
+  .incomes {
+    width: 104px;
+    text-align: end;
+  }
+  /* .listItem > div,
   .listItem > span {
     width: 33.3%;
-  }
+  } */
 
   .listItem {
     padding-left: 20px;
     padding-right: 20px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .date {
+    margin-left: 0;
+    width: 84px;
+  }
+
+  .description {
+    width: 188px;
+    text-align: start;
+    padding-left: 20px;
+    margin-right: 44px;
+  }
+
+  .category {
+    width: 172px;
+    justify-content: start;
+    margin-right: 63px;
+  }
+
+  .expenses {
+    font-weight: bold;
+    color: var(--negative-sum-color);
+    width: 104px;
+    margin-right: 52px;
+    text-align: center;
+  }
+
+  .incomes {
+    font-weight: bold;
+    color: var(--positive-sum-color);
+    width: 104px;
+    margin-right: 52px;
+    text-align: center;
+  }
+
+  .flex {
+    width: 188px;
   }
 }
