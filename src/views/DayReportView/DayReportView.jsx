@@ -13,6 +13,8 @@ import {
 
 import Summary from 'components/Summary';
 import TransactionForm from 'components/TransactionForm';
+import { ReactComponent as ReportPic } from 'images/bar-chart.svg';
+import { Link } from 'react-router-dom';
 
 const startBalance = () => {};
 
@@ -54,7 +56,10 @@ const DayReportView = () => {
             </button>
           </div>
         </div>
-        <div className={s.goToReport}>Перейти к отчетам</div>
+        <Link to={'/month-report'} className={s.goToReport}>
+          Перейти к отчетам
+          <ReportPic className={s.reportPic} alt={'reportPic'} />
+        </Link>
       </div>
       <div className={s.mainWrapper}>
         <div className={s.buttonsHolder}>
