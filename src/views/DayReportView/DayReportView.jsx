@@ -1,14 +1,16 @@
 import s from './DayReportView.module.css';
 import { useEffect, useState } from 'react';
 import IncomesExpenseList from 'components/IncomesExpenseList';
-import { useDispatch } from 'react-redux';
-import { fetchCategories, fetchExpense, fetchIncome } from 'redux/transaction';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCategories, fetchExpense, fetchIncome, getIncomes, getExpenses } from 'redux/transaction';
 import Summary from 'components/Summary';
 import TransactionForm from 'components/TransactionForm';
 
 const startBalance = () => {};
 
 const DayReportView = () => {
+  const expenses = useSelector(getExpenses);
+  const incomes = useSelector(getIncomes);
   const [isExpenses, setIsExpenses] = useState(true);
 
   const [isExpensesTabActive, setExpensesTabActive] = useState(true);
@@ -26,82 +28,6 @@ const DayReportView = () => {
     setIsIncomesTabActive(!isIncomesTabActive);
     setExpensesTabActive(!isExpensesTabActive);
   };
-
-  const expenses = [
-    {
-      id: '1',
-      date: '14.01.2022',
-      description: 'Метро',
-      category: 'Транспорт',
-      amount: '30',
-    },
-    {
-      id: '2',
-      date: '14.01.2022',
-      description: 'Бананы',
-      category: 'Продукты',
-      amount: '50',
-    },
-    {
-      id: '3',
-      date: '14.01.2022',
-      description: 'Метро',
-      category: 'Транспорт',
-      amount: '30',
-    },
-    {
-      id: '4',
-      date: '14.01.2022',
-      description: 'Бананы',
-      category: 'Продукты',
-      amount: '50',
-    },
-    {
-      id: '5',
-      date: '14.01.2022',
-      description: 'Метро',
-      category: 'Транспорт',
-      amount: '30',
-    },
-    {
-      id: '6',
-      date: '14.01.2022',
-      description: 'Бананы',
-      category: 'Продукты',
-      amount: '50',
-    },
-    {
-      id: '7',
-      date: '14.01.2022',
-      description: 'Метро',
-      category: 'Транспорт',
-      amount: '30',
-    },
-    {
-      id: '8',
-      date: '14.01.2022',
-      description: 'Бананы',
-      category: 'Продукты',
-      amount: '50',
-    },
-  ];
-
-  const incomes = [
-    {
-      id: '1',
-      date: '14.01.2022',
-      description: 'Метро',
-      category: 'Транспорт',
-      amount: '30',
-    },
-    {
-      id: '2',
-      date: '14.01.2022',
-      description: 'Бананы',
-      category: 'Продукты',
-      amount: '50',
-    },
-  ];
 
   return (
     <>
@@ -159,7 +85,10 @@ const DayReportView = () => {
             />
           </div>
           <div className={s.summaryHolder}>
-            <Summary className={s.summary} />
+            <Summary
+              className={s.summary}
+              transactionsType={isExpenses ? 'expenses' : 'incomes'}
+            />
           </div>
         </div>
       </div>
