@@ -6,15 +6,18 @@ import {
 } from 'redux/transaction/selectors';
 import { useSelector } from 'react-redux';
 
-const Summary = () => {
+const Summary = ({ transactionsType }) => {
   const monthStatsIncomes = useSelector(getMonthStatsIncomes);
   const monthStatsExpenses = useSelector(getMonthStatsExpenses);
+
+  const data =
+    transactionsType === 'incomes' ? monthStatsIncomes : monthStatsExpenses;
 
   return (
     <div className={s.section}>
       <h3 className={s.title}>Сводка</h3>
       <ul className={s.list}>
-        {Object.entries({})
+        {Object.entries(data)
           .filter(([key, value]) => value !== 'N/A')
           .map(([key, value]) => (
             <li className={s.item} key={key}>
@@ -25,6 +28,10 @@ const Summary = () => {
       </ul>
     </div>
   );
+};
+
+Summary.propTypes = {
+  transactionsType: PropTypes.oneOf(['expenses', 'incomes']),
 };
 
 export default Summary;
