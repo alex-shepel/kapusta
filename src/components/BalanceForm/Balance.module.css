@@ -19,8 +19,8 @@
   border: 2px solid var(--white-color);
   border-bottom-left-radius: 22px;
   border-top-left-radius: 22px;
-  width: 127px;
-  height: 44px;
+  width: 121px;
+  height: 40px;
   font-weight: bold;
   display: flex;
   justify-content: center;
@@ -32,8 +32,8 @@
   border-bottom-right-radius: 22px;
   border-top-right-radius: 22px;
   border-left: 0;
-  width: 123px;
-  height: 44px;
+  width: 121px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,23 +51,22 @@
   .balance {
     display: flex;
     align-items: center;
+    padding-left: 65px;
   }
+
   .balanceTitle {
     margin: 0;
     margin-right: 21px;
   }
+
   .balanceValue {
     margin-right: 15px;
+    border: 2px solid var(--white-color);
     border-radius: 16px;
   }
+
   .buttonBalance {
+    border: 2px solid var(--white-color);
     border-radius: 16px;
-  }
-  .goToReport {
-  }
-}
-@media screen and (min-width: 1280px) {
-  .goToReport {
-    margin-left: 205px;
   }
 }
