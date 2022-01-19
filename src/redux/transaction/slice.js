@@ -106,5 +106,5 @@ const slice = createSlice({
   },
 });
 
-export const { reducer: authReducer } = slice;
+export const { reducer: transactionReducer } = slice;
 export const { resetAuthState } = slice.actions;

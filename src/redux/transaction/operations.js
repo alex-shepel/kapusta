@@ -63,7 +63,7 @@ const fetchCategories = createAsyncThunk(
 );
 
 const removeTransaction = createAsyncThunk(
-  'transaction/get-categories',
+  'transaction/remove',
   async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await api.removeTransaction(credentials);

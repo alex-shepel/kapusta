@@ -1,27 +1,20 @@
 import s from './Summary.module.css';
 import PropTypes from 'prop-types';
+import {
+  getMonthStatsIncomes,
+  getMonthStatsExpenses,
+} from 'redux/transaction/selectors';
+import { useSelector } from 'react-redux';
 
 const Summary = () => {
-  const monthStats = {
-    Январь: 5,
-    Февраль: 100,
-    Март: 'N/A',
-    Апрель: 500,
-    Май: 1000,
-    Июнь: 'N/A',
-    Июль: 'N/A',
-    Август: 50,
-    Сентябрь: 'N/A',
-    Октябрь: 77,
-    Ноябрь: 'N/A',
-    Декабрь: 123,
-  };
+  const monthStatsIncomes = useSelector(getMonthStatsIncomes);
+  const monthStatsExpenses = useSelector(getMonthStatsExpenses);
 
   return (
     <div className={s.section}>
       <h3 className={s.title}>Сводка</h3>
       <ul className={s.list}>
-        {Object.entries(monthStats)
+        {Object.entries({})
           .filter(([key, value]) => value !== 'N/A')
           .map(([key, value]) => (
             <li className={s.item} key={key}>
