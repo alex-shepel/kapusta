@@ -4,10 +4,8 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { TextField } from '@mui/material';
+import Calendar from 'components/Calendar';
 import s from './TransactionForm.module.css';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import imageCalendar from 'images/calendarNew.svg';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,12 +13,14 @@ import {
   getIncomeCategories,
   getExpenseCategories,
 } from 'redux/transaction/selectors';
+import { addIncome, addExpense } from 'redux/transaction/operations';
 
 function TransactionForm({ transactionsType }) {
   const [date, setDate] = useState(new Date());
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState('');
   const [category, setCategory] = useState('');
+  const dispatch = useDispatch();
 
   const formTitleData = {
     descriptionTitle: '',
@@ -43,7 +43,6 @@ function TransactionForm({ transactionsType }) {
 
   const handleInputChange = e => {
     const { name, value } = e.currentTarget;
-
     switch (name) {
       case 'product':
         return setDescription(value);
@@ -60,6 +59,23 @@ function TransactionForm({ transactionsType }) {
     setCategory(e.target.value);
   };
 
+  const dateHandle = date => {
+    const year = String(date.getFullYear());
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    setDate(`${year}-${month}-${day}`);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    const transaction = { date, description, category, amount };
+    transactionsType === 'incomes'
+      ? dispatch(addIncome(transaction))
+      : dispatch(addExpense(transaction));
+    handleBtnClear();
+  };
+
   const handleBtnClear = () => {
     setDescription('');
     setAmount('');
@@ -68,21 +84,9 @@ function TransactionForm({ transactionsType }) {
 
   return (
     <div className={s.tabletFormPosition}>
-      <form className={s.form} onSubmit={() => {}} autoComplete="off">
+      <form className={s.form} onSubmit={handleSubmit} autoComplete="off">
         <div className={s.dataInput}>
-          <div className={s.calendarWrapper}>
-            <img
-              className={s.calendarIcon}
-              src={imageCalendar}
-              alt="Calendar"
-            />
-            <DatePicker
-              selected={date}
-              onChange={date => setDate(date)}
-              className={s.datePicker}
-              dateFormat="dd/MM/yyyy"
-            />
-          </div>
+          <Calendar dateHandle={dateHandle} />
           <TextField
             id="outline-basic"
             label={formTitleData.descriptionTitle}

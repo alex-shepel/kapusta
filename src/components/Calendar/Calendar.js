@@ -1,0 +1,25 @@
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import imageCalendar from 'images/calendarNew.svg';
+import s from './Calendar.module.css';
+import { useState } from 'react';
+
+const Calendar = ({ dateHandle }) => {
+  const [date, setDate] = useState(new Date());
+
+  dateHandle(date);
+
+  return (
+    <div className={s.calendarWrapper}>
+      <img className={s.calendarIcon} src={imageCalendar} alt="Calendar" />
+      <DatePicker
+        selected={date}
+        onChange={date => setDate(date)}
+        className={s.datePicker}
+        dateFormat="dd/MM/yyyy"
+      />
+    </div>
+  );
+};
+
+export default Calendar;

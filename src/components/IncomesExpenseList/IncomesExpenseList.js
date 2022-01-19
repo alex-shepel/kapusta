@@ -22,7 +22,7 @@ const IncomesExpenseList = ({
             {transactions &&
               transactions.map(item => (
                 <IncomesExpenseListItem
-                  key={item.id}
+                  key={item._id}
                   itemProps={item}
                   transactionsType={transactionsType}
                   operationSign={operationSign}
