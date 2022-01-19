@@ -12,8 +12,8 @@ import {
 
 import Summary from 'components/Summary';
 import TransactionForm from 'components/TransactionForm';
-
-const startBalance = () => {};
+import { getBalance } from 'redux/user';
+import BalanceForm from 'components/BalanceForm';
 
 const DayReportView = () => {
   const expenses = useSelector(getFilterExpTrans);
@@ -39,20 +39,7 @@ const DayReportView = () => {
   return (
     <>
       <div className={s.section}>
-        <div className={s.balance}>
-          <p className={s.balanceTitle}>Баланс:</p>
-          <div className={s.balanceBox}>
-            <div className={s.balanceMeaning}>BALANCE</div>
-            <button
-              type="button"
-              name="ПОДТВЕРДИТЬ"
-              onClick={startBalance}
-              className={s.buttonBalance}
-            >
-              ПОДТВЕРДИТЬ
-            </button>
-          </div>
-        </div>
+        <BalanceForm />
         <div className={s.goToReport}>Перейти к отчетам</div>
       </div>
       <div className={s.mainWrapper}>
