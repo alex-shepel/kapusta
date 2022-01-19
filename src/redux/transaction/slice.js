@@ -48,7 +48,8 @@ const slice = createSlice({
     },
     [addIncome.fulfilled]: (state, { payload }) => {
       state.isIncomeAdding = false;
-      state.incomes.push(payload);
+      state.incomes = payload.incomes;
+      state.monthStatsIncomes = payload.monthsStats;
     },
     [addIncome.rejected]: state => {
       state.isIncomeAdding = false;
@@ -71,7 +72,8 @@ const slice = createSlice({
     },
     [addExpense.fulfilled]: (state, { payload }) => {
       state.isExpenseAdding = false;
-      state.expenses.push(payload);
+      state.expenses = payload.expenses;
+      state.monthStatsExpenses = payload.monthsStats;
     },
     [addExpense.rejected]: state => {
       state.isExpenseAdding = false;

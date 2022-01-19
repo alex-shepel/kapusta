@@ -12,6 +12,8 @@ import {
 
 import Summary from 'components/Summary';
 import TransactionForm from 'components/TransactionForm';
+import { ReactComponent as ReportPic } from 'images/bar-chart.svg';
+import { Link } from 'react-router-dom';
 import { getBalance } from 'redux/user';
 import BalanceForm from 'components/BalanceForm';
 
@@ -40,7 +42,10 @@ const DayReportView = () => {
     <>
       <div className={s.section}>
         <BalanceForm />
-        <div className={s.goToReport}>Перейти к отчетам</div>
+        <Link to={'/month-report'} className={s.goToReport}>
+          Перейти к отчетам
+          <ReportPic className={s.reportPic} alt={'reportPic'} />
+        </Link>
       </div>
       <div className={s.mainWrapper}>
         <div className={s.buttonsHolder}>
