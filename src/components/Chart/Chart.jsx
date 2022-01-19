@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -8,11 +9,18 @@ import {
 import { Bar } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import s from './Chart.module.css';
+import {
+  getExpenseDataByCategoriesFromState,
+  getIncomesDataByCategoriesFromState,
+} from 'redux/transaction';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement);
 
 export function ChartComp() {
   const [widthS, setWidthS] = useState(window.screen.width);
+  const incomesData = useSelector(getIncomesDataByCategoriesFromState);
+  const expenseData = useSelector(getExpenseDataByCategoriesFromState);
+  //   console.log('✈️ ~ expenseData', expenseData?.expensesData);
 
   const handleResizeWindow = () => setWidthS(window.screen.width);
 
@@ -36,7 +44,6 @@ export function ChartComp() {
     indexAxis: widthS > 320 ? 'x' : 'y',
 
     scales: {
-      position: 'bottom',
       x: {
         grid: {
           display: false,
@@ -84,11 +91,16 @@ export function ChartComp() {
   ];
   const incomeData = [5, 6, 10, 2, 5, 6, 8];
 
+  //   const labels = Object.keys(expenseData?.expensesData);
+  //   const incomeData = Object.values(expenseData?.expensesData).map(
+  //     item => item.total,
+  //   );
+
   const data = {
     labels,
     datasets: [
       {
-        data: [5, 6, 10, 2, 5, 6, 8],
+        data: incomeData,
         maxBarThickness: widthS <= 320 ? 20 : 30,
         backgroundColor: chooseBgColor(labels),
         borderRadius: 10,
@@ -99,14 +111,7 @@ export function ChartComp() {
 
   return (
     <div className={s.barWrapper}>
-      <Bar
-        options={options}
-        data={data}
-        plugins={[
-          ChartDataLabels,
-          { options: { datalabels: { color: 'red' } } },
-        ]}
-      />
+      <Bar options={options} data={data} plugins={[ChartDataLabels]} />
     </div>
   );
 }

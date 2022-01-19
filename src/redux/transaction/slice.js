@@ -6,6 +6,7 @@ import {
   fetchExpense,
   fetchCategories,
   removeTransaction,
+  fetchDataByCategories,
 } from './operations';
 
 const initialState = {
@@ -21,6 +22,8 @@ const initialState = {
   isExpenseLoading: false,
   areCategoriesLoading: false,
   isRemoving: false,
+  isDataGettingByCategories: false,
+  dataByCategories: [],
   date: null,
 };
 
@@ -106,6 +109,13 @@ const slice = createSlice({
     },
     [removeTransaction.rejected]: state => {
       state.isRemoving = false;
+    },
+    [fetchDataByCategories.pending]: state => {
+      state.isDataGettingByCategories = true;
+    },
+    [fetchDataByCategories.fulfilled]: (state, { payload }) => {
+      state.isDataGettingByCategories = false;
+      state.dataByCategories = payload;
     },
   },
 });

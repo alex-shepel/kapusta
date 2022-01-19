@@ -2,7 +2,6 @@ import s from './DayReportView.module.css';
 import { useEffect, useState } from 'react';
 import IncomesExpenseList from 'components/IncomesExpenseList';
 import { useDispatch, useSelector } from 'react-redux';
-
 import {
   fetchCategories,
   fetchExpense,
