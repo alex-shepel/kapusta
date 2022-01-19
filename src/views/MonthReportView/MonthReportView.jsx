@@ -5,6 +5,7 @@ import Report from 'components/Report/Report';
 import Container from 'components/Container';
 import ReportAmount from 'components/Report/ReportAmount/ReportAmount';
 import { fetchDataByCategories } from 'redux/transaction';
+import { ChartComp } from 'components/Chart/Chart';
 
 const MonthReportView = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const MonthReportView = () => {
       </Container>
       <Container>
         <Report />
+        <ChartComp />
       </Container>
     </>
   );

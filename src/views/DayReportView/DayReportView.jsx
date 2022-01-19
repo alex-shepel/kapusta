@@ -6,17 +6,18 @@ import {
   fetchCategories,
   fetchExpense,
   fetchIncome,
-  getIncomes,
-  getExpenses,
+  getFilterExpTrans,
+  getFilterIncTrans,
 } from 'redux/transaction';
+
 import Summary from 'components/Summary';
 import TransactionForm from 'components/TransactionForm';
 
 const startBalance = () => {};
 
 const DayReportView = () => {
-  const expenses = useSelector(getExpenses);
-  const incomes = useSelector(getIncomes);
+  const expenses = useSelector(getFilterExpTrans);
+  const incomes = useSelector(getFilterIncTrans);
   const [isExpenses, setIsExpenses] = useState(true);
 
   const [isExpensesTabActive, setExpensesTabActive] = useState(true);
