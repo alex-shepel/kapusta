@@ -7,9 +7,11 @@ import {
   fetchCategories,
   removeTransaction,
   fetchDataByCategories,
+  updateBalance,
 } from './operations';
 
 const initialState = {
+  balance: 0,
   incomes: [],
   expenses: [],
   monthStatsIncomes: {},
@@ -112,6 +114,7 @@ const slice = createSlice({
     [removeTransaction.rejected]: state => {
       state.isRemoving = false;
     },
+
     [fetchDataByCategories.pending]: state => {
       state.isDataGettingByCategories = true;
     },

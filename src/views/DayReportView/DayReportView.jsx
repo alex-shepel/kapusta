@@ -14,8 +14,8 @@ import Summary from 'components/Summary';
 import TransactionForm from 'components/TransactionForm';
 import { ReactComponent as ReportPic } from 'images/bar-chart.svg';
 import { Link } from 'react-router-dom';
-
-const startBalance = () => {};
+import { getBalance } from 'redux/user';
+import BalanceForm from 'components/BalanceForm';
 
 const DayReportView = () => {
   const expenses = useSelector(getFilterExpTrans);
@@ -41,20 +41,7 @@ const DayReportView = () => {
   return (
     <>
       <div className={s.section}>
-        <div className={s.balance}>
-          <p className={s.balanceTitle}>Баланс:</p>
-          <div className={s.balanceBox}>
-            <div className={s.balanceMeaning}>BALANCE</div>
-            <button
-              type="button"
-              name="ПОДТВЕРДИТЬ"
-              onClick={startBalance}
-              className={s.buttonBalance}
-            >
-              ПОДТВЕРДИТЬ
-            </button>
-          </div>
-        </div>
+        <BalanceForm />
         <Link to={'/month-report'} className={s.goToReport}>
           Перейти к отчетам
           <ReportPic className={s.reportPic} alt={'reportPic'} />

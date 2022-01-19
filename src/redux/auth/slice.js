@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { register, login, refresh, logOut, getUser } from './operations';
 
 const initialState = {
-  email: null,
+  // email: null,
   accessToken: null,
   refreshToken: null,
   sid: null,
@@ -100,19 +100,19 @@ const slice = createSlice({
       state.error = payload;
     },
     // user
-    [getUser.pending]: (state, { payload }) => {
-      state.isLogouting = true;
-      state.error = null;
-    },
-    [getUser.fulfilled]: (state, { payload }) => {
-      state.email = payload.email;
-      state.isLoggedIn = true;
-      state.error = null;
-    },
-    [getUser.rejected]: (state, { payload }) => {
-      state.isLogining = false;
-      state.error = payload;
-    },
+    // [getUser.pending]: (state, { payload }) => {
+    //   state.isLogouting = true;
+    //   state.error = null;
+    // },
+    // [getUser.fulfilled]: (state, { payload }) => {
+    //   state.email = payload.email;
+    //   state.isLoggedIn = true;
+    //   state.error = null;
+    // },
+    // [getUser.rejected]: (state, { payload }) => {
+    //   state.isLogining = false;
+    //   state.error = payload;
+    // },
   },
 });
 

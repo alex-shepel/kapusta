@@ -5,7 +5,6 @@ import {
   refresh,
   getIsLoggedIn,
   getIsRefreshing,
-  getUser,
   setTokens,
   logOut,
 } from 'redux/auth';
@@ -24,7 +23,7 @@ import {
 import { removeTransaction } from 'redux/transaction';
 import Background from 'components/Background';
 import s from './App.module.css';
-
+import { fetchUser } from 'redux/user';
 
 const App = () => {
   const location = useLocation();
@@ -53,7 +52,7 @@ const App = () => {
     if (!currentToken) {
       return;
     }
-    dispatch(getUser(currentToken));
+    dispatch(fetchUser(currentToken));
   }, [dispatch, currentToken]);
 
   useEffect(() => {
@@ -67,7 +66,7 @@ const App = () => {
       return;
     }
     dispatch(setTokens({ accessToken, refreshToken, sid }));
-    dispatch(getUser(accessToken));
+    dispatch(fetchUser(accessToken));
   }, [accessToken, dispatch, refreshToken, sid]);
 
   return (
