@@ -5,8 +5,8 @@ const Background = () => {
     <>
       <div className={s.background}>
         <div className={s.backgroundImageTop} />
-        <div className={s.backgroundImageBot} />
       </div>
+      <div className={s.backgroundImageBot} />
     </>
   );
 };
