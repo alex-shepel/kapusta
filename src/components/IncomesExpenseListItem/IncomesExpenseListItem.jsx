@@ -1,12 +1,15 @@
 import s from './IncomesExpenseListItem.module.css';
 import PropTypes from 'prop-types';
 import imageDelete from 'images/delete.svg';
+import { openDeleteModal } from 'redux/modal';
+import { useDispatch } from 'react-redux';
 
 const IncomesExpenseListItem = ({
   itemProps: { date, description, category, amount, id },
   transactionsType,
   operationSign,
 }) => {
+  const dispatch = useDispatch();
   return (
     <>
       <li className={s.listItem} key={id}>
@@ -23,7 +26,13 @@ const IncomesExpenseListItem = ({
             {Number(amount).toFixed(2)}
           </span>
           <span>
-            <button type="button" className={s.delete} onClick={() => {}}>
+            <button
+              type="button"
+              className={s.delete}
+              onClick={() => {
+                dispatch(openDeleteModal());
+              }}
+            >
               <img className={s.deleteIcon} src={imageDelete} alt="Delete" />
             </button>
           </span>

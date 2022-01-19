@@ -5,8 +5,6 @@ import { useDispatch } from 'react-redux';
 import { fetchCategories, fetchExpense, fetchIncome } from 'redux/transaction';
 import Summary from 'components/Summary';
 import TransactionForm from 'components/TransactionForm';
-import Modal from 'components/Modal/Modal';
-import ConfirmModal from 'components/ConfirmModal';
 
 const startBalance = () => {};
 
@@ -15,13 +13,8 @@ const DayReportView = () => {
 
   const [isExpensesTabActive, setExpensesTabActive] = useState(true);
   const [isIncomesTabActive, setIsIncomesTabActive] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const dispatch = useDispatch();
-
-  const onLogOut = () => {
-    console.log('log out');
-  };
 
   useEffect(() => {
     dispatch(fetchIncome());
@@ -170,19 +163,6 @@ const DayReportView = () => {
           </div>
         </div>
       </div>
-      <Modal
-        onClose={() => {
-          setIsModalOpen(false);
-        }}
-      >
-        <ConfirmModal
-          onClose={() => {
-            setIsModalOpen(false);
-          }}
-          title="Вы уверены?"
-          onConfirm={onLogOut}
-        />
-      </Modal>
     </>
   );
 };

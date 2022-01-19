@@ -7,12 +7,20 @@ import {
   getIsRefreshing,
   getUser,
   setTokens,
+  logOut,
 } from 'redux/auth';
 import './App.module.css';
 import Routes from 'routes';
 import Container from 'components/Container';
 import Header from 'components/Header';
 import Spinner from 'components/Spinner';
+import Modal from 'components/Modal/Modal';
+import ConfirmModal from 'components/ConfirmModal';
+import {
+  closeModal,
+  getIsDeleteOpenModal,
+  getIsLogoutOpenModal,
+} from 'redux/modal';
 
 const App = () => {
   const location = useLocation();
@@ -20,6 +28,16 @@ const App = () => {
   const isLoggedIn = useSelector(getIsLoggedIn);
   const isRefreshing = useSelector(getIsRefreshing);
   const currentToken = useSelector(state => state?.auth?.accessToken);
+
+  const isLogoutModalOpen = useSelector(getIsLogoutOpenModal);
+  const isDeleteModalOpen = useSelector(getIsDeleteOpenModal);
+  const isModalOpen = isLogoutModalOpen || isDeleteModalOpen;
+
+  const onLogOut = () => {
+    console.log('выходим');
+    dispatch(logOut());
+  };
+  const onDelete = () => {};
 
   const accessToken = new URLSearchParams(location.search).get('accessToken');
   const refreshToken = new URLSearchParams(location.search).get('refreshToken');
@@ -57,6 +75,21 @@ const App = () => {
         <Container>
           {isRefreshing ? <Spinner /> : <Routes isLoggedIn={isLoggedIn} />}
         </Container>
+        {isModalOpen && (
+          <Modal
+            onClose={() => {
+              dispatch(closeModal());
+            }}
+          >
+            <ConfirmModal
+              onClose={() => {
+                dispatch(closeModal());
+              }}
+              title="Вы уверены?"
+              onConfirm={() => (isLogoutModalOpen ? onLogOut() : onDelete())}
+            />
+          </Modal>
+        )}
       </main>
     </>
   );
