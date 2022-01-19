@@ -2,15 +2,23 @@ import s from './DayReportView.module.css';
 import { useEffect, useState } from 'react';
 import IncomesExpenseList from 'components/IncomesExpenseList';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCategories, fetchExpense, fetchIncome, getIncomes, getExpenses } from 'redux/transaction';
+
+import {
+  fetchCategories,
+  fetchExpense,
+  fetchIncome,
+  getFilterExpTrans,
+  getFilterIncTrans,
+} from 'redux/transaction';
+
 import Summary from 'components/Summary';
 import TransactionForm from 'components/TransactionForm';
 
 const startBalance = () => {};
 
 const DayReportView = () => {
-  const expenses = useSelector(getExpenses);
-  const incomes = useSelector(getIncomes);
+  const expenses = useSelector(getFilterExpTrans);
+  const incomes = useSelector(getFilterIncTrans);
   const [isExpenses, setIsExpenses] = useState(true);
 
   const [isExpensesTabActive, setExpensesTabActive] = useState(true);
