@@ -11,14 +11,6 @@ const IncomesExpenseListItem = ({
 }) => {
   const dispatch = useDispatch();
 
-  // const dateHandle = date => {
-  //   const normDate = new Date(date);
-  //   const year = String(normDate.getFullYear());
-  //   const month = String(normDate.getMonth() + 1).padStart(2, '0');
-  //   const day = String(normDate.getDate()).padStart(2, '0');
-  //   return `${year}-${month}-${day}`;
-  // };
-
   const onDelete = id => {
     console.log(id);
     dispatch(removeTransaction(id));
