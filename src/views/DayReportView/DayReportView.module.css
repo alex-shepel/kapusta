@@ -148,11 +148,11 @@
 }
 
 .balanceMeaning {
-  border: 2px;
+  border: 2px solid var(--white-color);
   border-bottom-left-radius: 22px;
   border-top-left-radius: 22px;
-  width: 127px;
-  height: 44px;
+  width: 121px;
+  height: 40px;
   font-weight: bold;
   display: flex;
   justify-content: center;
@@ -160,12 +160,12 @@
   background-color: var(--bg-modal-two-colour);
 }
 .buttonBalance {
-  border: 2px;
+  border: 2px solid var(--white-color);
   border-bottom-right-radius: 22px;
   border-top-right-radius: 22px;
   border-left: 0;
-  width: 123px;
-  height: 44px;
+  width: 121px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -179,16 +179,38 @@
   border-left: 0;
   color: var(--white-color);
 }
+.goToReport {
+  display: flex;
+  align-items: center;
+  color: var(--text-color-one);
+  margin-top: 37px;
+  font-size: 12px;
+  line-height: 14px;
+}
+.reportPic {
+  width: 25px;
+  height: 25px;
+  margin-left: 14px;
+  padding-bottom: 3px;
+  fill: var(--text-color-four);
+}
+.reportPic:hover {
+  fill: var(--accent-color);
+}
+.goToReport:hover {
+  color: var(--accent-color);
+}
 @media screen and (min-width: 768px) {
   .section {
     flex-direction: row;
     padding-top: 40px;
     padding-bottom: 58px;
-    justify-content: space-around;
+    justify-content: center;
   }
   .balance {
     display: flex;
     align-items: center;
+    padding-left: 65px;
   }
   .balanceTitle {
     margin: 0;
@@ -196,14 +218,16 @@
   }
   .balanceMeaning {
     margin-right: 15px;
-    border: 2px;
+    border: 2px solid var(--white-color);
     border-radius: 16px;
   }
   .buttonBalance {
-    border: 2px;
+    border: 2px solid var(--white-color);
     border-radius: 16px;
   }
   .goToReport {
+    margin-left: 111px;
+    margin-top: 2px;
   }
 }
 @media screen and (min-width: 1280px) {
