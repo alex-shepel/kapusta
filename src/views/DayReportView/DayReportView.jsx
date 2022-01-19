@@ -2,8 +2,7 @@ import s from './DayReportView.module.css';
 import { useEffect, useState } from 'react';
 import IncomesExpenseList from 'components/IncomesExpenseList';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCategories, fetchExpense, fetchIncome } from 'redux/transaction';
-import { getIncomes, getExpenses } from 'redux/transaction/selectors';
+import { fetchCategories, fetchExpense, fetchIncome, getIncomes, getExpenses } from 'redux/transaction';
 import Summary from 'components/Summary';
 import TransactionForm from 'components/TransactionForm';
 
