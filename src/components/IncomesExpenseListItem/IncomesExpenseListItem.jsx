@@ -1,7 +1,7 @@
 import s from './IncomesExpenseListItem.module.css';
 import PropTypes from 'prop-types';
 import imageDelete from 'images/delete.svg';
-import { removeTransaction } from 'redux/transaction/operations';
+import { removeTransaction } from 'redux/transaction';
 import { useDispatch } from 'react-redux';
 
 const IncomesExpenseListItem = ({
