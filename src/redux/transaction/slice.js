@@ -21,6 +21,7 @@ const initialState = {
   isExpenseLoading: false,
   areCategoriesLoading: false,
   isRemoving: false,
+  date: null,
 };
 
 const resetState = state => {
@@ -32,6 +33,9 @@ const slice = createSlice({
   initialState,
   reducers: {
     resetAuthState: resetState,
+    changeDate: (state, { payload }) => {
+      state.date = payload;
+    },
   },
   extraReducers: {
     [addIncome.pending]: state => {
@@ -107,4 +111,4 @@ const slice = createSlice({
 });
 
 export const { reducer: transactionReducer } = slice;
-export const { resetAuthState } = slice.actions;
+export const { resetAuthState, changeDate } = slice.actions;

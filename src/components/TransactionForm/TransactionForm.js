@@ -13,7 +13,7 @@ import {
   getIncomeCategories,
   getExpenseCategories,
 } from 'redux/transaction/selectors';
-import { addIncome, addExpense } from 'redux/transaction';
+import { addIncome, addExpense, changeDate } from 'redux/transaction';
 
 function TransactionForm({ transactionsType }) {
   const [date, setDate] = useState(new Date());
@@ -64,6 +64,8 @@ function TransactionForm({ transactionsType }) {
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
     setDate(`${year}-${month}-${day}`);
+    // console.log(date);
+    dispatch(changeDate(`${year}-${month}-${day}`));
   };
 
   const handleSubmit = e => {
