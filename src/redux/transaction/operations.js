@@ -78,9 +78,7 @@ const fetchDataByCategories = createAsyncThunk(
   'transaction/get-data-by-categories',
   async date => {
     try {
-      console.log(date);
       const { data } = await api.getPeriodTransactions(date);
-      console.log(data);
       return data;
     } catch (error) {
       console.log(error.response.data.message);
