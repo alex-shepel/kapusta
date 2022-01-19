@@ -1,0 +1,15 @@
+.reportNav{
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.reportMain{
+    margin-top: 40px;
+    border-radius: 20px;
+    box-shadow: var(--box-shadow);
+    padding-top: 20px;
+}
+.reportArrow{
+    cursor: pointer;
+    color:var(--accent-color);
+}

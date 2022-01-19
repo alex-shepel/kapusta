@@ -1,15 +1,26 @@
 import s from './DayReportView.module.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import IncomesExpenseList from 'components/IncomesExpenseList';
-import Container from 'components/Container';
+import { useDispatch } from 'react-redux';
+import { fetchCategories, fetchExpense, fetchIncome } from 'redux/transaction';
 import Summary from 'components/Summary';
 import TransactionForm from 'components/TransactionForm';
+
+const startBalance = () => {};
 
 const DayReportView = () => {
   const [isExpenses, setIsExpenses] = useState(true);
 
   const [isExpensesTabActive, setExpensesTabActive] = useState(true);
   const [isIncomesTabActive, setIsIncomesTabActive] = useState(false);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchIncome());
+    dispatch(fetchExpense());
+    dispatch(fetchCategories());
+  }, [dispatch]);
 
   const handleToggle = () => {
     setIsIncomesTabActive(!isIncomesTabActive);
@@ -95,7 +106,21 @@ const DayReportView = () => {
   return (
     <>
       <div className={s.section}>
-        <div className={s.goToReport}></div>
+        <div className={s.balance}>
+          <p className={s.balanceTitle}>Баланс:</p>
+          <div className={s.balanceBox}>
+            <div className={s.balanceMeaning}>BALANCE</div>
+            <button
+              type="button"
+              name="ПОДТВЕРДИТЬ"
+              onClick={startBalance}
+              className={s.buttonBalance}
+            >
+              ПОДТВЕРДИТЬ
+            </button>
+          </div>
+        </div>
+        <div className={s.goToReport}>Перейти к отчетам</div>
       </div>
       <div className={s.mainWrapper}>
         <div className={s.buttonsHolder}>

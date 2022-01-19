@@ -7,8 +7,8 @@
 .inputWrapper::after {
   position: absolute;
   content: '';
-  top: 12px;
-  right: 12px;
+  top: 13px;
+  right: 9px;
   width: 20px;
   height: 20px;
   background-image: url('../../images/calculator.svg');
@@ -17,17 +17,17 @@
 .inputWrapper::before {
   position: absolute;
   content: '';
-  top: 0px;
+  top: 1px;
   right: 40px;
   width: 2px;
-  height: 42px;
+  height: 45px;
   background-color: white;
 }
 
 .inputDescription input {
   height: 42px;
-  width: 282px;
-
+  width: 258px;
+  margin-left: 20px;
   padding-right: 0;
   padding-left: 20px;
   padding-top: 0;
@@ -41,16 +41,9 @@
 }
 
 @media screen and (min-width: 320px) {
-  .dataInput {
-    padding-left: 8px;
-  }
-
-  .inputDescription {
-    font-size: 12px;
-    background-color: transparent;
-    border: 2px solid #ffffff;
-    border-bottom: none;
-  }
+  /* .dataInput {
+    background-color: tomato;
+  } */
 }
 .inputDescription:focus-visible {
   border: 2px solid var(--accent-color);
@@ -66,10 +59,10 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 103px;
-  padding: 10px 46px 10px 30px;
-
-  width: 183px;
+  margin-bottom: 42px;
+  padding: 0;
+  padding-left: 20px;
+  width: 163px;
   height: 44px;
 
   font-weight: 700;
@@ -83,10 +76,6 @@
   border-radius: 22px;
 }
 @media screen and (min-width: 320px) {
-  .inputAmount {
-    padding: 0;
-    padding-top: -5px;
-  }
 }
 .inputAmount:focus-visible {
   outline: none;
@@ -131,16 +120,16 @@
     background-color: transparent;
     border: 2px solid #ffffff;
     border-radius: 0px 0px 16px 0px;
-    padding-right: 0;
+    padding-right: 20px;
     padding-left: 20px;
     padding-top: 0;
     padding-bottom: 0;
-    margin-right: 20px;
+    margin-left: 20px;
   }
 }
 .form {
   width: 100%;
-  padding-right: 10px;
+  /* padding-right: 10px; */
 }
 
 @media screen and (min-width: 320px) {
@@ -155,18 +144,14 @@
 
 .form label {
   position: absolute;
-  top: -5px;
+  top: -7px;
   left: 15px;
 
   color: #c7ccdc;
 }
-@media screen and (min-width: 320px) {
-  .form label {
-    top: -7px;
-  }
-}
+
 .box {
-  margin-bottom: 45px;
+  margin-bottom: 40px;
 }
 
 @media screen and (min-width: 768px) {
@@ -174,6 +159,7 @@
     display: flex;
     height: 44px;
     margin-bottom: 30px;
+    background-color: transparent;
   }
 
   .form {
@@ -212,6 +198,7 @@
   .inputDescription input {
     height: 40px;
     width: 192px;
+    margin-left: 0px;
     outline: none;
     padding: 0;
     padding-left: 20px;
@@ -288,9 +275,9 @@
   }
 
   .inputCategory ~ div {
-    height: 40px;
-    width: 171px;
-
+    height: 44px;
+    width: 195px;
+    margin-left: 0;
     background-color: transparent;
     border: 2px solid #f5f6fb;
     border-radius: 0;
@@ -353,12 +340,14 @@
   .inputCategory ~ div {
     width: 188px;
     height: 48px;
+    margin-left: 0px;
   }
 
   .inputWrapper,
   .inputAmount input {
     width: 126px;
     height: 44px;
+    padding-left: 0px;
   }
 }
 
@@ -366,14 +355,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
+  /* display: none; */
 }
 
 @media screen and (min-width: 320px) {
-  .calendarWrapper {
-    display: none;
-    margin-top: 50px;
-  }
 }
 .calendarWrapper > div {
   width: auto;
