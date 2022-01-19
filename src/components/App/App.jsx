@@ -8,11 +8,12 @@ import {
   getUser,
   setTokens,
 } from 'redux/auth';
-import './App.module.css';
 import Routes from 'routes';
 import Container from 'components/Container';
 import Header from 'components/Header';
 import Spinner from 'components/Spinner';
+import Background from 'components/Background';
+import s from './App.module.css';
 
 const App = () => {
   const location = useLocation();
@@ -53,7 +54,8 @@ const App = () => {
           <Header />
         </Container>
       </header>
-      <main className="app">
+      <main className={s.app}>
+        <Background />
         <Container>
           {isRefreshing ? <Spinner /> : <Routes isLoggedIn={isLoggedIn} />}
         </Container>
