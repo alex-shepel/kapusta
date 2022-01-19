@@ -3,10 +3,10 @@ import * as api from 'services/kapusta-api';
 
 const addIncome = createAsyncThunk(
   'transaction/add-income',
-  async (credentials, { rejectWithValue }) => {
+  async (transaction, { rejectWithValue }) => {
     try {
-      const { data } = await api.addIncome(credentials);
-      return data;
+      const { data } = await api.addIncome(transaction);
+      return data.transaction;
     } catch (error) {
       console.log(error.response.data.message);
     }
@@ -27,10 +27,10 @@ const fetchIncome = createAsyncThunk(
 
 const addExpense = createAsyncThunk(
   'transaction/add-expense',
-  async (credentials, { rejectWithValue }) => {
+  async (transaction, { rejectWithValue }) => {
     try {
-      const { data } = await api.addExpense(credentials);
-      return data;
+      const { data } = await api.addExpense(transaction);
+      return data.transaction;
     } catch (error) {
       console.log(error.response.data.message);
     }
@@ -64,10 +64,22 @@ const fetchCategories = createAsyncThunk(
 
 const removeTransaction = createAsyncThunk(
   'transaction/remove',
-  async (credentials, { rejectWithValue }) => {
+  async (id, { rejectWithValue }) => {
     try {
-      const { data } = await api.removeTransaction(credentials);
-      return { data };
+      await api.removeTransaction(id);
+      return id;
+    } catch (error) {
+      console.log(error.response.data.message);
+    }
+  },
+);
+
+const fetchDataByCategories = createAsyncThunk(
+  'transaction/get-data-by-categories',
+  async () => {
+    try {
+      const { data } = await api.getPeriodTransactions();
+      return data;
     } catch (error) {
       console.log(error.response.data.message);
     }
@@ -81,4 +93,5 @@ export {
   fetchExpense,
   fetchCategories,
   removeTransaction,
+  fetchDataByCategories,
 };

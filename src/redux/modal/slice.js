@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   isLogoutOpenModal: false,
   isDeleteOpenModal: false,
+  deleteId: null,
 };
 
 const slice = createSlice({
@@ -16,8 +17,9 @@ const slice = createSlice({
     openLogoutModal: state => {
       state.isLogoutOpenModal = true;
     },
-    openDeleteModal: state => {
+    openDeleteModal: (state, { payload }) => {
       state.isDeleteOpenModal = true;
+      state.deleteId = payload;
     },
   },
 });

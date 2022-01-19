@@ -18,9 +18,11 @@ import Modal from 'components/Modal/Modal';
 import ConfirmModal from 'components/ConfirmModal';
 import {
   closeModal,
+  getDeleteId,
   getIsDeleteOpenModal,
   getIsLogoutOpenModal,
 } from 'redux/modal';
+import { removeTransaction } from 'redux/transaction';
 
 const App = () => {
   const location = useLocation();
@@ -28,16 +30,19 @@ const App = () => {
   const isLoggedIn = useSelector(getIsLoggedIn);
   const isRefreshing = useSelector(getIsRefreshing);
   const currentToken = useSelector(state => state?.auth?.accessToken);
-
+  const deleteId = useSelector(getDeleteId);
   const isLogoutModalOpen = useSelector(getIsLogoutOpenModal);
   const isDeleteModalOpen = useSelector(getIsDeleteOpenModal);
   const isModalOpen = isLogoutModalOpen || isDeleteModalOpen;
+
+  const onDelete = () => {
+    dispatch(removeTransaction(deleteId));
+  };
 
   const onLogOut = () => {
     console.log('выходим');
     dispatch(logOut());
   };
-  const onDelete = () => {};
 
   const accessToken = new URLSearchParams(location.search).get('accessToken');
   const refreshToken = new URLSearchParams(location.search).get('refreshToken');
@@ -85,7 +90,11 @@ const App = () => {
               onClose={() => {
                 dispatch(closeModal());
               }}
-              title="Вы уверены?"
+              question={
+                isLogoutModalOpen
+                  ? 'Вы действительно хотите выйти?'
+                  : 'Вы уверены?'
+              }
               onConfirm={() => (isLogoutModalOpen ? onLogOut() : onDelete())}
             />
           </Modal>
