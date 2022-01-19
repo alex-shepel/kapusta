@@ -52,7 +52,7 @@ const slice = createSlice({
     [fetchIncome.fulfilled]: (state, { payload }) => {
       state.isIncomeLoading = false;
       state.incomes = payload.incomes;
-      state.monthStatsIncomes = payload.monthStats;
+      state.monthStatsIncomes = payload.monthsStats;
     },
     [fetchIncome.rejected]: state => {
       state.isIncomeLoading = false;
@@ -75,7 +75,7 @@ const slice = createSlice({
     [fetchExpense.fulfilled]: (state, { payload }) => {
       state.isExpenseLoading = false;
       state.expenses = payload.expenses;
-      state.monthStatsExpenses = payload.monthStats;
+      state.monthStatsExpenses = payload.monthsStats;
     },
     [fetchExpense.rejected]: state => {
       state.isExpenseLoading = false;
@@ -98,8 +98,8 @@ const slice = createSlice({
     },
     [removeTransaction.fulfilled]: (state, { payload }) => {
       state.isRemoving = false;
-      state.incomes = state.incomes.filter(item => item !== payload._id);
-      state.expenses = state.expenses.filter(item => item !== payload._id);
+      state.incomes = state.incomes.filter(item => item._id !== payload);
+      state.expenses = state.expenses.filter(item => item._id !== payload);
     },
     [removeTransaction.rejected]: state => {
       state.isRemoving = false;
