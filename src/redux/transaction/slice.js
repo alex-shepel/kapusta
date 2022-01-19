@@ -6,6 +6,7 @@ import {
   fetchExpense,
   fetchCategories,
   removeTransaction,
+  fetchDataByCategories,
 } from './operations';
 
 const initialState = {
@@ -102,6 +103,9 @@ const slice = createSlice({
     },
     [removeTransaction.rejected]: state => {
       state.isRemoving = false;
+    },
+    [fetchDataByCategories.rejected]: state => {
+      console.log(state);
     },
   },
 });
