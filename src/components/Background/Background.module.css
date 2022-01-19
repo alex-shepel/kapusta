@@ -7,6 +7,29 @@
   height: 415px;
   background-color: #f5f6fb;
   border-bottom-left-radius: 30%;
+  overflow: hidden;
+}
+
+.backgroundImageTop {
+  position: absolute;
+  z-index: -99;
+  top: 100px;
+  right: -25px;
+  width: 100%;
+  height: 90px;
+  background-image: url(../../images/background-one-cabage.svg);
+  background-repeat: no-repeat;
+  transform: scaleY(1) rotate(-180deg);
+}
+.backgroundImageBot {
+  position: absolute;
+  z-index: -99;
+  top: 700px;
+  right: 185px;
+  width: 85px;
+  height: 90px;
+  background-image: url(../../images/background-one-cabage.svg);
+  background-repeat: no-repeat;
 }
 
 @media screen and (min-width: 768px) {
@@ -14,10 +37,33 @@
     height: 600px;
     border-bottom-left-radius: 20%;
   }
+  .backgroundImageTop {
+    left: 10px;
+    top: 30px;
+    width: 100%;
+    height: 232px;
+    background-image: url(../../images/background-top-cabages.svg);
+    transform: none;
+  }
+  .backgroundImageBot {
+    top: 765px;
+    left: 103px;
+    width: 183px;
+    height: 142px;
+    background-image: url(../../images/background-bot-two-cabages.svg);
+  }
 }
 
 @media screen and (min-width: 1280px) {
   .background {
     border-bottom-left-radius: 10%;
+    height: 530px;
+  }
+  .backgroundImageTop {
+    width: 1334px;
+  }
+  .backgroundImageBot {
+    top: 600px;
+    left: 230px;
   }
 }
