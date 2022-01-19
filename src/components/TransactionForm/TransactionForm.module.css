@@ -171,8 +171,8 @@
   .inputWrapper {
     position: relative;
     width: 104px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .inputWrapper::after {
@@ -197,7 +197,7 @@
 
   .inputDescription input {
     height: 40px;
-    width: 192px;
+    width: 170px;
     margin-left: 0px;
     outline: none;
     padding: 0;
@@ -225,7 +225,7 @@
     margin-left: auto;
     padding: 0;
     padding-left: 20px;
-    width: 104px;
+    width: 100px;
     height: 40px;
     font-family: Roboto;
     font-style: normal;
@@ -276,7 +276,7 @@
 
   .inputCategory ~ div {
     height: 44px;
-    width: 195px;
+    width: 171px;
     margin-left: 0;
     background-color: transparent;
     border: 2px solid #f5f6fb;
@@ -345,8 +345,7 @@
 
   .inputWrapper,
   .inputAmount input {
-    width: 126px;
+    width: 106px;
     height: 44px;
-    padding-left: 0px;
   }
 }
