@@ -6,18 +6,12 @@ import {
 } from 'redux/transaction/selectors';
 import { useSelector } from 'react-redux';
 
-<<<<<<< Updated upstream
-const Summary = () => {
-  const monthStatsIncomes = useSelector(getMonthStatsIncomes);
-  const monthStatsExpenses = useSelector(getMonthStatsExpenses);
-=======
 const Summary = ({ transactionsType }) => {
   const monthStatsIncomes = useSelector(getMonthStatsIncomes);
   const monthStatsExpenses = useSelector(getMonthStatsExpenses);
 
   const data =
     transactionsType === 'incomes' ? monthStatsIncomes : monthStatsExpenses;
->>>>>>> Stashed changes
 
   return (
     <div className={s.section}>
