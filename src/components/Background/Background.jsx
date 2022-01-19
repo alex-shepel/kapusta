@@ -5,6 +5,7 @@ const Background = () => {
     <>
       <div className={s.background} />
       <div className={s.backgroundImageTop} />
+      <div className={s.backgroundImageBot} />
     </>
   );
 };
