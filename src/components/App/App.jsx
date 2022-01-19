@@ -7,13 +7,24 @@ import {
   getIsRefreshing,
   getUser,
   setTokens,
+  logOut,
 } from 'redux/auth';
 import Routes from 'routes';
 import Container from 'components/Container';
 import Header from 'components/Header';
 import Spinner from 'components/Spinner';
+import Modal from 'components/Modal/Modal';
+import ConfirmModal from 'components/ConfirmModal';
+import {
+  closeModal,
+  getDeleteId,
+  getIsDeleteOpenModal,
+  getIsLogoutOpenModal,
+} from 'redux/modal';
+import { removeTransaction } from 'redux/transaction';
 import Background from 'components/Background';
 import s from './App.module.css';
+
 
 const App = () => {
   const location = useLocation();
@@ -21,6 +32,18 @@ const App = () => {
   const isLoggedIn = useSelector(getIsLoggedIn);
   const isRefreshing = useSelector(getIsRefreshing);
   const currentToken = useSelector(state => state?.auth?.accessToken);
+  const deleteId = useSelector(getDeleteId);
+  const isLogoutModalOpen = useSelector(getIsLogoutOpenModal);
+  const isDeleteModalOpen = useSelector(getIsDeleteOpenModal);
+  const isModalOpen = isLogoutModalOpen || isDeleteModalOpen;
+
+  const onDelete = () => {
+    dispatch(removeTransaction(deleteId));
+  };
+
+  const onLogOut = () => {
+    dispatch(logOut());
+  };
 
   const accessToken = new URLSearchParams(location.search).get('accessToken');
   const refreshToken = new URLSearchParams(location.search).get('refreshToken');
@@ -59,6 +82,25 @@ const App = () => {
         <Container>
           {isRefreshing ? <Spinner /> : <Routes isLoggedIn={isLoggedIn} />}
         </Container>
+        {isModalOpen && (
+          <Modal
+            onClose={() => {
+              dispatch(closeModal());
+            }}
+          >
+            <ConfirmModal
+              onClose={() => {
+                dispatch(closeModal());
+              }}
+              question={
+                isLogoutModalOpen
+                  ? 'Вы действительно хотите выйти?'
+                  : 'Вы уверены?'
+              }
+              onConfirm={() => (isLogoutModalOpen ? onLogOut() : onDelete())}
+            />
+          </Modal>
+        )}
       </main>
     </>
   );

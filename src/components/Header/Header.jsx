@@ -4,6 +4,7 @@ import logo from 'images/logo.svg';
 import logoutPic from 'images/logout-mobile.svg';
 import { getIsLoggedIn, logOut } from 'redux/auth';
 import s from './Header.module.css';
+import { openLogoutModal } from 'redux/modal';
 
 const Header = () => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -34,7 +35,7 @@ const Header = () => {
             {width < breakPointTablet ? (
               <img
                 className={s.logout__picture}
-                onClick={() => dispatch(logOut())}
+                onClick={() => dispatch(openLogoutModal())}
                 src={logoutPic}
                 alt={'logout'}
               />
@@ -42,7 +43,10 @@ const Header = () => {
               <>
                 <div className={s.user__name}>{userEmail}</div>
                 <div className={s.line}></div>
-                <div className={s.logout} onClick={() => dispatch(logOut())}>
+                <div
+                  className={s.logout}
+                  onClick={() => dispatch(openLogoutModal())}
+                >
                   Выйти
                 </div>
               </>
