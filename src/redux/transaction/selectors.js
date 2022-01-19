@@ -18,7 +18,6 @@ const getIncomesDataByCategoriesFromState = state =>
   state.transaction.dataByCategories;
 const getExpenseDataByCategoriesFromState = state =>
   state.transaction.dataByCategories;
-// const isDataGettingByCategories = state => state.transaction;
 
 const filter = (items, date) =>
   items.filter(({ date: value }) => date === value);
