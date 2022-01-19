@@ -10,29 +10,10 @@
   overflow: hidden;
 }
 
-.backgroundImageBot {
-  position: absolute;
-  z-index: -99;
-  top: 700px;
-  right: 185px;
-  width: 85px;
-  height: 90px;
-  background-image: url(../../images/background-one-cabage.svg);
-  background-repeat: no-repeat;
-}
-
 @media screen and (min-width: 768px) {
   .background {
     height: 600px;
     border-bottom-left-radius: 20%;
-  }
-
-  .backgroundImageBot {
-    top: 765px;
-    left: 103px;
-    width: 183px;
-    height: 142px;
-    background-image: url(../../images/background-bot-two-cabages.svg);
   }
 }
 
@@ -40,10 +21,5 @@
   .background {
     border-bottom-left-radius: 10%;
     height: 530px;
-  }
-
-  .backgroundImageBot {
-    top: 600px;
-    left: 230px;
   }
 }
