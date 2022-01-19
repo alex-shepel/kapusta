@@ -13,7 +13,7 @@ import {
   getIncomeCategories,
   getExpenseCategories,
 } from 'redux/transaction/selectors';
-import { addIncome, addExpense } from 'redux/transaction/operations';
+import { addIncome, addExpense } from 'redux/transaction';
 
 function TransactionForm({ transactionsType }) {
   const [date, setDate] = useState(new Date());
