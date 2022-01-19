@@ -19,6 +19,7 @@
   }
   .expenceReportItem::before {
     content: '';
+    background-color: var(--bg-modal-two-colour);
     width: 56px;
     height: 46px;
     position: absolute;
