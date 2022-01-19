@@ -74,6 +74,18 @@ const removeTransaction = createAsyncThunk(
   },
 );
 
+const fetchDataByCategories = createAsyncThunk(
+  'transaction/get-data-by-categories',
+  async () => {
+    try {
+      const { data } = await api.getPeriodTransactions();
+      return data;
+    } catch (error) {
+      console.log(error.response.data.message);
+    }
+  },
+);
+
 export {
   addIncome,
   fetchIncome,
@@ -81,4 +93,5 @@ export {
   fetchExpense,
   fetchCategories,
   removeTransaction,
+  fetchDataByCategories,
 };
