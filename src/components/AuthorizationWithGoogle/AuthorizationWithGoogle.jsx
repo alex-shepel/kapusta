@@ -7,6 +7,7 @@ const AuthorizationWithGoogle = () => {
   return (
     <div className={s.ButtonWrap}>
       <a
+        // target="blank"
         href="https://kapusta-backend.goit.global/auth/google"
         className={s.ButtonGoogleAuth}
       >

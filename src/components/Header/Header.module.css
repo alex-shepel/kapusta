@@ -32,7 +32,7 @@
 }
 .user__name {
   font-size: 12px;
-  line-height: 14.06px;
+  line-height: 1.67;
   margin-right: 20px;
 }
 .line {
@@ -52,7 +52,6 @@
   color: var(--accent-color);
 }
 .logout__picture {
-  margin-right: 19px;
   margin-left: 5px;
   cursor: pointer;
 }

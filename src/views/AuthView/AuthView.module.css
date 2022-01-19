@@ -91,7 +91,7 @@
   .WrapMainPage {
     /* Геометрия */
     display: flex;
-    margin-top: 115px;
+    padding-top: 115px;
     margin-bottom: 140px;
   }
   .HeroWrap {

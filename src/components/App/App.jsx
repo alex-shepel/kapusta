@@ -9,7 +9,6 @@ import {
   setTokens,
   logOut,
 } from 'redux/auth';
-import './App.module.css';
 import Routes from 'routes';
 import Container from 'components/Container';
 import Header from 'components/Header';
@@ -23,6 +22,9 @@ import {
   getIsLogoutOpenModal,
 } from 'redux/modal';
 import { removeTransaction } from 'redux/transaction';
+import Background from 'components/Background';
+import s from './App.module.css';
+
 
 const App = () => {
   const location = useLocation();
@@ -40,7 +42,6 @@ const App = () => {
   };
 
   const onLogOut = () => {
-    console.log('выходим');
     dispatch(logOut());
   };
 
@@ -76,7 +77,8 @@ const App = () => {
           <Header />
         </Container>
       </header>
-      <main className="app">
+      <main className={s.app}>
+        <Background />
         <Container>
           {isRefreshing ? <Spinner /> : <Routes isLoggedIn={isLoggedIn} />}
         </Container>
