@@ -22,6 +22,8 @@ const initialState = {
   isExpenseLoading: false,
   areCategoriesLoading: false,
   isRemoving: false,
+  isDataGettingByCategories: false,
+  dataByCategories: [],
 };
 
 const resetState = state => {
@@ -104,8 +106,12 @@ const slice = createSlice({
     [removeTransaction.rejected]: state => {
       state.isRemoving = false;
     },
-    [fetchDataByCategories.rejected]: state => {
-      console.log(state);
+    [fetchDataByCategories.pending]: state => {
+      state.isDataGettingByCategories = true;
+    },
+    [fetchDataByCategories.fulfilled]: (state, { payload }) => {
+      state.isDataGettingByCategories = false;
+      state.dataByCategories = payload;
     },
   },
 });

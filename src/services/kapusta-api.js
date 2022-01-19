@@ -28,8 +28,8 @@ const getIncomeCategories = async credentials =>
   await axios.get('transaction/income-categories');
 const getExpenseCategories = async credentials =>
   await axios.get('transaction/expense-categories');
-const getPeriodTransactions = async credentials =>
-  await axios.get('transaction/period-data');
+const getPeriodTransactions = async date =>
+  await axios.get(`transaction/period-data?date=${date}`);
 
 /* user */
 const updateBalance = async credentials => await axios.post('user/balance');
