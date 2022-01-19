@@ -52,7 +52,6 @@
   color: var(--accent-color);
 }
 .logout__picture {
-  margin-right: 19px;
   margin-left: 5px;
   cursor: pointer;
 }
