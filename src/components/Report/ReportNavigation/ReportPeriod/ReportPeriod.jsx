@@ -7,7 +7,6 @@ const ReportPeriod = ({ pickedMonth, setPickedMonth }) => {
   const [displayMonth, setDisplayMonth] = useState('');
   const [indexOfMonth, setIndexOfMonth] = useState(new Date().getMonth());
   const currentYear = new Date().getFullYear();
-  // const indexOfMonth = new Date().getMonth();
   const arrOfMonthes = [
     'январь',
     'февраль',
@@ -22,8 +21,6 @@ const ReportPeriod = ({ pickedMonth, setPickedMonth }) => {
     'ноябрь',
     'декабрь',
   ];
-
-  // console.log(arrOfMonthes[indexOfMonth]);
 
   useEffect(() => {
     const currentDate = `${arrOfMonthes[indexOfMonth]} ${currentYear}`;
