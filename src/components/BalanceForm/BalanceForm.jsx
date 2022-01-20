@@ -17,8 +17,8 @@ const BalanceForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(updateBalance(balanceInput));
-    console.log('BalanceForm ~ balanceInput', balanceInput);
   };
+  console.log('BalanceForm ~ balanceInput', balanceInput);
 
   return (
     <div className={s.balance}>
@@ -32,7 +32,7 @@ const BalanceForm = () => {
         <button type="submit" name="ПОДТВЕРДИТЬ" className={s.buttonBalance}>
           ПОДТВЕРДИТЬ
         </button>
-        <Toast />
+        {!balanceInput && <Toast />}
       </form>
     </div>
   );
