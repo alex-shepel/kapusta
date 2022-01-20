@@ -108,8 +108,14 @@ const slice = createSlice({
     },
     [removeTransaction.fulfilled]: (state, { payload }) => {
       state.isRemoving = false;
-      state.incomes = state.incomes.filter(item => item._id !== payload);
-      state.expenses = state.expenses.filter(item => item._id !== payload);
+      state.incomes = state.incomes.filter(
+        item => item._id !== payload.transactionId,
+      );
+      state.expenses = state.expenses.filter(
+        item => item._id !== payload.transactionId,
+      );
+      state.monthStatsExpenses = payload.dataExpense;
+      state.monthStatsIncomes = payload.dataIncome;
     },
     [removeTransaction.rejected]: state => {
       state.isRemoving = false;
