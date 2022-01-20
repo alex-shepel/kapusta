@@ -129,6 +129,7 @@
   flex-direction: column-reverse;
   margin-bottom: 40px;
 }
+
 .goToReport {
   display: flex;
   align-items: center;
@@ -165,7 +166,7 @@
 @media screen and (min-width: 1280px) {
   .section {
     padding-bottom: 9px;
-    padding-right: 115px;
+    padding-right: 85px;
     justify-content: flex-end;
   }
   .goToReport {
