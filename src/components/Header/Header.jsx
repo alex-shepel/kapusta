@@ -19,7 +19,7 @@ const Header = () => {
     };
   }, []);
 
-  const userEmail = useSelector(state => state?.auth?.email);
+  const userEmail = useSelector(state => state?.user?.email);
   const userLogo = userEmail ? userEmail.slice(0, 1) : 'U';
 
   const breakPointTablet = 768;
