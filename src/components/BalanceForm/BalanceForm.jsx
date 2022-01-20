@@ -18,7 +18,6 @@ const BalanceForm = () => {
     e.preventDefault();
     dispatch(updateBalance(balanceInput));
   };
-  console.log('BalanceForm ~ balanceInput', balanceInput);
 
   return (
     <div className={s.balance}>
