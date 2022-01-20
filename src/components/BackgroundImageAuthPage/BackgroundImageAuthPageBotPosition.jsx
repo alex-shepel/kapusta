@@ -1,4 +1,3 @@
-import React from 'react';
 import s from 'components/BackgroundImageAuthPage/BackgroundImageAuthPageBotPosition.module.css';
 
 const BackgroundImageAuthPageBotPosition = () => {
