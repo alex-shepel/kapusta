@@ -1,4 +1,3 @@
-import React from 'react';
 import s from 'components/BackgroundImageMonthReport/BackgroundImageMonthReportBotPosition.module.css';
 
 const BackgroundImageMonthReportBotPosition = () => {
