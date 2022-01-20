@@ -1,18 +1,41 @@
 import s from './ReportAmount.module.css';
 import { getIncome } from 'services/kapusta-api';
 import { getExpense } from 'services/kapusta-api';
+import { useSelector } from 'react-redux';
+import {
+  getExpenseDataByCategoriesFromState,
+  getIncomesDataByCategoriesFromState,
+  getIsDataGettingByCategories,
+} from 'redux/transaction';
+import Spinner from 'components/Spinner';
 
 const ReportAmount = () => {
-  return (
+  const getIncomesTransactions = useSelector(
+    getIncomesDataByCategoriesFromState,
+  );
+  const getExpensesTransactions = useSelector(
+    getExpenseDataByCategoriesFromState,
+  );
+  const gettingDataState = useSelector(getIsDataGettingByCategories);
+
+  // console.log(getIncomesTransactions.incomeTotal.toLocaleString());
+
+  return gettingDataState ? (
+    <Spinner />
+  ) : (
     <section className={`${s.section} ${s.sectionReportAmount}`}>
       <ul className={s.reportAmount}>
         <li className={s.reportAmountItem}>
           <p className={s.amountCategory}>Расходы:</p>
-          <span className={`${s.value} ${s.valueExpence}`}>-50 000 грн.</span>
+          <span className={`${s.value} ${s.valueExpence}`}>
+            -{getExpensesTransactions.expenseTotal.toLocaleString()}.00 грн.
+          </span>
         </li>
         <li className={s.reportAmountItem}>
           <p className={s.amountCategory}>Доходы:</p>
-          <span className={`${s.value} ${s.valueIncome}`}>+50 000 грн.</span>
+          <span className={`${s.value} ${s.valueIncome}`}>
+            +{getIncomesTransactions.incomeTotal.toLocaleString()}.00 грн.
+          </span>
         </li>
       </ul>
     </section>
