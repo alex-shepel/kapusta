@@ -1,6 +1,6 @@
 import s from './Toast.module.css';
 
-export const Toast = () => {
+const Toast = () => {
   return (
     <div className={s.Toast}>
       <div className={s.tringle}></div>
@@ -15,3 +15,4 @@ export const Toast = () => {
     </div>
   );
 };
+export default Toast;
