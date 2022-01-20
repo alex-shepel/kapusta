@@ -6,7 +6,7 @@ import s from './ReportPeriod.module.css';
 const ReportPeriod = ({ pickedMonth, setPickedMonth }) => {
   const [displayMonth, setDisplayMonth] = useState('');
   const [indexOfMonth, setIndexOfMonth] = useState(new Date().getMonth());
-  const currentYear = new Date().getFullYear();
+  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const arrOfMonthes = [
     'январь',
     'февраль',
@@ -32,6 +32,7 @@ const ReportPeriod = ({ pickedMonth, setPickedMonth }) => {
   const hendleDecrement = () => {
     if (indexOfMonth === 0) {
       setIndexOfMonth(11);
+      setCurrentYear(currentYear - 1);
       return;
     }
     setIndexOfMonth(indexOfMonth - 1);
@@ -39,6 +40,7 @@ const ReportPeriod = ({ pickedMonth, setPickedMonth }) => {
   const hendleIncrement = () => {
     if (indexOfMonth === 11) {
       setIndexOfMonth(0);
+      setCurrentYear(currentYear + 1);
       return;
     }
     setIndexOfMonth(indexOfMonth + 1);
