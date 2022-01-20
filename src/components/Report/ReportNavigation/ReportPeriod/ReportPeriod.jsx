@@ -7,7 +7,6 @@ const ReportPeriod = ({ pickedMonth, setPickedMonth }) => {
   const [displayMonth, setDisplayMonth] = useState('');
   const [indexOfMonth, setIndexOfMonth] = useState(new Date().getMonth());
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
-  // const indexOfMonth = new Date().getMonth();
   const arrOfMonthes = [
     'январь',
     'февраль',
