@@ -25,8 +25,8 @@ const BalanceForm = () => {
       <form className={s.balanceBox} onSubmit={handleSubmit}>
         <input
           className={s.balanceValue}
-          value={balanceInput}
-          onChange={e => setBalanceInput(e.target.value)}
+          value={`${balanceInput} UAH`}
+          onChange={e => setBalanceInput(parseInt(e.target.value))}
         />
         <button type="submit" name="ПОДТВЕРДИТЬ" className={s.buttonBalance}>
           ПОДТВЕРДИТЬ
