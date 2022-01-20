@@ -5,6 +5,7 @@ import logoutPic from 'images/logout-mobile.svg';
 import { getIsLoggedIn } from 'redux/auth';
 import s from './Header.module.css';
 import { openLogoutModal } from 'redux/modal';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -26,7 +27,9 @@ const Header = () => {
   return (
     <div className={s.container}>
       <div className={s.header__wrap}>
-        <img className={s.header__logo} src={logo} alt={'logo'} />
+        <Link to={'/day-report'}>
+          <img className={s.header__logo} src={logo} alt={'logo'} />
+        </Link>
         {isLoggedIn && (
           <div className={s.header__nav}>
             <div className={s.userLogo__circle}>
