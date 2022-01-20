@@ -51,8 +51,7 @@
   background-color: var(--bg-modal-two-colour);
 }
 
-.buttonBalance:hover,
-.buttonBalance:focus {
+.buttonBalance:hover {
   color: var(--white-color);
   border: solid var(--accent-color);
   background-color: var(--accent-color);
