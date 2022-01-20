@@ -14,6 +14,7 @@ import Summary from 'components/Summary';
 import TransactionForm from 'components/TransactionForm';
 import { ReactComponent as ReportPic } from 'images/bar-chart.svg';
 import { Link } from 'react-router-dom';
+import { Toast } from 'components/Toast/Toast';
 
 const startBalance = () => {};
 
@@ -53,6 +54,7 @@ const DayReportView = () => {
             >
               ПОДТВЕРДИТЬ
             </button>
+            <Toast></Toast>
           </div>
         </div>
         <Link to={'/month-report'} className={s.goToReport}>

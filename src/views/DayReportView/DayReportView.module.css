@@ -134,6 +134,7 @@
   display: flex;
   font-size: 12px;
   line-height: 14px;
+  position: relative;
 }
 .balanceTitle {
   display: flex;
