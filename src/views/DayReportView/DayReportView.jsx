@@ -40,6 +40,13 @@ const DayReportView = () => {
     setExpensesTabActive(!isExpensesTabActive);
   };
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, []);
+
   return (
     <>
       <div className={s.section}>
