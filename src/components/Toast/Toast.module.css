@@ -1,7 +1,7 @@
-.Toast {
+.toast {
   position: absolute;
-  top: 26px;
-  right: -51px;
+  top: 32px;
+  right: -32px;
   z-index: 10;
 }
 
@@ -30,8 +30,8 @@
   line-height: 20px;
 }
 .textDown {
-  font-size: 12px;
-  line-height: 20px;
+  font-size: 11px;
+  line-height: 15px;
 }
 @media screen and (min-width: 768px) {
   .Toast {

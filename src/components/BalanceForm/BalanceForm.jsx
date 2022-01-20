@@ -31,7 +31,7 @@ const BalanceForm = () => {
         <button type="submit" name="ПОДТВЕРДИТЬ" className={s.buttonBalance}>
           ПОДТВЕРДИТЬ
         </button>
-        <Toast />
+        {!balanceInput && <Toast />}
       </form>
     </div>
   );

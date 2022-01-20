@@ -2,7 +2,7 @@ import s from './Toast.module.css';
 
 const Toast = () => {
   return (
-    <div className={s.Toast}>
+    <div className={s.toast}>
       <div className={s.tringle}></div>
       <div className={s.rectangle}>
         <p className={s.text}>
