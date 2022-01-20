@@ -20,7 +20,6 @@ const Report = () => {
   const incomData = useSelector(getIncomesDataByCategoriesFromState);
   const expData = useSelector(getExpenseDataByCategoriesFromState);
   const isDataGettingByCategories = useSelector(getIsDataGettingByCategories);
-  console.log(incomData);
   useEffect(() => {
     setChartData(
       change

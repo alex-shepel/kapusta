@@ -9,18 +9,11 @@ import {
 import { Bar } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import s from './Chart.module.css';
-import {
-  getExpenseDataByCategoriesFromState,
-  getIncomesDataByCategoriesFromState,
-} from 'redux/transaction';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement);
 
 export function ChartComp({ chartData }) {
   const [widthS, setWidthS] = useState(window.screen.width);
-  const incomesData = useSelector(getIncomesDataByCategoriesFromState);
-  const expenseData = useSelector(getExpenseDataByCategoriesFromState);
-  console.log('✈️ ~ expenseData', expenseData?.expensesData);
 
   const handleResizeWindow = () => setWidthS(window.screen.width);
 
@@ -79,17 +72,6 @@ export function ChartComp({ chartData }) {
   const chooseBgColor = arr => {
     return arr.map((_, index) => (index % 3 === 0 ? '#FF751D' : '#FFDAC0'));
   };
-
-  //   const labels = [
-  //     'January',
-  //     'February',
-  //     'March',
-  //     'April',
-  //     'May',
-  //     'June',
-  //     'July',
-  //   ];
-  //   const incomeData = [5, 6, 10, 2, 5, 6, 8];
 
   const { total, ...gettingData } = chartData === undefined ? {} : chartData;
 
