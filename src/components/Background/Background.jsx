@@ -1,7 +1,14 @@
 import s from './Background.module.css';
 
 const Background = () => {
-  return <div className={s.background} />;
+  return (
+    <>
+      <div className={s.background}>
+        <div className={s.backgroundImageTop} />
+      </div>
+      <div className={s.backgroundImageBot} />
+    </>
+  );
 };
 
 export default Background;

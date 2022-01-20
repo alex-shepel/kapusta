@@ -37,19 +37,19 @@ const login = createAsyncThunk(
   },
 );
 
-const getUser = createAsyncThunk(
-  'auth/user',
-  async (googleToken, { getState, rejectWithValue }) => {
-    try {
-      const token = googleToken ?? getState().auth.accessToken;
-      api.setToken(token);
-      const { data } = await api.getUserInfo();
-      return data;
-    } catch (error) {
-      return rejectWithValue(Error.UNKNOWN);
-    }
-  },
-);
+// const getUser = createAsyncThunk(
+//   'auth/user',
+//   async (googleToken, { getState, rejectWithValue }) => {
+//     try {
+//       const token = googleToken ?? getState().auth.accessToken;
+//       api.setToken(token);
+//       const { data } = await api.getUserInfo();
+//       return data;
+//     } catch (error) {
+//       return rejectWithValue(Error.UNKNOWN);
+//     }
+//   },
+// );
 
 const refresh = createAsyncThunk(
   'auth/refresh',
@@ -77,4 +77,4 @@ const logOut = createAsyncThunk(
   },
 );
 
-export { register, login, refresh, logOut, getUser };
+export { register, login, refresh, logOut };

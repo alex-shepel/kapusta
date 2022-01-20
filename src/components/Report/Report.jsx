@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import Container from 'components/Container';
 import ReportExpencesList from './ReportExpencesList/ReportExpencesList';
 import ReportIncomesList from './ReportIncomesList/ReportIncomesList';
 import s from './Report.module.css';
@@ -30,8 +29,10 @@ const Report = () => {
     );
   }, [activeCategory]);
 
-  return (
-    <Container>
+  return isDataGettingByCategories ? (
+    <Spinner />
+  ) : (
+    <>
       <div className={s.reportMain}>
         <div className={s.reportNav}>
           <ArrowBackIos
@@ -39,7 +40,7 @@ const Report = () => {
             className={s.reportArrow}
             onClick={() => setChange(!change)}
           />
-          {change ? <span>Расходы</span> : <span>Доходы</span>}
+          <span className={s.reportTitle}>{change ? 'Расходы' : 'Доходы'}</span>
           <ArrowForwardIos
             style={{ height: '14px' }}
             className={s.reportArrow}
@@ -50,11 +51,13 @@ const Report = () => {
           <ReportExpencesList
             setActiveCategory={setActiveCategory}
             activeCategory={activeCategory}
+            expData={expData}
           />
         ) : (
           <ReportIncomesList
             setActiveCategory={setActiveCategory}
             activeCategory={activeCategory}
+            incomData={incomData}
           />
         )}
       </div>
@@ -65,8 +68,48 @@ const Report = () => {
           <ChartComp chartData={chartData} />
         )}
       </div>
-    </Container>
+    </>
   );
 };
+
+// return (
+// <>
+//   <div className={s.reportMain}>
+//     <div className={s.reportNav}>
+//       <ArrowBackIos
+//         style={{ height: '14px' }}
+//         className={s.reportArrow}
+//         onClick={() => setChange(!change)}
+//       />
+//       <span className={s.reportTitle}>{change ? 'Расходы' : 'Доходы'}</span>
+//       <ArrowForwardIos
+//         style={{ height: '14px' }}
+//         className={s.reportArrow}
+//         onClick={() => setChange(!change)}
+//       />
+//     </div>
+//     {change ? (
+//       <ReportExpencesList
+//         setActiveCategory={setActiveCategory}
+//         activeCategory={activeCategory}
+//         expData={expData}
+//       />
+//     ) : (
+//       <ReportIncomesList
+//         setActiveCategory={setActiveCategory}
+//         activeCategory={activeCategory}
+//       />
+//     )}
+//   </div>
+//   <div className={s.reportMain}>
+//     {isDataGettingByCategories ? (
+//       <Spinner />
+//     ) : (
+//       <ChartComp chartData={chartData} />
+//     )}
+//   </div>
+// </>
+// );
+// };
 
 export default Report;

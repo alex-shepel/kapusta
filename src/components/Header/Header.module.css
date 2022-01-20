@@ -45,7 +45,7 @@
 .logout {
   text-decoration-line: underline;
   cursor: pointer;
-  width: 66px;
+  /* width: 66px; */
 }
 .logout:hover,
 .logout:focus {
@@ -54,4 +54,10 @@
 .logout__picture {
   margin-left: 5px;
   cursor: pointer;
+}
+@media screen and (min-width: 1280px) {
+  .logout {
+    width: 66px;
+    margin-right: 18px;
+  }
 }

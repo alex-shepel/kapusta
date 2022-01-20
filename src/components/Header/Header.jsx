@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import logo from 'images/logo.svg';
 import logoutPic from 'images/logout-mobile.svg';
-import { getIsLoggedIn, logOut } from 'redux/auth';
+import { getIsLoggedIn } from 'redux/auth';
 import s from './Header.module.css';
 import { openLogoutModal } from 'redux/modal';
 

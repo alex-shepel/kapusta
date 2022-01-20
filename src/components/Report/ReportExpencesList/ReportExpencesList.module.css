@@ -5,6 +5,7 @@
   max-width: 620px;
   margin-left: auto;
   margin-right: auto;
+  gap: 20px;
 }
 .expenceIcon {
   width: 56px;
@@ -29,6 +30,7 @@
 
 .expenceReportItem::before {
   content: '';
+  background-color: var(--bg-modal-two-colour);
   width: 56px;
   height: 46px;
   position: absolute;

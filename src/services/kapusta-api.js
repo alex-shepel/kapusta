@@ -32,8 +32,9 @@ const getPeriodTransactions = async date =>
   await axios.get(`transaction/period-data?date=${date}`);
 
 /* user */
-const updateBalance = async credentials => await axios.post('user/balance');
-const getUserInfo = async () => await axios.get('user');
+const updateBalance = async credentials =>
+  await axios.patch('user/balance', credentials);
+const getUser = async () => await axios.get('user');
 
 export {
   setToken,
@@ -54,5 +55,5 @@ export {
   getPeriodTransactions,
   /* user */
   updateBalance,
-  getUserInfo,
+  getUser,
 };
