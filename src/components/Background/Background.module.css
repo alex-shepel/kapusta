@@ -21,5 +21,6 @@
   .background {
     border-bottom-left-radius: 10%;
     height: 530px;
+    /* overflow: visible; */
   }
 }

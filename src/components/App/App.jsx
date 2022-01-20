@@ -10,7 +10,7 @@ import {
 } from 'redux/auth';
 import Routes from 'routes';
 import Container from 'components/Container';
-import Header from 'components/Header';
+import Header from '../Header/Header';
 import Spinner from 'components/Spinner';
 import Modal from 'components/Modal/Modal';
 import ConfirmModal from 'components/ConfirmModal';
