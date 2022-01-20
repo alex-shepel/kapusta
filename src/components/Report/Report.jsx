@@ -11,7 +11,7 @@ import {
   getIsDataGettingByCategories,
 } from 'redux/transaction';
 import Spinner from 'components/Spinner';
-import { ChartComp } from 'components/Chart/Chart';
+import ChartComp from 'components/Chart/Chart';
 
 const Report = () => {
   const [change, setChange] = useState(true);
@@ -70,45 +70,5 @@ const Report = () => {
     </>
   );
 };
-
-// return (
-// <>
-//   <div className={s.reportMain}>
-//     <div className={s.reportNav}>
-//       <ArrowBackIos
-//         style={{ height: '14px' }}
-//         className={s.reportArrow}
-//         onClick={() => setChange(!change)}
-//       />
-//       <span className={s.reportTitle}>{change ? 'Расходы' : 'Доходы'}</span>
-//       <ArrowForwardIos
-//         style={{ height: '14px' }}
-//         className={s.reportArrow}
-//         onClick={() => setChange(!change)}
-//       />
-//     </div>
-//     {change ? (
-//       <ReportExpencesList
-//         setActiveCategory={setActiveCategory}
-//         activeCategory={activeCategory}
-//         expData={expData}
-//       />
-//     ) : (
-//       <ReportIncomesList
-//         setActiveCategory={setActiveCategory}
-//         activeCategory={activeCategory}
-//       />
-//     )}
-//   </div>
-//   <div className={s.reportMain}>
-//     {isDataGettingByCategories ? (
-//       <Spinner />
-//     ) : (
-//       <ChartComp chartData={chartData} />
-//     )}
-//   </div>
-// </>
-// );
-// };
 
 export default Report;

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -12,7 +11,7 @@ import s from './Chart.module.css';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement);
 
-export function ChartComp({ chartData }) {
+export default function ChartComp({ chartData }) {
   const [widthS, setWidthS] = useState(window.screen.width);
 
   const handleResizeWindow = () => setWidthS(window.screen.width);
