@@ -15,9 +15,11 @@ const getIsExpenseLoading = state => state.transaction.isExpenseLoading;
 const getAreCategoriesLoading = state => state.transaction.areCategoriesLoading;
 const getIsRemoving = state => state.transaction.isRemoving;
 const getIncomesDataByCategoriesFromState = state =>
-  state.transaction.dataByCategories;
+  state.transaction.dataByCategories.incomes;
 const getExpenseDataByCategoriesFromState = state =>
-  state.transaction.dataByCategories;
+  state.transaction.dataByCategories.expenses;
+const getIsDataGettingByCategories = state =>
+  state.transaction.isDataGettingByCategories;
 
 const filter = (items, date) =>
   items.filter(({ date: value }) => date === value);
@@ -43,4 +45,5 @@ export {
   getExpenseDataByCategoriesFromState,
   getFilterExpTrans,
   getFilterIncTrans,
+  getIsDataGettingByCategories,
 };

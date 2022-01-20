@@ -24,7 +24,7 @@ const initialState = {
   isExpenseLoading: false,
   areCategoriesLoading: false,
   isRemoving: false,
-  isDataGettingByCategories: false,
+  isDataGettingByCategories: true,
   dataByCategories: [],
   date: null,
 };
