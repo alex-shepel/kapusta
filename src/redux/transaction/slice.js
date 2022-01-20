@@ -128,6 +128,9 @@ const slice = createSlice({
       state.isDataGettingByCategories = false;
       state.dataByCategories = payload;
     },
+    [fetchDataByCategories.rejected]: state => {
+      state.isDataGettingByCategories = false;
+    },
   },
 });
 
