@@ -69,7 +69,13 @@ const removeTransaction = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       await api.removeTransaction(id);
-      return id;
+      const income = await api.getIncome();
+      const expense = await api.getExpense();
+      return {
+        transactionId: id,
+        dataIncome: income.data.monthsStats,
+        dataExpense: expense.data.monthsStats,
+      };
     } catch (error) {
       console.log(error.response.data.message);
     }
