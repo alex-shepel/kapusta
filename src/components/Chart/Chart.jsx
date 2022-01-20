@@ -17,18 +17,19 @@ export default function ChartComp({ chartData }) {
   const handleResizeWindow = () => setWidthS(window.screen.width);
 
   const options = {
+    responsive: true,
     aspectRatio: widthS <= 320 ? 0.8 : 2,
     plugins: {
       datalabels: {
         color: '#52555F',
         align: widthS <= 320 ? 'right' : 'top',
-        anchor: 'end',
+        anchor: widthS <= 320 ? 'start' : 'end',
         padding: {
           top: widthS <= 320 ? -15 : 15,
           right: 10,
           bottom: 0,
         },
-        formatter: function (value, context) {
+        formatter: function (value) {
           return value + 'грн';
         },
       },
