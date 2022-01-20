@@ -21,6 +21,7 @@
 
 .balanceValue {
   display: block;
+  margin-right: 15px;
 
   width: 121px;
   height: 40px;
@@ -28,32 +29,33 @@
   text-align: center;
   font-weight: 700;
 
-  border-bottom-left-radius: 22px;
-  border-top-left-radius: 22px;
+  border-radius: 16px;
   border: 2px solid var(--white-color);
   background-color: var(--bg-modal-two-colour);
 }
 
+.buttonPlaceholder {
+  width: 121px;
+  height: 40px;
+}
+
 .buttonBalance {
+  composes: buttonPlaceholder;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  width: 121px;
-  height: 40px;
 
   font-size: 12px;
   letter-spacing: 0.02em;
 
   color: var(--text-color-one);
-  border-bottom-right-radius: 22px;
-  border-top-right-radius: 22px;
+  border-radius: 22px;
   border: 2px solid var(--white-color);
   background-color: var(--bg-modal-two-colour);
-  border-left: 0;
 }
 
-.buttonBalance:hover {
+.buttonBalance:hover,
+.buttonBalance:focus {
   color: var(--white-color);
   border: solid var(--accent-color);
   background-color: var(--accent-color);
@@ -69,13 +71,5 @@
   .balanceTitle {
     margin: 0;
     margin-right: 21px;
-  }
-  .balanceValue {
-    border-radius: 16px;
-    margin-right: 15px;
-  }
-  .buttonBalance {
-    border-radius: 16px;
-    border: 2px solid var(--white-color);
   }
 }

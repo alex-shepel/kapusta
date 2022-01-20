@@ -1,8 +1,3 @@
 .app {
   position: relative;
 }
-@media screen and (min-width: 1280px) {
-  .app {
-    overflow: hidden;
-  }
-}

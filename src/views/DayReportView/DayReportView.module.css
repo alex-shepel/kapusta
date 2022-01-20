@@ -166,7 +166,7 @@
 @media screen and (min-width: 1280px) {
   .section {
     padding-bottom: 9px;
-    padding-right: 85px;
+    padding-right: 115px;
     justify-content: flex-end;
   }
   .goToReport {

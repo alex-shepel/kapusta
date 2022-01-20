@@ -1,22 +1,79 @@
-import PropTypes from 'prop-types';
 import s from './Balance.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { getBalance, updateBalance } from 'redux/user';
-import { useEffect, useState } from 'react';
+import { fetchUser, getBalance, updateBalance } from 'redux/user';
+import { useEffect, useMemo, useState } from 'react';
 import Toast from 'components/Toast';
+import { getMonthStatsExpenses, getMonthStatsIncomes } from 'redux/transaction';
 
 const BalanceForm = () => {
   const balance = useSelector(getBalance);
-  const [balanceInput, setBalanceInput] = useState(balance);
+  const incomes = useSelector(getMonthStatsIncomes);
+  const expenses = useSelector(getMonthStatsExpenses);
   const dispatch = useDispatch();
 
+  const isBalanceSet = useMemo(() => {
+    const isZeroBalance = balance === 0;
+    const areExpensesAbsent = Object.values(incomes).every(
+      value => value === 'N/A',
+    );
+    const areIncomesAbsent = Object.values(expenses).every(
+      value => value === 'N/A',
+    );
+    return isZeroBalance && areExpensesAbsent && areIncomesAbsent;
+  }, []);
+
+  const [canChange, setCanChange] = useState(isBalanceSet);
+  const [balanceInput, setBalanceInput] = useState(balance ?? '');
+  const [balanceBackup, setBalanceBackup] = useState(balanceInput);
+
+  const addCurrency = value => `${value} UAH`;
+
   useEffect(() => {
-    setBalanceInput(balance);
+    if (balance) {
+      setBalanceInput(addCurrency(balance));
+      setCanChange(false);
+      return;
+    }
+
+    setCanChange(true);
   }, [balance]);
+
+  useEffect(() => {
+    dispatch(fetchUser());
+  }, [dispatch, incomes, expenses]);
+
+  const handleChange = e => {
+    if (e.target.value === '') {
+      setBalanceInput('0');
+      return;
+    }
+
+    const num = parseInt(e.target.value);
+    if (num) {
+      setBalanceInput(String(num));
+    }
+  };
+
+  const handleFocus = () => {
+    setBalanceBackup(balanceInput);
+    setBalanceInput('');
+  };
+
+  const handleBlur = () => {
+    if (balanceInput === '') {
+      setBalanceInput(balanceBackup);
+      return;
+    }
+
+    const num = parseInt(balanceInput);
+    setBalanceInput(addCurrency(num));
+  };
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(updateBalance(balanceInput));
+    if (balanceInput) {
+      dispatch(updateBalance(parseInt(balanceInput)));
+    }
   };
 
   return (
@@ -25,18 +82,29 @@ const BalanceForm = () => {
       <form className={s.balanceBox} onSubmit={handleSubmit}>
         <input
           className={s.balanceValue}
-          value={`${balanceInput} UAH`}
-          onChange={e => setBalanceInput(parseInt(e.target.value))}
+          value={balanceInput}
+          placeholder={'XXX UAH'}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          onFocus={handleFocus}
         />
-        <button type="submit" name="ПОДТВЕРДИТЬ" className={s.buttonBalance}>
-          ПОДТВЕРДИТЬ
-        </button>
-        {!balanceInput && <Toast />}
+        {canChange ? (
+          <>
+            <button
+              type="submit"
+              name="ПОДТВЕРДИТЬ"
+              className={s.buttonBalance}
+            >
+              ПОДТВЕРДИТЬ
+            </button>
+            <Toast />
+          </>
+        ) : (
+          <div className={s.buttonPlaceholder} />
+        )}
       </form>
     </div>
   );
 };
-
-BalanceForm.propTypes = {};
 
 export default BalanceForm;

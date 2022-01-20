@@ -99,20 +99,6 @@ const slice = createSlice({
       state.isRefreshing = false;
       state.error = payload;
     },
-    // user
-    // [getUser.pending]: (state, { payload }) => {
-    //   state.isLogouting = true;
-    //   state.error = null;
-    // },
-    // [getUser.fulfilled]: (state, { payload }) => {
-    //   state.email = payload.email;
-    //   state.isLoggedIn = true;
-    //   state.error = null;
-    // },
-    // [getUser.rejected]: (state, { payload }) => {
-    //   state.isLogining = false;
-    //   state.error = payload;
-    // },
   },
 });
 

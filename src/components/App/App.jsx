@@ -23,7 +23,9 @@ import {
 import { removeTransaction } from 'redux/transaction';
 import Background from 'components/Background';
 import s from './App.module.css';
-import { fetchUser } from 'redux/user';
+import { fetchUser, resetUserState } from 'redux/user';
+import { resetAuthState } from 'redux/auth';
+import { resetTransactionState } from 'redux/transaction';
 
 const App = () => {
   const location = useLocation();
@@ -42,6 +44,9 @@ const App = () => {
 
   const onLogOut = () => {
     dispatch(logOut());
+    dispatch(resetTransactionState());
+    dispatch(resetUserState());
+    dispatch(resetAuthState());
   };
 
   const accessToken = new URLSearchParams(location.search).get('accessToken');

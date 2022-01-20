@@ -7,11 +7,9 @@ import {
   fetchCategories,
   removeTransaction,
   fetchDataByCategories,
-  updateBalance,
 } from './operations';
 
 const initialState = {
-  balance: 0,
   incomes: [],
   expenses: [],
   monthStatsIncomes: {},
@@ -37,7 +35,7 @@ const slice = createSlice({
   name: 'transaction',
   initialState,
   reducers: {
-    resetAuthState: resetState,
+    resetTransactionState: resetState,
     changeDate: (state, { payload }) => {
       state.date = payload;
     },
@@ -128,11 +126,8 @@ const slice = createSlice({
       state.isDataGettingByCategories = false;
       state.dataByCategories = payload;
     },
-    [fetchDataByCategories.rejected]: state => {
-      state.isDataGettingByCategories = false;
-    },
   },
 });
 
 export const { reducer: transactionReducer } = slice;
-export const { resetAuthState, changeDate } = slice.actions;
+export const { resetTransactionState, changeDate } = slice.actions;

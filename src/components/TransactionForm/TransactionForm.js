@@ -95,7 +95,6 @@ function TransactionForm({ transactionsType }) {
             type="text"
             name="product"
             value={description}
-            inputProps={{ minLength: 3, maxLength: 20 }}
             className={s.inputDescription}
             onChange={handleInputChange}
             required={true}

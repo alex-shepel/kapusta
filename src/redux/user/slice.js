@@ -2,10 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 import { fetchUser, updateBalance } from './operations';
 
 const initialState = {
-  balance: 0,
+  balance: '',
   email: null,
-  isUserFetching: true,
-  isBalanceUpdating: true,
 };
 
 const resetState = state => {
@@ -16,7 +14,7 @@ const slice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    resetAuthState: resetState,
+    resetUserState: resetState,
   },
   extraReducers: {
     [fetchUser.pending]: state => {
@@ -45,4 +43,4 @@ const slice = createSlice({
 });
 
 export const { reducer: userReducer } = slice;
-export const { resetAuthState, changeDate } = slice.actions;
+export const { resetUserState, changeDate } = slice.actions;
