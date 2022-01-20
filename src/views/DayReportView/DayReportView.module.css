@@ -129,6 +129,7 @@
   flex-direction: column-reverse;
   margin-bottom: 40px;
 }
+
 .goToReport {
   display: flex;
   align-items: center;

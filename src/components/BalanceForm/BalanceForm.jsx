@@ -3,6 +3,7 @@ import s from './Balance.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBalance, updateBalance } from 'redux/user';
 import { useEffect, useState } from 'react';
+import Toast from 'components/Toast';
 
 const BalanceForm = () => {
   const balance = useSelector(getBalance);
@@ -30,6 +31,7 @@ const BalanceForm = () => {
         <button type="submit" name="ПОДТВЕРДИТЬ" className={s.buttonBalance}>
           ПОДТВЕРДИТЬ
         </button>
+        <Toast />
       </form>
     </div>
   );
