@@ -18,8 +18,6 @@ const ReportAmount = () => {
   );
   const gettingDataState = useSelector(getIsDataGettingByCategories);
 
-  // console.log(getIncomesTransactions.incomeTotal.toLocaleString());
-
   return gettingDataState ? (
     <Spinner />
   ) : (
