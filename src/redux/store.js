@@ -2,6 +2,7 @@ import { createLogger } from 'redux-logger';
 import { authReducer } from './auth';
 import { transactionReducer } from './transaction';
 import { modalReducer } from './modal';
+import { userReducer } from './user';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import {
   FLUSH,
@@ -24,9 +25,10 @@ const persistConfig = {
 const rootReducer = combineReducers({
   transaction: transactionReducer,
   modal: modalReducer,
-  // user: userReducer,
+  user: userReducer,
   auth: persistReducer(persistConfig, authReducer),
 });
+
 const logger = createLogger({
   collapsed: (getState, action, logEntry) => !logEntry.error,
   timestamp: false,

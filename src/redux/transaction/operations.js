@@ -5,8 +5,9 @@ const addIncome = createAsyncThunk(
   'transaction/add-income',
   async (transaction, { rejectWithValue }) => {
     try {
-      const { data } = await api.addIncome(transaction);
-      return data.transaction;
+      await api.addIncome(transaction);
+      const { data } = await api.getIncome();
+      return data;
     } catch (error) {
       console.log(error.response.data.message);
     }
@@ -29,8 +30,9 @@ const addExpense = createAsyncThunk(
   'transaction/add-expense',
   async (transaction, { rejectWithValue }) => {
     try {
-      const { data } = await api.addExpense(transaction);
-      return data.transaction;
+      await api.addExpense(transaction);
+      const { data } = await api.getExpense();
+      return data;
     } catch (error) {
       console.log(error.response.data.message);
     }

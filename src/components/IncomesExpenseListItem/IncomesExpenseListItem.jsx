@@ -27,7 +27,7 @@ const IncomesExpenseListItem = ({
             className={transactionsType === 'incomes' ? s.incomes : s.expenses}
           >
             {operationSign}
-            {Number(amount).toFixed(2)}
+            {Number(amount).toFixed(2)} грн
           </span>
           <span>
             <button

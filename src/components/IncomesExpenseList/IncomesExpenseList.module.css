@@ -88,10 +88,53 @@
     border-right: 2px solid var(--bg-modal-two-colour);
     border-bottom: 2px solid var(--bg-modal-two-colour);
   }
+
+  .date {
+    width: 66px;
+    margin-left: 0;
+    margin-right: 37px;
+  }
+
+  .description {
+    width: 98px;
+    margin-right: 70px;
+    text-align: start;
+  }
+
+  .category {
+    width: 124px;
+    text-align: center;
+    margin-right: 0;
+  }
+
+  .amount {
+    width: 96px;
+    text-align: end;
+  }
 }
 
 @media screen and (min-width: 1280px) {
   .list {
     width: 760px;
+  }
+
+  .date {
+    width: 84px;
+    margin-left: 0;
+  }
+
+  .description {
+    margin-right: 80px;
+  }
+
+  .category {
+    width: 172px;
+    margin-right: 20px;
+    text-align: center;
+  }
+
+  .amount {
+    width: 104px;
+    text-align: end;
   }
 }
