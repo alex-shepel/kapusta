@@ -7,7 +7,6 @@ import { useLocation } from 'react-router-dom';
 
 const Background = () => {
   const loc = useLocation();
-  console.log(loc.pathname);
   return (
     <>
       <div className={s.background}>
