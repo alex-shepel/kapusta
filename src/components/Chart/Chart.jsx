@@ -25,7 +25,7 @@ export default function ChartComp({ chartData }) {
         align: widthS <= 320 ? 'right' : 'top',
         anchor: widthS <= 320 ? 'start' : 'end',
         padding: {
-          top: widthS <= 320 ? -15 : 15,
+          top: widthS <= 320 ? -30 : 30,
           right: 10,
           bottom: 0,
         },
