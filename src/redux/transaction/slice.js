@@ -37,7 +37,7 @@ const slice = createSlice({
   name: 'transaction',
   initialState,
   reducers: {
-    resetAuthState: resetState,
+    resetTransactionState: resetState,
     changeDate: (state, { payload }) => {
       state.date = payload;
     },
@@ -135,4 +135,4 @@ const slice = createSlice({
 });
 
 export const { reducer: transactionReducer } = slice;
-export const { resetAuthState, changeDate } = slice.actions;
+export const { resetTransactionState, changeDate } = slice.actions;

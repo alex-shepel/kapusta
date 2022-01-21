@@ -7,6 +7,7 @@ import {
   getIsRefreshing,
   setTokens,
   logOut,
+  resetAuthState,
 } from 'redux/auth';
 import Routes from 'routes';
 import Container from 'components/Container';
@@ -23,7 +24,8 @@ import {
 import { removeTransaction } from 'redux/transaction';
 import Background from 'components/Background';
 import s from './App.module.css';
-import { fetchUser, getIsUserFetching } from 'redux/user';
+import { fetchUser, getIsUserFetching, resetUserState } from 'redux/user';
+import { resetTransactionState } from 'redux/transaction';
 
 const App = () => {
   const location = useLocation();
@@ -43,6 +45,9 @@ const App = () => {
 
   const onLogOut = () => {
     dispatch(logOut());
+    dispatch(resetTransactionState());
+    dispatch(resetUserState());
+    dispatch(resetAuthState());
   };
 
   const getGoogleAuthData = key =>
