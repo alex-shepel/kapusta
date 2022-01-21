@@ -69,7 +69,7 @@ const AuthorizationWithEmail = () => {
           name="email"
           value={email}
           placeholder="your@email.com"
-          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+          pattern="[a-z0-9._-]+@[a-z0-9.-]+\.[a-z]{2,}$"
           title="Неверный формат"
           onChange={handleChangeEmail}
           onKeyDown={canceler}
