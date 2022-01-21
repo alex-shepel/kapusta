@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, login, refresh, logOut, getUser } from './operations';
+import { register, login, refresh, logOut } from './operations';
+import * as api from 'services/kapusta-api';
 
 const initialState = {
-  // email: null,
   accessToken: null,
   refreshToken: null,
   sid: null,
@@ -27,6 +27,7 @@ const slice = createSlice({
   reducers: {
     resetAuthState: resetState,
     setTokens: (state, { payload }) => {
+      api.setToken(payload.accessToken);
       state.accessToken = payload.accessToken;
       state.refreshToken = payload.refreshToken;
       state.sid = payload.sid;
@@ -99,20 +100,6 @@ const slice = createSlice({
       state.isRefreshing = false;
       state.error = payload;
     },
-    // user
-    // [getUser.pending]: (state, { payload }) => {
-    //   state.isLogouting = true;
-    //   state.error = null;
-    // },
-    // [getUser.fulfilled]: (state, { payload }) => {
-    //   state.email = payload.email;
-    //   state.isLoggedIn = true;
-    //   state.error = null;
-    // },
-    // [getUser.rejected]: (state, { payload }) => {
-    //   state.isLogining = false;
-    //   state.error = payload;
-    // },
   },
 });
 
