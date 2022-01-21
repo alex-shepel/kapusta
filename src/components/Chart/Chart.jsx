@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -12,28 +13,47 @@ import s from './Chart.module.css';
 ChartJS.register(CategoryScale, LinearScale, BarElement);
 
 export default function ChartComp({ chartData }) {
-  const [widthS, setWidthS] = useState(window.screen.width);
+  const chooseBgColor = arr => {
+    return arr.map((_, index) => (index % 3 === 0 ? '#FF751D' : '#FFDAC0'));
+  };
+  const { total, ...gettingData } = chartData === undefined ? {} : chartData;
+  const labels = Object.keys(gettingData);
+  const incomeData = Object.values(gettingData);
 
-  const handleResizeWindow = () => setWidthS(window.screen.width);
+  const isBreakPointToPhoneScreen = useMediaQuery({
+    query: '(max-width: 321px)',
+  });
+
+  const getMaxValueFromData = dataArr => {
+    let maxValue = 0;
+    dataArr.forEach(value => {
+      if (maxValue < value) maxValue = value;
+    });
+    return maxValue;
+  };
+
+  const maxValueOfScaleY =
+    getMaxValueFromData(incomeData) + getMaxValueFromData(incomeData) * 0.2;
 
   const options = {
-    aspectRatio: widthS <= 320 ? 0.8 : 2,
+    responsive: true,
+    aspectRatio: isBreakPointToPhoneScreen ? 0.8 : 2,
     plugins: {
       datalabels: {
         color: '#52555F',
-        align: widthS <= 320 ? 'right' : 'top',
-        anchor: 'end',
+        align: isBreakPointToPhoneScreen ? 'right' : 'top',
+        anchor: isBreakPointToPhoneScreen ? 'start' : 'end',
         padding: {
-          top: widthS <= 320 ? -15 : 15,
+          top: isBreakPointToPhoneScreen ? -30 : 30,
           right: 10,
           bottom: 0,
         },
-        formatter: function (value, context) {
+        formatter: function (value) {
           return value + 'грн';
         },
       },
     },
-    indexAxis: widthS > 320 ? 'x' : 'y',
+    indexAxis: isBreakPointToPhoneScreen ? 'y' : 'x',
 
     scales: {
       x: {
@@ -43,49 +63,33 @@ export default function ChartComp({ chartData }) {
         },
         ticks: {
           LayoutPosition: 'top',
-          display: widthS > 320,
+          display: !isBreakPointToPhoneScreen,
         },
       },
       y: {
+        max: maxValueOfScaleY,
         grid: {
-          display: widthS > 320,
+          display: !isBreakPointToPhoneScreen,
           drawBorder: false,
         },
 
         ticks: {
           LayoutPosition: 'top',
-          display: widthS <= 320,
+          display: isBreakPointToPhoneScreen,
         },
       },
     },
   };
-
-  useEffect(() => {
-    window.addEventListener('resize', handleResizeWindow);
-
-    return () => {
-      window.removeEventListener('resize', handleResizeWindow);
-    };
-  }, [widthS, options]);
-
-  const chooseBgColor = arr => {
-    return arr.map((_, index) => (index % 3 === 0 ? '#FF751D' : '#FFDAC0'));
-  };
-
-  const { total, ...gettingData } = chartData === undefined ? {} : chartData;
-
-  const labels = Object.keys(gettingData);
-  const incomeData = Object.values(gettingData);
 
   const data = {
     labels,
     datasets: [
       {
         data: incomeData,
-        maxBarThickness: widthS <= 320 ? 20 : 30,
+        maxBarThickness: isBreakPointToPhoneScreen ? 20 : 30,
         backgroundColor: chooseBgColor(labels),
         borderRadius: 10,
-        inflateAmount: widthS <= 320 ? 2 : 10,
+        inflateAmount: isBreakPointToPhoneScreen ? 2 : 10,
       },
     ],
   };

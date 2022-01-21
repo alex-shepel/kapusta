@@ -1,10 +1,12 @@
 import s from './Toast.module.css';
+import { ReactComponent as CloseIcon } from 'images/close.svg';
 
-const Toast = () => {
+const Toast = onClose => {
   return (
     <div className={s.toast}>
       <div className={s.tringle}></div>
       <div className={s.rectangle}>
+        <CloseIcon onClick={onClose} className={s.icon} />
         <p className={s.text}>
           Привет! Для начала работы внеси текущий баланс своего счета!
         </p>

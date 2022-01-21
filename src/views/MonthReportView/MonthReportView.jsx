@@ -18,7 +18,6 @@ const MonthReportView = () => {
   });
   const [pickedMonth, setPickedMonth] = useState(memoizedDate);
   const isDataGettingByCategories = useSelector(getIsDataGettingByCategories);
-  console.log(pickedMonth);
   useEffect(() => {
     dispatch(fetchDataByCategories(pickedMonth));
   }, [pickedMonth]);
