@@ -145,7 +145,7 @@
   padding-bottom: 3px;
   fill: var(--text-color-four);
 }
-.reportPic:hover {
+.goToReport:hover > .reportPic {
   fill: var(--accent-color);
 }
 .goToReport:hover {
