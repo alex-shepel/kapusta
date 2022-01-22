@@ -12,6 +12,7 @@ const register = createAsyncThunk(
     try {
       await api.register(credentials);
       const { data } = await api.login(credentials);
+      api.setToken(data.accessToken);
       return data;
     } catch (error) {
       if (error.message === 'Request failed with status code 409') {
@@ -27,6 +28,7 @@ const login = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await api.login(credentials);
+      api.setToken(data.accessToken);
       return data;
     } catch (error) {
       if (error.message === 'Request failed with status code 403') {

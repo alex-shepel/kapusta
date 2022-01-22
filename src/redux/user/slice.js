@@ -4,7 +4,7 @@ import { fetchUser, updateBalance } from './operations';
 const initialState = {
   balance: 0,
   email: null,
-  isUserFetching: true,
+  isUserFetching: false,
   isBalanceUpdating: true,
 };
 
@@ -16,7 +16,7 @@ const slice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    resetAuthState: resetState,
+    resetUserState: resetState,
   },
   extraReducers: {
     [fetchUser.pending]: state => {
@@ -45,4 +45,4 @@ const slice = createSlice({
 });
 
 export const { reducer: userReducer } = slice;
-export const { resetAuthState, changeDate } = slice.actions;
+export const { resetUserState, changeDate } = slice.actions;

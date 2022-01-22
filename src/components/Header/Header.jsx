@@ -6,6 +6,7 @@ import { getIsLoggedIn } from 'redux/auth';
 import s from './Header.module.css';
 import { openLogoutModal } from 'redux/modal';
 import { Link } from 'react-router-dom';
+import { getEmail } from 'redux/user';
 
 const Header = () => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -20,7 +21,7 @@ const Header = () => {
     };
   }, []);
 
-  const userEmail = useSelector(state => state?.user?.email);
+  const userEmail = useSelector(getEmail);
   const userLogo = userEmail ? userEmail.slice(0, 1) : 'U';
 
   const breakPointTablet = 768;
