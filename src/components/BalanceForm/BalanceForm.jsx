@@ -1,6 +1,6 @@
 import s from './Balance.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUser, getBalance, updateBalance } from 'redux/user';
+import { getBalance, updateBalance } from 'redux/user';
 import { useEffect, useMemo, useState } from 'react';
 import Toast from 'components/Toast';
 import { getMonthStatsExpenses, getMonthStatsIncomes } from 'redux/transaction';
@@ -11,7 +11,7 @@ const BalanceForm = () => {
   const expenses = useSelector(getMonthStatsExpenses);
   const dispatch = useDispatch();
 
-  const isBalanceSet = useMemo(() => {
+  const isBalanceUnset = useMemo(() => {
     const isZeroBalance = balance === 0;
     const areExpensesAbsent = Object.values(incomes).every(
       value => value === 'N/A',
@@ -20,30 +20,25 @@ const BalanceForm = () => {
       value => value === 'N/A',
     );
     return isZeroBalance && areExpensesAbsent && areIncomesAbsent;
-  }, []);
+  }, [balance, incomes, expenses]);
 
   const addCurrency = value => `${value} UAH`;
 
-  const [canChange, setCanChange] = useState(!isBalanceSet);
-  const [isToastShown, setIsToastShown] = useState(!isBalanceSet);
+  const [canChange, setCanChange] = useState(isBalanceUnset);
+  const [isToastShown, setIsToastShown] = useState(isBalanceUnset);
   const [balanceInput, setBalanceInput] = useState(addCurrency(balance));
   const [balanceBackup, setBalanceBackup] = useState(balanceInput);
 
   useEffect(() => {
-    if (balance) {
-      setBalanceInput(addCurrency(balance));
-      setCanChange(false);
-      setIsToastShown(false);
-      return;
-    }
-
-    setCanChange(true);
-    setIsToastShown(true);
-  }, [balance]);
+    setCanChange(isBalanceUnset);
+    setIsToastShown(isBalanceUnset);
+  }, [isBalanceUnset]);
 
   useEffect(() => {
-    dispatch(fetchUser());
-  }, [dispatch, incomes, expenses]);
+    if (balance) {
+      setBalanceInput(addCurrency(balance));
+    }
+  }, [balance]);
 
   const handleChange = e => {
     if (e.target.value === '') {

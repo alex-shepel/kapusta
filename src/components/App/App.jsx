@@ -21,7 +21,11 @@ import {
   getIsDeleteOpenModal,
   getIsLogoutOpenModal,
 } from 'redux/modal';
-import { removeTransaction } from 'redux/transaction';
+import {
+  getMonthStatsExpenses,
+  getMonthStatsIncomes,
+  removeTransaction,
+} from 'redux/transaction';
 import Background from 'components/Background';
 import s from './App.module.css';
 import { fetchUser, resetUserState } from 'redux/user';
@@ -30,6 +34,8 @@ import { resetTransactionState } from 'redux/transaction';
 const App = () => {
   const location = useLocation();
   const dispatch = useDispatch();
+  const incomes = useSelector(getMonthStatsIncomes);
+  const expenses = useSelector(getMonthStatsExpenses);
   const isLoggedIn = useSelector(getIsLoggedIn);
   const isRefreshing = useSelector(getIsRefreshing);
   const currentToken = useSelector(getAccessToken);
@@ -64,7 +70,7 @@ const App = () => {
     if (currentToken) {
       dispatch(fetchUser());
     }
-  }, [dispatch, currentToken]);
+  }, [dispatch, currentToken, incomes, expenses]);
 
   useEffect(() => {
     if (isLoggedIn && !accessToken) {
