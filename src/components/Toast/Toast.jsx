@@ -1,12 +1,15 @@
 import s from './Toast.module.css';
 import { ReactComponent as CloseIcon } from 'images/close.svg';
+import PropTypes from 'prop-types';
 
-const Toast = onClose => {
+const Toast = ({ onClose }) => {
   return (
     <div className={s.Toast}>
-      <div className={s.tringle} />
+      <div className={s.triangle} />
       <div className={s.rectangle}>
-        <CloseIcon onClick={onClose} className={s.icon} />
+        <button className={s.button} type={'button'} onClick={onClose}>
+          <CloseIcon className={s.icon} />
+        </button>
         <p className={s.text}>
           Привет! Для начала работы внеси текущий баланс своего счета!
         </p>
@@ -17,4 +20,9 @@ const Toast = onClose => {
     </div>
   );
 };
+
+Toast.propTypes = {
+  onClose: PropTypes.func.isRequired,
+};
+
 export default Toast;

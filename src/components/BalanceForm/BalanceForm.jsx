@@ -22,20 +22,23 @@ const BalanceForm = () => {
     return isZeroBalance && areExpensesAbsent && areIncomesAbsent;
   }, []);
 
-  const [canChange, setCanChange] = useState(isBalanceSet);
-  const [balanceInput, setBalanceInput] = useState(balance ?? '');
-  const [balanceBackup, setBalanceBackup] = useState(balanceInput);
-
   const addCurrency = value => `${value} UAH`;
+
+  const [canChange, setCanChange] = useState(!isBalanceSet);
+  const [isToastShown, setIsToastShown] = useState(!isBalanceSet);
+  const [balanceInput, setBalanceInput] = useState(addCurrency(balance));
+  const [balanceBackup, setBalanceBackup] = useState(balanceInput);
 
   useEffect(() => {
     if (balance) {
       setBalanceInput(addCurrency(balance));
       setCanChange(false);
+      setIsToastShown(false);
       return;
     }
 
     setCanChange(true);
+    setIsToastShown(true);
   }, [balance]);
 
   useEffect(() => {
@@ -77,27 +80,28 @@ const BalanceForm = () => {
   };
 
   return (
-    <div className={s.balance}>
-      <p className={s.balanceTitle}>Баланс:</p>
-      <form className={s.balanceBox} onSubmit={handleSubmit}>
-        <input
-          className={s.balanceValue}
-          value={balanceInput}
-          placeholder={'0 UAH'}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          onFocus={handleFocus}
-        />
+    <div className={s.Container}>
+      <p className={s.Title}>Баланс:</p>
+      <form className={s.Box} onSubmit={handleSubmit}>
+        {canChange ? (
+          <input
+            className={s.Value}
+            value={balanceInput}
+            placeholder={'0 UAH'}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            onFocus={handleFocus}
+          />
+        ) : (
+          <span className={s.Value}>{balanceInput}</span>
+        )}
         <button
           type={'submit'}
-          name={'approve'}
-          className={
-            canChange ? s.balanceButtonEnabled : s.balanceButtonDisabled
-          }
+          className={canChange ? s.ButtonEnabled : s.ButtonDisabled}
         >
           ПОДТВЕРДИТЬ
         </button>
-        {canChange && <Toast />}
+        {isToastShown && <Toast onClose={() => setIsToastShown(false)} />}
       </form>
     </div>
   );

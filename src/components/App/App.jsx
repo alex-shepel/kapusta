@@ -7,7 +7,6 @@ import {
   getIsRefreshing,
   setTokens,
   logOut,
-  resetAuthState,
   getAccessToken,
 } from 'redux/auth';
 import Routes from 'routes';
@@ -45,9 +44,6 @@ const App = () => {
 
   const onLogOut = () => {
     dispatch(logOut());
-    dispatch(resetTransactionState());
-    dispatch(resetUserState());
-    dispatch(resetAuthState());
   };
 
   const getGoogleAuthData = key =>
@@ -56,6 +52,13 @@ const App = () => {
   const accessToken = getGoogleAuthData('accessToken');
   const refreshToken = getGoogleAuthData('refreshToken');
   const sid = getGoogleAuthData('sid');
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      dispatch(resetTransactionState());
+      dispatch(resetUserState());
+    }
+  }, [isLoggedIn]);
 
   useEffect(() => {
     if (currentToken) {

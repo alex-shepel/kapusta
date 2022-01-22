@@ -18,7 +18,7 @@
   flex-direction: column;
   justify-content: space-between;
 }
-.tringle {
+.triangle {
   width: 0;
   height: 0;
   border: 15px solid transparent;
@@ -27,11 +27,14 @@
   margin-left: 50px;
   position: relative;
 }
-.icon {
+.button {
   position: absolute;
   top: 38px;
   right: 15px;
-  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+.icon {
   stroke: var(--bg-modal-three-colour);
 }
 .icon:hover path {

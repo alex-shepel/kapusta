@@ -1,11 +1,11 @@
-.balanceBox {
+.Box {
   display: flex;
   font-size: 12px;
   line-height: 14px;
   position: relative;
 }
 
-.balanceTitle {
+.Title {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,8 +19,10 @@
   color: var(--text-color-one);
 }
 
-.balanceValue {
-  display: block;
+.Value {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-right: 15px;
 
   width: 121px;
@@ -34,7 +36,7 @@
   background-color: var(--bg-modal-two-colour);
 }
 
-.balanceButtonBase {
+.ButtonBase {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,32 +47,32 @@
   border-radius: 22px;
 }
 
-.balanceButtonEnabled {
-  composes: balanceButtonBase;
+.ButtonEnabled {
+  composes: ButtonBase;
   color: var(--white-color);
   border: solid var(--accent-color);
   background-color: var(--accent-color);
 }
 
-.balanceButtonDisabled {
-  composes: balanceButtonBase;
+.ButtonDisabled {
+  composes: ButtonBase;
   color: var(--text-color-one);
   border: 2px solid var(--white-color);
   background-color: var(--bg-modal-two-colour);
 }
 
-.balanceButtonDisabled:hover {
+.ButtonDisabled:hover {
   cursor: unset;
 }
 
 @media screen and (min-width: 768px) {
-  .balance {
+  .Container {
     display: flex;
     align-items: center;
     padding-left: 65px;
   }
 
-  .balanceTitle {
+  .Title {
     margin: 0;
     margin-right: 21px;
   }
