@@ -83,25 +83,21 @@ const BalanceForm = () => {
         <input
           className={s.balanceValue}
           value={balanceInput}
-          placeholder={'XXX UAH'}
+          placeholder={'0 UAH'}
           onChange={handleChange}
           onBlur={handleBlur}
           onFocus={handleFocus}
         />
-        {canChange ? (
-          <>
-            <button
-              type="submit"
-              name="ПОДТВЕРДИТЬ"
-              className={s.buttonBalance}
-            >
-              ПОДТВЕРДИТЬ
-            </button>
-            <Toast />
-          </>
-        ) : (
-          <div className={s.buttonPlaceholder} />
-        )}
+        <button
+          type={'submit'}
+          name={'approve'}
+          className={
+            canChange ? s.balanceButtonEnabled : s.balanceButtonDisabled
+          }
+        >
+          ПОДТВЕРДИТЬ
+        </button>
+        {canChange && <Toast />}
       </form>
     </div>
   );

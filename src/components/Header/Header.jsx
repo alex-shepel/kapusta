@@ -10,19 +10,19 @@ import { getEmail } from 'redux/user';
 
 const Header = () => {
   const [width, setWidth] = useState(window.innerWidth);
+  const isLoggedIn = useSelector(getIsLoggedIn);
+  const userEmail = useSelector(getEmail);
+  const userLogo = userEmail.slice(0, 1).toUpperCase();
   const dispatch = useDispatch();
 
   const handleResizeWindow = () => setWidth(window.innerWidth);
-  const isLoggedIn = useSelector(getIsLoggedIn);
+
   useEffect(() => {
     window.addEventListener('resize', handleResizeWindow);
     return () => {
       window.removeEventListener('resize', handleResizeWindow);
     };
   }, []);
-
-  const userEmail = useSelector(getEmail);
-  const userLogo = userEmail ? userEmail.slice(0, 1) : 'U';
 
   const breakPointTablet = 768;
   return (

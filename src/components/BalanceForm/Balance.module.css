@@ -34,31 +34,33 @@
   background-color: var(--bg-modal-two-colour);
 }
 
-.buttonPlaceholder {
-  width: 121px;
-  height: 40px;
-}
-
-.buttonBalance {
-  composes: buttonPlaceholder;
+.balanceButtonBase {
   display: flex;
   justify-content: center;
   align-items: center;
-
+  width: 121px;
+  height: 40px;
   font-size: 12px;
   letter-spacing: 0.02em;
-
-  color: var(--text-color-one);
   border-radius: 22px;
+}
+
+.balanceButtonEnabled {
+  composes: balanceButtonBase;
+  color: var(--white-color);
+  border: solid var(--accent-color);
+  background-color: var(--accent-color);
+}
+
+.balanceButtonDisabled {
+  composes: balanceButtonBase;
+  color: var(--text-color-one);
   border: 2px solid var(--white-color);
   background-color: var(--bg-modal-two-colour);
 }
 
-.buttonBalance:hover,
-.buttonBalance:focus {
-  color: var(--white-color);
-  border: solid var(--accent-color);
-  background-color: var(--accent-color);
+.balanceButtonDisabled:hover {
+  cursor: unset;
 }
 
 @media screen and (min-width: 768px) {

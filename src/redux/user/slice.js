@@ -2,8 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 import { fetchUser, updateBalance } from './operations';
 
 const initialState = {
-  balance: '',
-  email: null,
+  balance: 0,
+  email: 'user',
   isUserFetching: false,
   isBalanceUpdating: true,
 };
