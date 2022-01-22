@@ -25,6 +25,17 @@
   border-bottom: 14px solid #1d346a;
   margin-bottom: -3px;
   margin-left: 50px;
+  position: relative;
+}
+.icon {
+  position: absolute;
+  top: 38px;
+  right: 15px;
+  cursor: pointer;
+  stroke: var(--bg-modal-three-colour);
+}
+.icon:hover path {
+  stroke: var(--accent-color);
 }
 .text {
   line-height: 20px;

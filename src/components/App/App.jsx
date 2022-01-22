@@ -7,6 +7,7 @@ import {
   getIsRefreshing,
   setTokens,
   logOut,
+  resetAuthState,
 } from 'redux/auth';
 import Routes from 'routes';
 import Container from 'components/Container';
@@ -23,8 +24,7 @@ import {
 import { removeTransaction } from 'redux/transaction';
 import Background from 'components/Background';
 import s from './App.module.css';
-import { fetchUser, resetUserState } from 'redux/user';
-import { resetAuthState } from 'redux/auth';
+import { fetchUser, getIsUserFetching, resetUserState } from 'redux/user';
 import { resetTransactionState } from 'redux/transaction';
 
 const App = () => {
@@ -32,6 +32,7 @@ const App = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(getIsLoggedIn);
   const isRefreshing = useSelector(getIsRefreshing);
+  const isUserFetching = useSelector(getIsUserFetching);
   const currentToken = useSelector(state => state?.auth?.accessToken);
   const deleteId = useSelector(getDeleteId);
   const isLogoutModalOpen = useSelector(getIsLogoutOpenModal);
@@ -49,15 +50,19 @@ const App = () => {
     dispatch(resetAuthState());
   };
 
-  const accessToken = new URLSearchParams(location.search).get('accessToken');
-  const refreshToken = new URLSearchParams(location.search).get('refreshToken');
-  const sid = new URLSearchParams(location.search).get('sid');
+  const getGoogleAuthData = key =>
+    new URLSearchParams(location.search).get(key);
+
+  const accessToken = getGoogleAuthData('accessToken');
+  const refreshToken = getGoogleAuthData('refreshToken');
+  const sid = getGoogleAuthData('sid');
+
+  const isDataValid = !isRefreshing && !isUserFetching;
 
   useEffect(() => {
-    if (!currentToken) {
-      return;
+    if (currentToken) {
+      dispatch(fetchUser());
     }
-    dispatch(fetchUser(currentToken));
   }, [dispatch, currentToken]);
 
   useEffect(() => {
@@ -71,7 +76,6 @@ const App = () => {
       return;
     }
     dispatch(setTokens({ accessToken, refreshToken, sid }));
-    dispatch(fetchUser(accessToken));
   }, [accessToken, dispatch, refreshToken, sid]);
 
   return (
@@ -84,7 +88,7 @@ const App = () => {
       <main className={s.app}>
         <Background />
         <Container>
-          {isRefreshing ? <Spinner /> : <Routes isLoggedIn={isLoggedIn} />}
+          {isDataValid ? <Routes isLoggedIn={isLoggedIn} /> : <Spinner />}
         </Container>
         {isModalOpen && (
           <Modal

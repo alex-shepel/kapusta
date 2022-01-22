@@ -4,6 +4,8 @@ import { fetchUser, updateBalance } from './operations';
 const initialState = {
   balance: '',
   email: null,
+  isUserFetching: false,
+  isBalanceUpdating: true,
 };
 
 const resetState = state => {
