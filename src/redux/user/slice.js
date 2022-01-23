@@ -3,7 +3,7 @@ import { fetchUser, updateBalance } from './operations';
 
 const initialState = {
   balance: 0,
-  email: null,
+  email: 'user',
   isUserFetching: false,
   isBalanceUpdating: true,
 };

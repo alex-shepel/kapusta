@@ -10,10 +10,13 @@ import { getEmail } from 'redux/user';
 
 const Header = () => {
   const [width, setWidth] = useState(window.innerWidth);
+  const isLoggedIn = useSelector(getIsLoggedIn);
+  const userEmail = useSelector(getEmail);
+  const userLogo = userEmail.slice(0, 1).toUpperCase();
   const dispatch = useDispatch();
 
   const handleResizeWindow = () => setWidth(window.innerWidth);
-  const isLoggedIn = useSelector(getIsLoggedIn);
+
   useEffect(() => {
     window.addEventListener('resize', handleResizeWindow);
     return () => {
@@ -21,15 +24,12 @@ const Header = () => {
     };
   }, []);
 
-  const userEmail = useSelector(getEmail);
-  const userLogo = userEmail ? userEmail.slice(0, 1) : 'U';
-
   const breakPointTablet = 768;
   return (
     <div className={s.container}>
       <div className={s.header__wrap}>
         <Link to={'/day-report'}>
-          <img className={s.header__logo} src={logo} alt={'logo'} />
+          <img src={logo} alt={'logo'} />
         </Link>
         {isLoggedIn && (
           <div className={s.header__nav}>
@@ -46,7 +46,7 @@ const Header = () => {
             ) : (
               <>
                 <div className={s.user__name}>{userEmail}</div>
-                <div className={s.line}></div>
+                <div className={s.line} />
                 <div
                   className={s.logout}
                   onClick={() => dispatch(openLogoutModal())}

@@ -1,4 +1,4 @@
-import s from 'components/BackgroundImageAuthPage/BackgroundImageAuthPageBotPosition.module.css';
+import s from './BackgroundImageAuthPageBotPosition.module.css';
 
 const BackgroundImageAuthPageBotPosition = () => {
   return <div className={s.backgroundImageBot} />;

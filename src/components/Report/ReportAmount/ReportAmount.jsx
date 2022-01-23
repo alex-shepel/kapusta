@@ -1,6 +1,4 @@
 import s from './ReportAmount.module.css';
-import { getIncome } from 'services/kapusta-api';
-import { getExpense } from 'services/kapusta-api';
 import { useSelector } from 'react-redux';
 import {
   getExpenseDataByCategoriesFromState,

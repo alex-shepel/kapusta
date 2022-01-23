@@ -28,23 +28,15 @@
   height: 42px;
   width: 258px;
   margin-left: 20px;
-  padding-right: 0;
-  padding-left: 20px;
-  padding-top: 0;
-  padding-bottom: 0;
+  padding: 0 0 0 20px;
   font-size: 16px;
   background-color: transparent;
   border: 2px solid #ffffff;
   border-bottom: none;
 
-  border-radius: 16px 16px 0px 0px;
+  border-radius: 16px 16px 0 0;
 }
 
-@media screen and (min-width: 320px) {
-  /* .dataInput {
-    background-color: tomato;
-  } */
-}
 .inputDescription:focus-visible {
   border: 2px solid var(--accent-color);
 }
@@ -118,11 +110,8 @@
     height: 44px;
     background-color: transparent;
     border: 2px solid #ffffff;
-    border-radius: 0px 0px 16px 0px;
-    padding-right: 20px;
-    padding-left: 20px;
-    padding-top: 0;
-    padding-bottom: 0;
+    border-radius: 0 0 16px 0;
+    padding: 0 20px;
     margin-left: 20px;
   }
 }
@@ -187,7 +176,7 @@
   .inputWrapper::before {
     position: absolute;
     content: '';
-    top: 0px;
+    top: 0;
     right: 40px;
     width: 2px;
     height: 42px;
@@ -197,7 +186,7 @@
   .inputDescription input {
     height: 40px;
     width: 170px;
-    margin-left: 0px;
+    margin-left: 0;
     outline: none;
     padding: 0;
     padding-left: 20px;
@@ -205,9 +194,6 @@
     border-right: none;
     border-radius: 16px 0 0 0;
 
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
     font-size: 12px;
     line-height: 1.17;
     letter-spacing: 0.02em;
@@ -226,9 +212,6 @@
     padding-left: 20px;
     width: 100px;
     height: 40px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
     font-size: 12px;
     line-height: 14px;
     letter-spacing: 0.02em;
@@ -248,7 +231,6 @@
     letter-spacing: 0.02em;
     text-transform: uppercase;
     color: #52555f;
-    background: #f5f6fb;
     background-color: transparent;
     box-shadow: 1px 2px 5px rgba(170, 178, 197, 0.4);
     border-radius: 16px;
@@ -288,9 +270,6 @@
 
   .form div div {
     position: relative;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
     font-size: 12px;
     line-height: 14px;
     letter-spacing: 0.02em;
@@ -298,11 +277,8 @@
 
   .form label {
     position: absolute;
-    top: 0px;
+    top: 0;
     left: 15px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
     font-size: 12px;
     line-height: 14px;
     letter-spacing: 0.02em;
@@ -338,7 +314,7 @@
   .inputCategory ~ div {
     width: 188px;
     height: 48px;
-    margin-left: 0px;
+    margin-left: 0;
   }
 
   .inputWrapper,
