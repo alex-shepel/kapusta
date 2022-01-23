@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import {
   Chart as ChartJS,

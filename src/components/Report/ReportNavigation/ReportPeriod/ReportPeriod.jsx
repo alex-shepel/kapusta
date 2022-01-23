@@ -3,7 +3,7 @@ import ArrowBackIos from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIos from '@mui/icons-material/ArrowForwardIos';
 import s from './ReportPeriod.module.css';
 
-const ReportPeriod = ({ pickedMonth, setPickedMonth }) => {
+const ReportPeriod = ({ setPickedMonth }) => {
   const [displayMonth, setDisplayMonth] = useState('');
   const [indexOfMonth, setIndexOfMonth] = useState(new Date().getMonth());
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());

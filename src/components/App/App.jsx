@@ -7,7 +7,7 @@ import {
   getIsRefreshing,
   setTokens,
   logOut,
-  resetAuthState,
+  getAccessToken,
 } from 'redux/auth';
 import Routes from 'routes';
 import Container from 'components/Container';
@@ -21,19 +21,24 @@ import {
   getIsDeleteOpenModal,
   getIsLogoutOpenModal,
 } from 'redux/modal';
-import { removeTransaction } from 'redux/transaction';
+import {
+  getMonthStatsExpenses,
+  getMonthStatsIncomes,
+  removeTransaction,
+} from 'redux/transaction';
 import Background from 'components/Background';
 import s from './App.module.css';
-import { fetchUser, getIsUserFetching, resetUserState } from 'redux/user';
+import { fetchUser, resetUserState } from 'redux/user';
 import { resetTransactionState } from 'redux/transaction';
 
 const App = () => {
   const location = useLocation();
   const dispatch = useDispatch();
+  const incomes = useSelector(getMonthStatsIncomes);
+  const expenses = useSelector(getMonthStatsExpenses);
   const isLoggedIn = useSelector(getIsLoggedIn);
   const isRefreshing = useSelector(getIsRefreshing);
-  const isUserFetching = useSelector(getIsUserFetching);
-  const currentToken = useSelector(state => state?.auth?.accessToken);
+  const currentToken = useSelector(getAccessToken);
   const deleteId = useSelector(getDeleteId);
   const isLogoutModalOpen = useSelector(getIsLogoutOpenModal);
   const isDeleteModalOpen = useSelector(getIsDeleteOpenModal);
@@ -45,9 +50,6 @@ const App = () => {
 
   const onLogOut = () => {
     dispatch(logOut());
-    dispatch(resetTransactionState());
-    dispatch(resetUserState());
-    dispatch(resetAuthState());
   };
 
   const getGoogleAuthData = key =>
@@ -57,13 +59,18 @@ const App = () => {
   const refreshToken = getGoogleAuthData('refreshToken');
   const sid = getGoogleAuthData('sid');
 
-  const isDataValid = !isRefreshing && !isUserFetching;
+  useEffect(() => {
+    if (!isLoggedIn) {
+      dispatch(resetTransactionState());
+      dispatch(resetUserState());
+    }
+  }, [isLoggedIn]);
 
   useEffect(() => {
     if (currentToken) {
       dispatch(fetchUser());
     }
-  }, [dispatch, currentToken]);
+  }, [dispatch, currentToken, incomes, expenses]);
 
   useEffect(() => {
     if (isLoggedIn && !accessToken) {
@@ -88,7 +95,7 @@ const App = () => {
       <main className={s.app}>
         <Background />
         <Container>
-          {isDataValid ? <Routes isLoggedIn={isLoggedIn} /> : <Spinner />}
+          {isRefreshing ? <Spinner /> : <Routes isLoggedIn={isLoggedIn} />}
         </Container>
         {isModalOpen && (
           <Modal

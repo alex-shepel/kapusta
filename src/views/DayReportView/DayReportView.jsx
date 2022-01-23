@@ -15,19 +15,23 @@ import TransactionForm from 'components/TransactionForm';
 import { ReactComponent as ReportPic } from 'images/bar-chart.svg';
 import { Link } from 'react-router-dom';
 import BalanceForm from 'components/BalanceForm';
-import { getIsUserFetching } from 'redux/user';
-import Spinner from 'components/Spinner';
 
 const DayReportView = () => {
   const expenses = useSelector(getFilterExpTrans);
   const incomes = useSelector(getFilterIncTrans);
-  const isUserFetching = useSelector(getIsUserFetching);
   const [isExpenses, setIsExpenses] = useState(true);
 
   const [isExpensesTabActive, setExpensesTabActive] = useState(true);
   const [isIncomesTabActive, setIsIncomesTabActive] = useState(false);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, []);
 
   useEffect(() => {
     dispatch(fetchIncome());
@@ -40,17 +44,10 @@ const DayReportView = () => {
     setExpensesTabActive(!isExpensesTabActive);
   };
 
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  }, []);
-
   return (
     <>
       <div className={s.section}>
-        {isUserFetching ? <Spinner /> : <BalanceForm />}
+        <BalanceForm />
         <Link to={'/month-report'} className={s.goToReport}>
           Перейти к отчетам
           <ReportPic className={s.reportPic} alt={'reportPic'} />
