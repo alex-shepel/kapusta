@@ -16,8 +16,10 @@ export default function ChartComp({ chartData }) {
     return arr.map((_, index) => (index % 3 === 0 ? '#FF751D' : '#FFDAC0'));
   };
   const { total, ...gettingData } = chartData === undefined ? {} : chartData;
-  const labels = Object.keys(gettingData);
-  const incomeData = Object.values(gettingData);
+  const arrForSort = Object.entries(gettingData);
+  const sortedData = [...arrForSort].sort((a, b) => b[1] - a[1]);
+  const incomeData = sortedData.map(property => property[1]);
+  const labels = sortedData.map(property => property[0]);
 
   const isBreakPointToPhoneScreen = useMediaQuery({
     query: '(max-width: 321px)',
