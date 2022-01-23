@@ -4,7 +4,7 @@ import ReportBack from './ReportBack/ReportBack';
 import ReportBalance from './ReportBalance/ReportBalance';
 import ReportPeriod from './ReportPeriod';
 
-const ReportNavigation = () => {
+const ReportNavigation = ({ pickedMonth, setPickedMonth }) => {
   const [lWidth, setLWidth] = useState(window.innerWidth);
 
   window.addEventListener(
@@ -21,18 +21,22 @@ const ReportNavigation = () => {
         <section className={s.reportNavigation}>
           <ReportBack />
           <ReportBalance />
-          <ReportPeriod />
-          </section>
+          <ReportPeriod
+            pickedMonth={pickedMonth}
+            setPickedMonth={setPickedMonth}
+          />
+        </section>
       ) : (
-
         <section className={s.reportNavigation}>
           <ReportBack />
-          <ReportPeriod />
+          <ReportPeriod
+            pickedMonth={pickedMonth}
+            setPickedMonth={setPickedMonth}
+          />
           <ReportBalance />
-          </section>
-
+        </section>
       )}
-      </>
+    </>
   );
 };
 
