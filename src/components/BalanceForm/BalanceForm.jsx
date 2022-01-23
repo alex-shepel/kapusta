@@ -1,4 +1,4 @@
-import s from './Balance.module.css';
+import s from './BalanceForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBalance, updateBalance } from 'redux/user';
 import { useEffect, useMemo, useState } from 'react';

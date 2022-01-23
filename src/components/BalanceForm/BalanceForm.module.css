@@ -23,7 +23,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 15px;
 
   width: 121px;
   height: 40px;
@@ -32,8 +31,10 @@
   text-align: center;
   font-weight: 700;
 
-  border-radius: 16px;
+  border-bottom-left-radius: 22px;
+  border-top-left-radius: 22px;
   border: 2px solid var(--white-color);
+  border-right-width: 0;
   background-color: var(--bg-modal-two-colour);
 }
 
@@ -45,7 +46,32 @@
   height: 40px;
   font-size: 12px;
   letter-spacing: 0.02em;
-  border-radius: 22px;
+  border-bottom-right-radius: 22px;
+  border-top-right-radius: 22px;
+}
+
+@media screen and (min-width: 768px) {
+  .Container {
+    display: flex;
+    align-items: center;
+    padding-left: 65px;
+  }
+
+  .Title {
+    margin: 0;
+    margin-right: 21px;
+  }
+
+  .Value {
+    border-right-width: 2px;
+    border-radius: 16px;
+    margin-right: 15px;
+  }
+
+  .ButtonBase {
+    border-radius: 16px;
+    border: 2px solid var(--white-color);
+  }
 }
 
 .ButtonEnabled {
@@ -64,17 +90,4 @@
 
 .ButtonDisabled:hover {
   cursor: unset;
-}
-
-@media screen and (min-width: 768px) {
-  .Container {
-    display: flex;
-    align-items: center;
-    padding-left: 65px;
-  }
-
-  .Title {
-    margin: 0;
-    margin-right: 21px;
-  }
 }
