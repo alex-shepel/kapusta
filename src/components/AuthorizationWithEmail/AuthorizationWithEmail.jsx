@@ -16,6 +16,10 @@ const AuthorizationWithEmail = () => {
 
   useEffect(() => {}, []);
   const handleChangeEmail = e => {
+    // if (email.length === 0 && e.target.value === '-') {
+    //   return;
+    // }
+
     setEmail(e.target.value);
   };
   const handleChangePassword = e => {
@@ -38,6 +42,9 @@ const AuthorizationWithEmail = () => {
     }
 
     if (submitter.name === 'registration') {
+      // if (email.endsWith('-')) {
+      //   return;
+      // }
       if (password.length < 1) {
         setShowRequiredPasswordError(true);
       } else {
@@ -69,8 +76,10 @@ const AuthorizationWithEmail = () => {
           name="email"
           value={email}
           placeholder="your@email.com"
-          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-          title="Неверный формат"
+          pattern="^(?!-)[a-z0-9._%+-]{2,}@[a-z0-9.-]+\.[a-z]{2,4}(?!-)$"
+          minLength="10"
+          maxLength="64"
+          title="Перед символом @ должно стоять минимум 2 символа, поле может содержать дефисы, причем дефис не может находиться в начале или в конце Email."
           onChange={handleChangeEmail}
           onKeyDown={canceler}
           autoComplete="on"
@@ -98,6 +107,8 @@ const AuthorizationWithEmail = () => {
           onChange={handleChangePassword}
           onKeyDown={canceler}
           autoComplete="off"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}"
+          title="Must contain at least one number and one uppercase and lowercase letter, and at least 7 or more characters"
           required
         />
         {showRequiredPasswordError && (

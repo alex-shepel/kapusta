@@ -7,6 +7,7 @@ import {
   getIsRefreshing,
   setTokens,
   logOut,
+  getAccessToken,
 } from 'redux/auth';
 import Routes from 'routes';
 import Container from 'components/Container';
@@ -20,17 +21,24 @@ import {
   getIsDeleteOpenModal,
   getIsLogoutOpenModal,
 } from 'redux/modal';
-import { removeTransaction } from 'redux/transaction';
+import {
+  getMonthStatsExpenses,
+  getMonthStatsIncomes,
+  removeTransaction,
+} from 'redux/transaction';
 import Background from 'components/Background';
 import s from './App.module.css';
-import { fetchUser } from 'redux/user';
+import { fetchUser, resetUserState } from 'redux/user';
+import { resetTransactionState } from 'redux/transaction';
 
 const App = () => {
   const location = useLocation();
   const dispatch = useDispatch();
+  const incomes = useSelector(getMonthStatsIncomes);
+  const expenses = useSelector(getMonthStatsExpenses);
   const isLoggedIn = useSelector(getIsLoggedIn);
   const isRefreshing = useSelector(getIsRefreshing);
-  const currentToken = useSelector(state => state?.auth?.accessToken);
+  const currentToken = useSelector(getAccessToken);
   const deleteId = useSelector(getDeleteId);
   const isLogoutModalOpen = useSelector(getIsLogoutOpenModal);
   const isDeleteModalOpen = useSelector(getIsDeleteOpenModal);
@@ -44,16 +52,25 @@ const App = () => {
     dispatch(logOut());
   };
 
-  const accessToken = new URLSearchParams(location.search).get('accessToken');
-  const refreshToken = new URLSearchParams(location.search).get('refreshToken');
-  const sid = new URLSearchParams(location.search).get('sid');
+  const getGoogleAuthData = key =>
+    new URLSearchParams(location.search).get(key);
+
+  const accessToken = getGoogleAuthData('accessToken');
+  const refreshToken = getGoogleAuthData('refreshToken');
+  const sid = getGoogleAuthData('sid');
 
   useEffect(() => {
-    if (!currentToken) {
-      return;
+    if (!isLoggedIn) {
+      dispatch(resetTransactionState());
+      dispatch(resetUserState());
     }
-    dispatch(fetchUser(currentToken));
-  }, [dispatch, currentToken]);
+  }, [isLoggedIn]);
+
+  useEffect(() => {
+    if (currentToken) {
+      dispatch(fetchUser());
+    }
+  }, [dispatch, currentToken, incomes, expenses]);
 
   useEffect(() => {
     if (isLoggedIn && !accessToken) {
@@ -66,7 +83,6 @@ const App = () => {
       return;
     }
     dispatch(setTokens({ accessToken, refreshToken, sid }));
-    dispatch(fetchUser(accessToken));
   }, [accessToken, dispatch, refreshToken, sid]);
 
   return (
