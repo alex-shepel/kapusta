@@ -39,10 +39,12 @@ const DayReportView = () => {
     dispatch(fetchCategories());
   }, [dispatch]);
 
-  const handleToggle = () => {
-    setIsIncomesTabActive(!isIncomesTabActive);
-    setExpensesTabActive(!isExpensesTabActive);
-  };
+  useEffect(() => {
+    !isExpenses && setIsIncomesTabActive(true);
+    !isExpenses && setExpensesTabActive(false);
+    isExpenses && setExpensesTabActive(true);
+    isExpenses && setIsIncomesTabActive(false);
+  }, [isExpenses]);
 
   return (
     <>
@@ -60,7 +62,6 @@ const DayReportView = () => {
             className={isExpensesTabActive ? s.navBtnActive : s.navBtn}
             onClick={() => {
               setIsExpenses(true);
-              handleToggle();
             }}
           >
             Расход
@@ -70,7 +71,6 @@ const DayReportView = () => {
             className={isIncomesTabActive ? s.navBtnActive : s.navBtn}
             onClick={() => {
               setIsExpenses(false);
-              handleToggle();
             }}
           >
             Доход

@@ -2,8 +2,4 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: transparent;
-  position: fixed;
-  top: 40%;
-  right: 45%;
 }
