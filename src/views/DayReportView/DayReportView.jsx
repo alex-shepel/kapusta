@@ -27,6 +27,13 @@ const DayReportView = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, []);
+
+  useEffect(() => {
     dispatch(fetchIncome());
     dispatch(fetchExpense());
     dispatch(fetchCategories());
