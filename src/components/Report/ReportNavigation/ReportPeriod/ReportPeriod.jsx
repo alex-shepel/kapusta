@@ -3,7 +3,7 @@ import ArrowBackIos from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIos from '@mui/icons-material/ArrowForwardIos';
 import s from './ReportPeriod.module.css';
 
-const ReportPeriod = ({ setPickedMonth }) => {
+const ReportPeriod = ({ setPickedMonth, pickedMonth }) => {
   const [displayMonth, setDisplayMonth] = useState('');
   const [indexOfMonth, setIndexOfMonth] = useState(new Date().getMonth());
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
@@ -21,6 +21,14 @@ const ReportPeriod = ({ setPickedMonth }) => {
     'ноябрь',
     'декабрь',
   ];
+  const currentDate = new Date(
+    `${new Date().getFullYear()}-${`${new Date().getMonth() + 1}`.padStart(
+      2,
+      0,
+    )}`,
+  );
+
+  const propedPickedDate = new Date(pickedMonth);
 
   useEffect(() => {
     const currentDate = `${arrOfMonthes[indexOfMonth]} ${currentYear}`;
@@ -55,10 +63,12 @@ const ReportPeriod = ({ setPickedMonth }) => {
           style={{ height: '12px', fill: '#FF751D', cursor: 'pointer' }}
         />
         <span className={s.reportDate}>{displayMonth}</span>
-        <ArrowForwardIos
-          onClick={hendleIncrement}
-          style={{ height: '12px', fill: '#FF751D', cursor: 'pointer' }}
-        />
+        {propedPickedDate.getTime() !== currentDate.getTime() && (
+          <ArrowForwardIos
+            onClick={hendleIncrement}
+            style={{ height: '12px', fill: '#FF751D', cursor: 'pointer' }}
+          />
+        )}
       </span>
     </div>
   );
