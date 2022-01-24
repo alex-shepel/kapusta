@@ -69,7 +69,7 @@ const BalanceForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (balanceInput) {
+    if (balanceInput && balanceInput >= 1) {
       dispatch(updateBalance(parseInt(balanceInput)));
     }
   };
