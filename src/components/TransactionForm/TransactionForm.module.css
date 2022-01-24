@@ -38,6 +38,10 @@
   border-radius: 16px 16px 0 0;
 }
 
+.form .inputDescription {
+  display: flex;
+}
+
 .inputDescription:focus-visible {
   border: 2px solid var(--accent-color);
 }
@@ -68,8 +72,7 @@
 
   border-radius: 22px;
 }
-@media screen and (min-width: 320px) {
-}
+
 .inputAmount:focus-visible {
   outline: none;
   border: 2px solid #52555f;
@@ -129,7 +132,7 @@
 }
 
 .form div div {
-  display: flex;
+  /* display: flex; */
   position: relative;
 }
 
