@@ -26,7 +26,7 @@ export default function ChartComp({ chartData, activeCategory }) {
   const labels = sortedData.map(property => property[0]);
 
   const isBreakPointToPhoneScreen = useMediaQuery({
-    query: '(max-width: 400px)',
+    query: '(max-width: 767px)',
   });
 
   const breakPointBetweenMobAndTab = useMediaQuery({
