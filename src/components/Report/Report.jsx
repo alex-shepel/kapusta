@@ -14,30 +14,32 @@ import Spinner from 'components/Spinner';
 import ChartComp from 'components/Chart/Chart';
 
 const Report = () => {
-  const getStartValues = objValue => {
-    for (key in objValue) {
-      objValue[key] = objValue[key].total;
-    }
-  };
-
-  const [change, setChange] = useState(true);
+  const [isExpenses, setIsExpenses] = useState(true);
   const [activeCategory, setActiveCategory] = useState('');
   const incomData = useSelector(getIncomesDataByCategoriesFromState);
   const expData = useSelector(getExpenseDataByCategoriesFromState);
-  console.log('✈️ ~ expData', expData);
   const isDataGettingByCategories = useSelector(getIsDataGettingByCategories);
-  const [chartData, setChartData] = useState(
-    getStartValues(expData.expensesData),
-  );
+  const startData = isExpenses ? expData.expensesData : incomData.incomesData;
+  const [chartData, setChartData] = useState(startData);
 
-  console.log(chartData);
   useEffect(() => {
+    if (!activeCategory) return;
     setChartData(
-      change
+      isExpenses
         ? expData?.expensesData[activeCategory]
         : incomData?.incomesData[activeCategory],
     );
-  }, [activeCategory]);
+  }, [activeCategory, isExpenses]);
+
+  useEffect(() => {
+    if (activeCategory) return;
+    setChartData(isExpenses ? expData.expensesData : incomData.incomesData);
+  }, [isExpenses, activeCategory]);
+
+  const hendeleClickOnArrow = () => {
+    setActiveCategory('');
+    setIsExpenses(!isExpenses);
+  };
 
   return isDataGettingByCategories ? (
     <Spinner />
@@ -48,16 +50,18 @@ const Report = () => {
           <ArrowBackIos
             style={{ height: '14px' }}
             className={s.reportArrow}
-            onClick={() => setChange(!change)}
+            onClick={hendeleClickOnArrow}
           />
-          <span className={s.reportTitle}>{change ? 'Расходы' : 'Доходы'}</span>
+          <span className={s.reportTitle}>
+            {isExpenses ? 'Расходы' : 'Доходы'}
+          </span>
           <ArrowForwardIos
             style={{ height: '14px' }}
             className={s.reportArrow}
-            onClick={() => setChange(!change)}
+            onClick={hendeleClickOnArrow}
           />
         </div>
-        {change ? (
+        {isExpenses ? (
           <ReportExpencesList
             setActiveCategory={setActiveCategory}
             activeCategory={activeCategory}
@@ -75,7 +79,7 @@ const Report = () => {
         {isDataGettingByCategories ? (
           <Spinner />
         ) : (
-          <ChartComp chartData={chartData} />
+          <ChartComp chartData={chartData} activeCategory={activeCategory} />
         )}
       </div>
     </>
