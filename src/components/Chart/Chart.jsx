@@ -26,7 +26,11 @@ export default function ChartComp({ chartData, activeCategory }) {
   const labels = sortedData.map(property => property[0]);
 
   const isBreakPointToPhoneScreen = useMediaQuery({
-    query: '(max-width: 321px)',
+    query: '(max-width: 400px)',
+  });
+
+  const breakPointBetweenMobAndTab = useMediaQuery({
+    query: '(max-width: 500px)',
   });
 
   const getMaxValueFromData = dataArr => {
@@ -38,7 +42,7 @@ export default function ChartComp({ chartData, activeCategory }) {
   };
 
   const maxValueOfScaleY =
-    getMaxValueFromData(incomeData) + getMaxValueFromData(incomeData) * 0.2;
+    getMaxValueFromData(incomeData) + getMaxValueFromData(incomeData) * 0.4;
 
   const options = {
     responsive: true,
