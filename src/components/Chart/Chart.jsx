@@ -11,18 +11,26 @@ import s from './Chart.module.css';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement);
 
-export default function ChartComp({ chartData }) {
+export default function ChartComp({ chartData, activeCategory }) {
   const chooseBgColor = arr => {
     return arr.map((_, index) => (index % 3 === 0 ? '#FF751D' : '#FFDAC0'));
   };
   const { total, ...gettingData } = chartData === undefined ? {} : chartData;
   const arrForSort = Object.entries(gettingData);
-  const sortedData = [...arrForSort].sort((a, b) => b[1] - a[1]);
-  const incomeData = sortedData.map(property => property[1]);
+  const sortedData = [...arrForSort].sort((a, b) =>
+    activeCategory ? b[1] - a[1] : b[1].total - a[1].total,
+  );
+  const incomeData = sortedData.map(property =>
+    activeCategory ? property[1] : property[1].total,
+  );
   const labels = sortedData.map(property => property[0]);
 
   const isBreakPointToPhoneScreen = useMediaQuery({
-    query: '(max-width: 321px)',
+    query: '(max-width: 767px)',
+  });
+
+  const breakPointBetweenMobAndTab = useMediaQuery({
+    query: '(max-width: 500px)',
   });
 
   const getMaxValueFromData = dataArr => {
@@ -34,7 +42,7 @@ export default function ChartComp({ chartData }) {
   };
 
   const maxValueOfScaleY =
-    getMaxValueFromData(incomeData) + getMaxValueFromData(incomeData) * 0.2;
+    getMaxValueFromData(incomeData) + getMaxValueFromData(incomeData) * 0.4;
 
   const options = {
     responsive: true,
