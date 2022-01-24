@@ -130,11 +130,17 @@ const AuthorizationWithEmail = () => {
         )}
       </label>
       <div className={s.battonWrap}>
-        <Button type={'submit'} buttonName={'login'} title={'Войти'} />
+        <Button
+          type={'submit'}
+          buttonName={'login'}
+          title={'Войти'}
+          classStyle={'ButtonLoginPage'}
+        />
         <Button
           type={'submit'}
           buttonName={'registration'}
           title={'Регистрация'}
+          classStyle={'ButtonLoginPage'}
         />
       </div>
     </form>
