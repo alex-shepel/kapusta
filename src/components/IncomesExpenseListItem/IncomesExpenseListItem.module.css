@@ -81,7 +81,7 @@
   height: 18px;
   fill: var(--bg-modal-one-colour);
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 767px) {
   .description {
     width: 74px;
   }
