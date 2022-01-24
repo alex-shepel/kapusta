@@ -1,18 +1,13 @@
 import WestIcon from '@mui/icons-material/West';
 import { useState } from 'react';
+import { useWindowSize } from 'react-use-size';
 import s from './ReportBack.module.css';
 import { Link } from 'react-router-dom';
 
 const ReportBack = () => {
-  const [lWidth, setLWidth] = useState(window.innerWidth);
 
-  window.addEventListener(
-    `resize`,
-    event => {
-      setLWidth(event.target.innerWidth);
-    },
-    false,
-  );
+  const {width} = useWindowSize();
+
 
   return (
     <div className={s.reportBack}>
@@ -21,7 +16,7 @@ const ReportBack = () => {
           className={s.westIcon}
           style={{ heigth: '24px', fill: '#FF751D' }}
         />
-        {lWidth > 767 ? (
+        {width > 767 ? (
           <span className={s.backTitle}>Вернуться на главную</span>
         ) : (
           ''

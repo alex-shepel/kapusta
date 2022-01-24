@@ -3,21 +3,15 @@ import { useState } from 'react';
 import ReportBack from './ReportBack/ReportBack';
 import ReportBalance from './ReportBalance/ReportBalance';
 import ReportPeriod from './ReportPeriod';
+import { useWindowSize } from 'react-use-size';
 
 const ReportNavigation = ({ pickedMonth, setPickedMonth }) => {
-  const [lWidth, setLWidth] = useState(window.innerWidth);
 
-  window.addEventListener(
-    `resize`,
-    event => {
-      setLWidth(event.target.innerWidth);
-    },
-    false,
-  );
+  const {width} = useWindowSize();
 
   return (
     <>
-      {lWidth >= 768 ? (
+      {width >= 768 ? (
         <section className={s.reportNavigation}>
           <ReportBack />
           <ReportBalance />
