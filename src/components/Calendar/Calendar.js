@@ -13,6 +13,7 @@ const Calendar = ({ dateHandle }) => {
     <div className={s.calendarWrapper}>
       <img className={s.calendarIcon} src={imageCalendar} alt="Calendar" />
       <DatePicker
+        maxDate={new Date()}
         selected={date}
         onChange={date => setDate(date)}
         className={s.datePicker}
