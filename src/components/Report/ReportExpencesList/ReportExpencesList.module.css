@@ -15,7 +15,7 @@
   fill: var(--unaccent-pictogram-color);
   position: relative;
 }
-.expenceIcon:hover {
+.expenceReportItem:hover .expenceIcon {
   fill: var(--accent-color);
 }
 

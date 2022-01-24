@@ -21,6 +21,7 @@
   font-size: 14px;
   font-weight: 700;
   width: 115px;
+  text-align: center;
 }
 @media screen and (min-width: 768px) {
   .periodSection {
