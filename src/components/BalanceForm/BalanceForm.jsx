@@ -28,7 +28,6 @@ const BalanceForm = () => {
   const [isToastShown, setIsToastShown] = useState(isBalanceUnset);
   const [balanceInput, setBalanceInput] = useState(addCurrency(balance));
   const [balanceBackup, setBalanceBackup] = useState(balanceInput);
-
   useEffect(() => {
     setCanChange(isBalanceUnset);
     setIsToastShown(isBalanceUnset);
@@ -69,7 +68,8 @@ const BalanceForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (balanceInput && balanceInput >= 1) {
+    setIsToastShown(false);
+    if (balanceInput !== '0 UAH') {
       dispatch(updateBalance(parseInt(balanceInput)));
     }
   };
