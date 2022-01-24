@@ -14,12 +14,23 @@ import Spinner from 'components/Spinner';
 import ChartComp from 'components/Chart/Chart';
 
 const Report = () => {
+  const getStartValues = objValue => {
+    for (key in objValue) {
+      objValue[key] = objValue[key].total;
+    }
+  };
+
   const [change, setChange] = useState(true);
-  const [chartData, setChartData] = useState({});
   const [activeCategory, setActiveCategory] = useState('');
   const incomData = useSelector(getIncomesDataByCategoriesFromState);
   const expData = useSelector(getExpenseDataByCategoriesFromState);
+  console.log('✈️ ~ expData', expData);
   const isDataGettingByCategories = useSelector(getIsDataGettingByCategories);
+  const [chartData, setChartData] = useState(
+    getStartValues(expData.expensesData),
+  );
+
+  console.log(chartData);
   useEffect(() => {
     setChartData(
       change
