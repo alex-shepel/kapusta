@@ -4,6 +4,8 @@ import s from './ReportBack.module.css';
 import { Link } from 'react-router-dom';
 
 const ReportBack = () => {
+  const [lWidth, setLWidth] = useState(window.innerWidth);
+
   window.addEventListener(
     `resize`,
     event => {
@@ -12,8 +14,6 @@ const ReportBack = () => {
     false,
   );
 
-  const [lWidth, setLWidth] = useState(window.innerWidth);
-
   return (
     <div className={s.reportBack}>
       <Link to={'/day-report'} className={s.goToReport} style={{}}>
@@ -21,7 +21,11 @@ const ReportBack = () => {
           className={s.westIcon}
           style={{ heigth: '24px', fill: '#FF751D' }}
         />
-        {lWidth > 767 ? <span className={s.backTitle}>Вернуться на главную</span> : ''}
+        {lWidth > 767 ? (
+          <span className={s.backTitle}>Вернуться на главную</span>
+        ) : (
+          ''
+        )}
       </Link>
     </div>
   );
